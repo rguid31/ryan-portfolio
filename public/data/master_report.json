@@ -737,13 +737,14 @@
       "id": "lsu-mathematics-2025",
       "institution": "Louisiana State University",
       "degree": "Bachelor of Science (B.S.)",
-      "field": "Mathematics with a secondary discipline in Chemical Engineering",
+      "field": "Mathematics with a Secondary Discipline in Chemical Engineering",
       "location": {
         "city": "Baton Rouge",
         "state": "Louisiana"
       },
       "startDate": "2025-08",
       "graduationDate": "2027-12",
+      "dateLabel": "Expected Graduation",
       "gpa": null,
       "description": "Transferred from Chemical Engineering to Mathematics to focus on advanced data analysis and computational modeling, leveraging a strong engineering foundation.",
       "achievements": [
@@ -761,665 +762,684 @@
       },
       "startDate": "2014-08",
       "graduationDate": "2023-12",
+      "dateLabel": "Dates Attended",
       "gpa": null,
-      "description": "Completed 131/139 credit hours in Chemical Engineering before pivoting to Mathematics to specialize in data science and analytics.",
+      "description": "Completed 131/139 credit hours in Chemical Engineering before pivoting to Mathematics to specialize in data science, analytics, and machine learning.",
       "achievements": [
         "131/139 credit hours completed"
       ]
-      }
-  ],
-    "experience": [
-      {
-        "id": "outlier-ai-math-specialist",
-        "title": "AI Math Specialist",
-        "company": "OutlierAI",
-        "employmentType": "Freelance",
-        "location": "Baton Rouge, Louisiana",
-        "startDate": "2024-06",
-        "endDate": null,
-        "current": true,
-        "description": "Training and evaluating generative AI models to enhance mathematical reasoning and response accuracy.",
-        "responsibilities": [
-          "Generate high-quality training data for STEM subjects to advance model capabilities",
-          "Train AI models by rating, reviewing, and rewriting responses (RLHF) to enhance accuracy",
-          "Evaluate model performance on complex mathematical problems",
-          "Improve the relationship between human intent and AI data processing"
-        ],
-        "skills": [
-          "Reinforcement Learning from Human Feedback (RLHF)",
-          "Mathematical Modeling",
-          "AI Evaluation",
-          "Prompt Engineering",
-          "Data Labeling"
-        ],
-        "achievements": [
-          "Improved accuracy of math-related model outputs",
-          "Consistently maintained high quality ratings for training data generation"
-        ]
-      },
-      {
-        "id": "tracerco-field-technician",
-        "title": "Field Technician",
-        "company": "Tracerco",
-        "employmentType": "Contract",
-        "location": "Baton Rouge, Louisiana",
-        "startDate": "2024-04",
-        "endDate": "2024-05",
-        "current": false,
-        "description": "Technical innovation role focusing on scanning, tracing, and nucleonic instrumentation.",
-        "responsibilities": [
-          "Oversaw technical innovation as a subject matter expert in core technologies (scanning, tracing, nucleonic instrumentation)",
-          "Maintained strategic client partnerships to deliver tailored solutions",
-          "Enhanced operational efficiency and safety across diverse industries through data-driven diagnostics"
-        ],
-        "skills": [
-          "Nucleonic Instrumentation",
-          "Field Data Collection",
-          "Process Diagnostics",
-          "Client Relationship Management"
-        ],
-        "achievements": []
-      },
-      {
-        "id": "acbl-safety-coordinator",
-        "title": "Safety and Training Coordinator",
-        "company": "American Commercial Barge Line (ACBL)",
-        "employmentType": "Full-time",
-        "location": "Harahan, Louisiana",
-        "startDate": "2023-10",
-        "endDate": "2024-03",
-        "current": false,
-        "description": "Cultivated a proactive safety culture through data analysis and training initiatives.",
-        "responsibilities": [
-          "Cultivated a proactive safety culture through promotion of safe work practices",
-          "Streamlined reporting procedures resulting in improved compliance ratings",
-          "Empowered employees through engaging safety training sessions",
-          "Proactively identified and mitigated potential safety hazards through expert analysis",
-          "Maintained safety programs at the forefront of industry standards"
-        ],
-        "skills": [
-          "Safety Data Analysis",
-          "Training Facilitation",
-          "Risk Mitigation",
-          "Regulatory Compliance",
-          "Process Improvement"
-        ],
-        "achievements": [
-          "Improved compliance ratings",
-          "Reduced reporting turnaround times"
-        ]
-      },
-      {
-        "id": "emerson-application-engineer",
-        "title": "Application Engineer",
-        "company": "Emerson Automation Solutions",
-        "employmentType": "Internship",
-        "location": "Baton Rouge, Louisiana",
-        "startDate": "2022-06",
-        "endDate": "2022-08",
-        "current": false,
-        "description": "Developed automation solutions and software configurations for industrial control systems.",
-        "responsibilities": [
-          "Established AgileOps suite of software applications on DeltaV, Honeywell, and Siemens platforms",
-          "Directed proposition to deploy admin distribution management (WSUS) to over 1200 virtual machines",
-          "Coded Excel macros in VBA to automate UI customization and maximize user efficiency",
-          "Pre-populated Site Information Documents using plant data from customer .FHX files"
-        ],
-        "skills": [
-          "VBA Scripting",
-          "Windows Server Administration (WSUS)",
-          "SQL",
-          "AgileOps",
-          "Data Parsing"
-        ],
-        "achievements": [
-          "Automated security and maintenance updates for company network",
-          "Simplified user experience through custom Excel tooling"
-        ]
-      },
-      {
-        "id": "totalenergies-project-intern",
-        "title": "Project Engineering Intern",
-        "company": "TotalEnergies",
-        "employmentType": "Internship",
-        "location": "Port Arthur, Texas",
-        "startDate": "2021-06",
-        "endDate": "2021-08",
-        "current": false,
-        "description": "Led pre-FEED planning and process simulation for refinery optimization projects.",
-        "responsibilities": [
-          "Led pre-FEED planning for Condensate Splitter Unit (CSU) optimization project",
-          "Created working model of refinery CWS piping network using SimSci Pipephase software",
-          "Constructed test data sheets for evaluating VFD pump performance",
-          "Studied feasibility of CSU modifications for improved corrosion control"
-        ],
-        "skills": [
-          "SimSci Pipephase",
-          "Project Management",
-          "Process Simulation",
-          "Data Analysis",
-          "Cost Estimation"
-        ],
-        "achievements": [
-          "Delivered comprehensive execution plan for FEED phase",
-          "Successfully modeled complex piping network"
-        ]
-      },
-      {
-        "id": "dwl-tech-sales-intern",
-        "title": "Industrial Equipment Sales Intern",
-        "company": "DWL Technology",
-        "employmentType": "Internship",
-        "location": "Walker, Louisiana",
-        "startDate": "2019-05",
-        "endDate": "2019-09",
-        "current": false,
-        "description": "Managed e-commerce operations, inventory, and sales analytics.",
-        "responsibilities": [
-          "Managed, organized, and sold surplus industrial engineering parts globally",
-          "Created e-commerce sales presence with over 200 transactions",
-          "Managed e-commerce sales metrics and KPIs to improve listing SEO",
-          "Attained eBay Top-Rated Seller status"
-        ],
-        "skills": [
-          "E-commerce Management",
-          "SEO",
-          "Sales Analytics",
-          "Inventory Management",
-          "Customer Service"
-        ],
-        "achievements": [
-          "100% positive customer sales feedback",
-          "Defect rating of less than 0.5%"
-        ]
-      },
-      {
-        "id": "nalco-tech-sales",
-        "title": "Technical Sales Engineer",
-        "company": "NALCO Champion",
-        "employmentType": "Internship",
-        "location": "Lafayette, Louisiana",
-        "startDate": "2018-05",
-        "endDate": "2018-08",
-        "current": false,
-        "description": "Provided specialty chemical recommendations and corrosion monitoring services.",
-        "responsibilities": [
-          "Conducted daily upstream oilfield surveys and provided chemical additive recommendations",
-          "Revamped pipeline corrosion monitoring services using computer modeling",
-          "correlated new failures with past data to forecast future flowline failures"
-        ],
-        "skills": [
-          "Corrosion Monitoring",
-          "Chemical Modeling",
-          "Data Correlation",
-          "Technical Sales"
-        ],
-        "achievements": []
-      },
-      {
-        "id": "cornerstone-process-intern",
-        "title": "Process Engineering Intern",
-        "company": "Cornerstone Chemical Company",
-        "employmentType": "Internship",
-        "location": "Westwego, Louisiana",
-        "startDate": "2017-12",
-        "endDate": "2018-01",
-        "current": false,
-        "description": "Analyzed plant data and equipment performance.",
-        "responsibilities": [
-          "Utilized Pi ProcessBook and Pi Datalink to analyze plant data on production costs",
-          "Verified P&IDs with lead process engineers",
-          "Examined industrial turbines and compressors for failure mechanisms"
-        ],
-        "skills": [
-          "Pi ProcessBook",
-          "Data Analysis",
-          "Process Engineering",
-          "P&ID Verification"
-        ],
-        "achievements": []
-      },
-      {
-        "id": "new-orleans-daiquiris-bartender",
-        "title": "Bartender",
-        "company": "New Orleans Original Daiquiris",
-        "employmentType": "Part-time",
-        "location": "Baton Rouge, Louisiana",
-        "startDate": "2017-07",
-        "endDate": "2017-09",
-        "current": false,
-        "description": "Provided customer service and maintained operations in a fast-paced environment.",
-        "responsibilities": [
-          "Developed customer business relations through effective social interaction",
-          "Ensured customer satisfaction in a fast-paced environment",
-          "Exhibited strong time management and work ethic balancing school and work"
-        ],
-        "skills": [
-          "Customer Service",
-          "Time Management",
-          "Communication",
-          "Operations"
-        ],
-        "achievements": []
-      },
-      {
-        "id": "gp-chemical-sales-intern-nj",
-        "title": "Chemical Sales Intern",
-        "company": "Georgia-Pacific LLC",
-        "employmentType": "Internship",
-        "location": "Hasbrouck Heights, New Jersey",
-        "startDate": "2016-12",
-        "endDate": "2017-01",
-        "current": false,
-        "description": "Participated in chemical trials and customer facility service.",
-        "responsibilities": [
-          "Participated in chemical trials to gain service of a customer facility",
-          "Completed wet-end testing on pulp samples (system charge, pH, conductivity, turbidity)"
-        ],
-        "skills": [
-          "Chemical Testing",
-          "Client Service",
-          "Technical Analysis",
-          "Lab Procedures"
-        ],
-        "achievements": []
-      },
-      {
-        "id": "gp-chemical-sales-intern-ny",
-        "title": "Chemical Sales Intern",
-        "company": "Georgia-Pacific LLC",
-        "employmentType": "Internship",
-        "location": "New York, Pennsylvania, New Jersey",
-        "startDate": "2016-05",
-        "endDate": "2016-08",
-        "current": false,
-        "description": "Optimized chemical processes and conducted technical studies at paper mills.",
-        "responsibilities": [
-          "Conducted wet-end tests and optimized chemical additive injection rates",
-          "Performed pulp receptivity studies on recycled furnishes",
-          "Created PFDs of paper making process for optimal injection location"
-        ],
-        "skills": [
-          "Process Optimization",
-          "Technical Analysis",
-          "PFD Creation",
-          "Cost Reduction"
-        ],
-        "achievements": [
-          "Minimized production costs through optimization",
-          "Met product benchmarks"
-        ]
-      },
-      {
-        "id": "home-servicing-mortgage-lender",
-        "title": "Mortgage Lender",
-        "company": "Home Servicing, LLC",
-        "employmentType": "Seasonal",
-        "location": "Baton Rouge, Louisiana",
-        "startDate": "2015-05",
-        "endDate": "2015-08",
-        "current": false,
-        "description": "Managed mortgage communications and documentation. Also worked Winter Break 2014.",
-        "responsibilities": [
-          "Communicated with homeowners and agents regarding taxes, insurance, and mortgages",
-          "Organized and filed paperwork into computer database and physical library",
-          "Acquired customer information using Service Director and Citrix programs"
-        ],
-        "skills": [
-          "Data Entry",
-          "Customer Communication",
-          "Document Management",
-          "Citrix"
-        ],
-        "achievements": [
-          " improved accessibility of customer information"
-        ]
-      },
-      {
-        "id": "st-charles-computer-tech",
-        "title": "Computer Technician",
-        "company": "St. Charles Parish Public Schools",
-        "employmentType": "Summer",
-        "location": "Destrehan, Louisiana",
-        "startDate": "2014-05",
-        "endDate": "2014-08",
-        "current": false,
-        "description": "Deployed and optimized school technology infrastructure. Also worked Summer 2013.",
-        "responsibilities": [
-          "Efficiently installed and configured computers and software across classrooms",
-          "Provided timely troubleshooting of hardware, software, and network issues",
-          "Developed and implemented an efficient photo identification system"
-        ],
-        "skills": [
-          "IT Support",
-          "Hardware Deployment",
-          "Network Configuration",
-          "System Administration"
-        ],
-        "achievements": [
-          "Streamlined school identification process",
-          "Maximized utilization of technology resources"
-        ]
-      }
-    ],
-    "skills": {
-      "programming": {
-        "category": "Programming Languages",
-        "items": [
-          {
-            "name": "JavaScript/TypeScript",
-            "level": "Advanced",
-            "yearsOfExperience": 3,
-            "context": "Production experience with Next.js, React, Node.js"
-          },
-          {
-            "name": "Python",
-            "level": "Advanced",
-            "yearsOfExperience": 3,
-            "context": "CLI tools, automation, data processing, AI/ML integration"
-          },
-          {
-            "name": "HTML/CSS",
-            "level": "Advanced",
-            "yearsOfExperience": 3,
-            "context": "Modern semantic HTML5, CSS3, responsive design"
-          },
-          {
-            "name": "SQL",
-            "level": "Intermediate",
-            "yearsOfExperience": 2,
-            "context": "PostgreSQL, database design, queries"
-          },
-          {
-            "name": "MATLAB",
-            "level": "Intermediate",
-            "yearsOfExperience": 4,
-            "context": "Engineering analysis and computation"
-          }
-        ]
-      },
-      "frameworks": {
-        "category": "Frameworks & Libraries",
-        "items": [
-          {
-            "name": "React 18",
-            "level": "Advanced"
-          },
-          {
-            "name": "Next.js 14/15",
-            "level": "Advanced"
-          },
-          {
-            "name": "Tailwind CSS",
-            "level": "Advanced"
-          },
-          {
-            "name": "Framer Motion",
-            "level": "Intermediate"
-          },
-          {
-            "name": "Node.js",
-            "level": "Advanced"
-          },
-          {
-            "name": "Express.js",
-            "level": "Advanced"
-          }
-        ]
-      },
-      "aiml": {
-        "category": "AI/ML Technologies",
-        "items": [
-          {
-            "name": "OpenAI API (CLIP, GPT-4)",
-            "level": "Advanced"
-          },
-          {
-            "name": "Google Gemini API",
-            "level": "Advanced"
-          },
-          {
-            "name": "Prompt Engineering",
-            "level": "Advanced"
-          },
-          {
-            "name": "Embeddings & Vector Databases",
-            "level": "Intermediate"
-          },
-          {
-            "name": "LangChain",
-            "level": "Beginner"
-          }
-        ]
-      },
-      "databases": {
-        "category": "Databases & Data Storage",
-        "items": [
-          {
-            "name": "PostgreSQL (Supabase)",
-            "level": "Advanced"
-          },
-          {
-            "name": "SQLite",
-            "level": "Intermediate"
-          },
-          {
-            "name": "MongoDB",
-            "level": "Intermediate"
-          },
-          {
-            "name": "Firebase",
-            "level": "Intermediate"
-          }
-        ]
-      },
-      "devops": {
-        "category": "DevOps & Tools",
-        "items": [
-          {
-            "name": "Git",
-            "level": "Advanced"
-          },
-          {
-            "name": "GitHub",
-            "level": "Advanced"
-          },
-          {
-            "name": "Vercel",
-            "level": "Advanced"
-          },
-          {
-            "name": "AWS",
-            "level": "Beginner"
-          },
-          {
-            "name": "CI/CD",
-            "level": "Intermediate"
-          }
-        ]
-      },
-      "technicalWriting": {
-        "category": "Technical Writing & Documentation",
-        "items": [
-          {
-            "name": "API Documentation",
-            "level": "Advanced"
-          },
-          {
-            "name": "User Guides",
-            "level": "Advanced"
-          },
-          {
-            "name": "Developer Tutorials",
-            "level": "Advanced"
-          },
-          {
-            "name": "Markdown/MDX",
-            "level": "Advanced"
-          },
-          {
-            "name": "Docusaurus/GitBook",
-            "level": "Intermediate"
-          }
-        ]
-      }
     },
-    "certifications": [
-      {
-        "id": "google-data-analytics",
-        "name": "Google Data Analytics Professional Certificate",
-        "issuer": "Google (via Coursera)",
-        "status": "In Progress",
-        "startDate": "2023-09",
-        "completionDate": null,
-        "credentialID": null,
-        "credentialURL": null,
-        "skills": [
-          "Data cleaning",
-          "SQL",
-          "Data visualization",
-          "R programming",
-          "Statistical analysis"
-        ]
+    {
+      "id": "destrehan-high-school",
+      "institution": "Destrehan High School",
+      "degree": "High School Diploma",
+      "field": "Honors Program",
+      "location": {
+        "city": "Destrehan",
+        "state": "Louisiana"
       },
-      {
-        "id": "google-ai-essentials",
-        "name": "Google AI Essentials",
-        "issuer": "Google",
-        "status": "Needs Verification",
-        "startDate": null,
-        "completionDate": null,
-        "credentialID": null,
-        "credentialURL": null,
-        "skills": [
-          "AI fundamentals",
-          "Responsible AI"
-        ]
-      },
-      {
-        "id": "osha-basic-orientation",
-        "name": "OSHA Basic Orientation Plus",
-        "issuer": "OSHA",
-        "status": "Active",
-        "issueDate": null,
-        "expirationDate": null,
-        "credentialType": "Physical Card",
-        "skills": [
-          "Workplace safety",
-          "Hazard recognition",
-          "OSHA compliance"
-        ]
-      },
-      {
-        "id": "twic",
-        "name": "Transportation Worker Identification Credential (TWIC)",
-        "issuer": "TSA",
-        "status": "Active (Needs Verification)",
-        "issueDate": null,
-        "expirationDate": null,
-        "credentialType": "Physical Card (Biometric)",
-        "skills": [
-          "Maritime security clearance"
-        ]
-      }
-    ],
-    "volunteer": [
-      {
-        "id": "google-ux-researcher",
-        "role": "User Experience Researcher",
-        "organization": "Google",
-        "startDate": "2022-11",
-        "endDate": null,
-        "current": true,
-        "description": "Volunteer contributor to Google's UX research initiatives, providing user feedback and insights to improve product experiences.",
-        "responsibilities": [
-          "Participate in user testing sessions for Google products",
-          "Complete feedback surveys and usability studies",
-          "Provide insights on product features and user experience",
-          "Test new features and provide detailed feedback"
-        ]
-      },
-      {
-        "id": "google-local-guide",
-        "role": "Local Guide (Level 5)",
-        "organization": "Google Maps",
-        "startDate": null,
-        "endDate": null,
-        "current": true,
-        "level": 5,
-        "description": "Active contributor to Google Maps, providing high-quality reviews, photos, and location information.",
-        "contributions": {
-          "reviews": "Multiple",
-          "photos": "Multiple",
-          "edits": "Multiple"
-        }
-      }
-    ],
-    "hobbies": [
-      {
-        "id": "vinyl-collecting",
-        "name": "Vinyl Collecting",
-        "description": "Avid collector of vinyl records with a focus on rock and alternative genres. Check out my collection on Discogs.",
-        "category": "Collecting",
-        "url": "https://www.discogs.com/user/rockit_media/collection",
-        "image": "/images/hobbies/vinyl.jpg",
-        "featured": true
-      },
-      {
-        "id": "graphic-design",
-        "name": "Graphic Design",
-        "description": "Creating visual assets for web and print. Passionate about typography and layout design.",
-        "category": "Creative",
-        "image": "/images/hobbies/design.jpg"
-      },
-      {
-        "id": "web-app-dev",
-        "name": "Web/App Development",
-        "description": "Building useful tools and applications. Constantly learning new frameworks and technologies.",
-        "category": "Technology",
-        "image": "/images/hobbies/coding.jpg",
-        "featured": true
-      },
-      {
-        "id": "ebay-store",
-        "name": "eBay Reselling",
-        "description": "Running 'Ryans Rocket Shop', an online store for vintage items and collectibles.",
-        "category": "Business",
-        "url": "https://www.ebay.com/str/ryansrocketshop",
-        "image": "/images/hobbies/ebay.jpg"
-      },
-      {
-        "id": "landoni-music",
-        "name": "Landoni Music",
-        "description": "Producing and creating original music under the moniker 'Landoni'. Exploring soundscapes and composition.",
-        "category": "Music",
-        "image": "/images/hobbies/music.jpg"
-      }
-    ],
-    "insightsProfile": {
-      "profileType": "Reforming Observer",
-      "energies": {
-        "coolBlue": 64,
-        "fieryRed": 60,
-        "sunshineYellow": 33,
-        "earthGreen": 43
-      },
-      "strengths": [
-        "Analytical Rigor - Strong ability to analyze complex problems systematically",
-        "Results-Oriented - Driven to achieve tangible outcomes and measurable results",
-        "Independent Thinking - Comfortable working autonomously with minimal supervision",
-        "High Standards - Maintains quality and accuracy in all work",
-        "Efficient Execution - Balances thorough analysis with timely decision-making"
+      "graduationDate": "2014-05",
+      "dateLabel": "Graduated",
+      "description": "Focused on STEM subjects including AutoCAD, drafting, engineering, and physics. Graduated from the Honors Program.",
+      "achievements": [
+        "Honors Program Graduate",
+        "Member of the DHS Soccer Team",
+        "Specialized coursework in AutoCAD and Drafting"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "outlier-ai-math-specialist",
+      "title": "AI Math Specialist",
+      "company": "OutlierAI",
+      "employmentType": "Freelance",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2024-06",
+      "endDate": null,
+      "current": true,
+      "description": "Training and evaluating generative AI models to enhance mathematical reasoning and response accuracy.",
+      "responsibilities": [
+        "Generate high-quality training data for STEM subjects to advance model capabilities",
+        "Train AI models by rating, reviewing, and rewriting responses (RLHF) to enhance accuracy",
+        "Evaluate model performance on complex mathematical problems",
+        "Improve the relationship between human intent and AI data processing"
       ],
-      "communicationStyle": {
-        "prefers": "Data-driven discussions, logical arguments, clear objectives",
-        "values": "Precision, efficiency, competence, independence",
-        "approach": "Direct, factual, focused on outcomes"
-      },
-      "workPreferences": {
-        "idealEnvironment": "Structured yet autonomous, with clear goals and metrics",
-        "motivation": "Solving complex problems, achieving measurable results",
-        "decisionMaking": "Evidence-based analysis combined with decisive action"
+      "skills": [
+        "Reinforcement Learning from Human Feedback (RLHF)",
+        "Mathematical Modeling",
+        "AI Evaluation",
+        "Prompt Engineering",
+        "Data Labeling"
+      ],
+      "achievements": [
+        "Improved accuracy of math-related model outputs",
+        "Consistently maintained high quality ratings for training data generation"
+      ]
+    },
+    {
+      "id": "tracerco-field-technician",
+      "title": "Field Technician",
+      "company": "Tracerco",
+      "employmentType": "Contract",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2024-04",
+      "endDate": "2024-05",
+      "current": false,
+      "description": "Technical innovation role focusing on scanning, tracing, and nucleonic instrumentation.",
+      "responsibilities": [
+        "Oversaw technical innovation as a subject matter expert in core technologies (scanning, tracing, nucleonic instrumentation)",
+        "Maintained strategic client partnerships to deliver tailored solutions",
+        "Enhanced operational efficiency and safety across diverse industries through data-driven diagnostics"
+      ],
+      "skills": [
+        "Nucleonic Instrumentation",
+        "Field Data Collection",
+        "Process Diagnostics",
+        "Client Relationship Management"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "acbl-safety-coordinator",
+      "title": "Safety and Training Coordinator",
+      "company": "American Commercial Barge Line (ACBL)",
+      "employmentType": "Full-time",
+      "location": "Harahan, Louisiana",
+      "startDate": "2023-10",
+      "endDate": "2024-03",
+      "current": false,
+      "description": "Cultivated a proactive safety culture through data analysis and training initiatives.",
+      "responsibilities": [
+        "Cultivated a proactive safety culture through promotion of safe work practices",
+        "Streamlined reporting procedures resulting in improved compliance ratings",
+        "Empowered employees through engaging safety training sessions",
+        "Proactively identified and mitigated potential safety hazards through expert analysis",
+        "Maintained safety programs at the forefront of industry standards"
+      ],
+      "skills": [
+        "Safety Data Analysis",
+        "Training Facilitation",
+        "Risk Mitigation",
+        "Regulatory Compliance",
+        "Process Improvement"
+      ],
+      "achievements": [
+        "Improved compliance ratings",
+        "Reduced reporting turnaround times"
+      ]
+    },
+    {
+      "id": "emerson-application-engineer",
+      "title": "Application Engineer",
+      "company": "Emerson Automation Solutions",
+      "employmentType": "Internship",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2022-06",
+      "endDate": "2022-08",
+      "current": false,
+      "description": "Developed automation solutions and software configurations for industrial control systems.",
+      "responsibilities": [
+        "Established AgileOps suite of software applications on DeltaV, Honeywell, and Siemens platforms",
+        "Directed proposition to deploy admin distribution management (WSUS) to over 1200 virtual machines",
+        "Coded Excel macros in VBA to automate UI customization and maximize user efficiency",
+        "Pre-populated Site Information Documents using plant data from customer .FHX files"
+      ],
+      "skills": [
+        "VBA Scripting",
+        "Windows Server Administration (WSUS)",
+        "SQL",
+        "AgileOps",
+        "Data Parsing"
+      ],
+      "achievements": [
+        "Automated security and maintenance updates for company network",
+        "Simplified user experience through custom Excel tooling"
+      ]
+    },
+    {
+      "id": "totalenergies-project-intern",
+      "title": "Project Engineering Intern",
+      "company": "TotalEnergies",
+      "employmentType": "Internship",
+      "location": "Port Arthur, Texas",
+      "startDate": "2021-06",
+      "endDate": "2021-08",
+      "current": false,
+      "description": "Led pre-FEED planning and process simulation for refinery optimization projects.",
+      "responsibilities": [
+        "Led pre-FEED planning for Condensate Splitter Unit (CSU) optimization project",
+        "Created working model of refinery CWS piping network using SimSci Pipephase software",
+        "Constructed test data sheets for evaluating VFD pump performance",
+        "Studied feasibility of CSU modifications for improved corrosion control"
+      ],
+      "skills": [
+        "SimSci Pipephase",
+        "Project Management",
+        "Process Simulation",
+        "Data Analysis",
+        "Cost Estimation"
+      ],
+      "achievements": [
+        "Delivered comprehensive execution plan for FEED phase",
+        "Successfully modeled complex piping network"
+      ]
+    },
+    {
+      "id": "dwl-tech-sales-intern",
+      "title": "Industrial Equipment Sales Intern",
+      "company": "DWL Technology",
+      "employmentType": "Internship",
+      "location": "Walker, Louisiana",
+      "startDate": "2019-05",
+      "endDate": "2019-09",
+      "current": false,
+      "description": "Managed e-commerce operations, inventory, and sales analytics.",
+      "responsibilities": [
+        "Managed, organized, and sold surplus industrial engineering parts globally",
+        "Created e-commerce sales presence with over 200 transactions",
+        "Managed e-commerce sales metrics and KPIs to improve listing SEO",
+        "Attained eBay Top-Rated Seller status"
+      ],
+      "skills": [
+        "E-commerce Management",
+        "SEO",
+        "Sales Analytics",
+        "Inventory Management",
+        "Customer Service"
+      ],
+      "achievements": [
+        "100% positive customer sales feedback",
+        "Defect rating of less than 0.5%"
+      ]
+    },
+    {
+      "id": "nalco-tech-sales",
+      "title": "Technical Sales Engineer",
+      "company": "NALCO Champion",
+      "employmentType": "Internship",
+      "location": "Lafayette, Louisiana",
+      "startDate": "2018-05",
+      "endDate": "2018-08",
+      "current": false,
+      "description": "Provided specialty chemical recommendations and corrosion monitoring services.",
+      "responsibilities": [
+        "Conducted daily upstream oilfield surveys and provided chemical additive recommendations",
+        "Revamped pipeline corrosion monitoring services using computer modeling",
+        "correlated new failures with past data to forecast future flowline failures"
+      ],
+      "skills": [
+        "Corrosion Monitoring",
+        "Chemical Modeling",
+        "Data Correlation",
+        "Technical Sales"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "cornerstone-process-intern",
+      "title": "Process Engineering Intern",
+      "company": "Cornerstone Chemical Company",
+      "employmentType": "Internship",
+      "location": "Westwego, Louisiana",
+      "startDate": "2017-12",
+      "endDate": "2018-01",
+      "current": false,
+      "description": "Analyzed plant data and equipment performance.",
+      "responsibilities": [
+        "Utilized Pi ProcessBook and Pi Datalink to analyze plant data on production costs",
+        "Verified P&IDs with lead process engineers",
+        "Examined industrial turbines and compressors for failure mechanisms"
+      ],
+      "skills": [
+        "Pi ProcessBook",
+        "Data Analysis",
+        "Process Engineering",
+        "P&ID Verification"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "new-orleans-daiquiris-bartender",
+      "title": "Bartender",
+      "company": "New Orleans Original Daiquiris",
+      "employmentType": "Part-time",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2017-07",
+      "endDate": "2017-09",
+      "current": false,
+      "description": "Provided customer service and maintained operations in a fast-paced environment.",
+      "responsibilities": [
+        "Developed customer business relations through effective social interaction",
+        "Ensured customer satisfaction in a fast-paced environment",
+        "Exhibited strong time management and work ethic balancing school and work"
+      ],
+      "skills": [
+        "Customer Service",
+        "Time Management",
+        "Communication",
+        "Operations"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "gp-chemical-sales-intern-nj",
+      "title": "Chemical Sales Intern",
+      "company": "Georgia-Pacific LLC",
+      "employmentType": "Internship",
+      "location": "Hasbrouck Heights, New Jersey",
+      "startDate": "2016-12",
+      "endDate": "2017-01",
+      "current": false,
+      "description": "Participated in chemical trials and customer facility service.",
+      "responsibilities": [
+        "Participated in chemical trials to gain service of a customer facility",
+        "Completed wet-end testing on pulp samples (system charge, pH, conductivity, turbidity)"
+      ],
+      "skills": [
+        "Chemical Testing",
+        "Client Service",
+        "Technical Analysis",
+        "Lab Procedures"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "gp-chemical-sales-intern-ny",
+      "title": "Chemical Sales Intern",
+      "company": "Georgia-Pacific LLC",
+      "employmentType": "Internship",
+      "location": "New York, Pennsylvania, New Jersey",
+      "startDate": "2016-05",
+      "endDate": "2016-08",
+      "current": false,
+      "description": "Optimized chemical processes and conducted technical studies at paper mills.",
+      "responsibilities": [
+        "Conducted wet-end tests and optimized chemical additive injection rates",
+        "Performed pulp receptivity studies on recycled furnishes",
+        "Created PFDs of paper making process for optimal injection location"
+      ],
+      "skills": [
+        "Process Optimization",
+        "Technical Analysis",
+        "PFD Creation",
+        "Cost Reduction"
+      ],
+      "achievements": [
+        "Minimized production costs through optimization",
+        "Met product benchmarks"
+      ]
+    },
+    {
+      "id": "home-servicing-mortgage-lender",
+      "title": "Mortgage Lender",
+      "company": "Home Servicing, LLC",
+      "employmentType": "Seasonal",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2015-05",
+      "endDate": "2015-08",
+      "current": false,
+      "description": "Managed mortgage communications and documentation. Also worked Winter Break 2014.",
+      "responsibilities": [
+        "Communicated with homeowners and agents regarding taxes, insurance, and mortgages",
+        "Organized and filed paperwork into computer database and physical library",
+        "Acquired customer information using Service Director and Citrix programs"
+      ],
+      "skills": [
+        "Data Entry",
+        "Customer Communication",
+        "Document Management",
+        "Citrix"
+      ],
+      "achievements": [
+        " improved accessibility of customer information"
+      ]
+    },
+    {
+      "id": "st-charles-computer-tech",
+      "title": "Computer Technician",
+      "company": "St. Charles Parish Public Schools",
+      "employmentType": "Summer",
+      "location": "Destrehan, Louisiana",
+      "startDate": "2014-05",
+      "endDate": "2014-08",
+      "current": false,
+      "description": "Deployed and optimized school technology infrastructure. Also worked Summer 2013.",
+      "responsibilities": [
+        "Efficiently installed and configured computers and software across classrooms",
+        "Provided timely troubleshooting of hardware, software, and network issues",
+        "Developed and implemented an efficient photo identification system"
+      ],
+      "skills": [
+        "IT Support",
+        "Hardware Deployment",
+        "Network Configuration",
+        "System Administration"
+      ],
+      "achievements": [
+        "Streamlined school identification process",
+        "Maximized utilization of technology resources"
+      ]
+    }
+  ],
+  "skills": {
+    "programming": {
+      "category": "Programming Languages",
+      "items": [
+        {
+          "name": "JavaScript/TypeScript",
+          "level": "Advanced",
+          "yearsOfExperience": 3,
+          "context": "Production experience with Next.js, React, Node.js"
+        },
+        {
+          "name": "Python",
+          "level": "Advanced",
+          "yearsOfExperience": 3,
+          "context": "CLI tools, automation, data processing, AI/ML integration"
+        },
+        {
+          "name": "HTML/CSS",
+          "level": "Advanced",
+          "yearsOfExperience": 3,
+          "context": "Modern semantic HTML5, CSS3, responsive design"
+        },
+        {
+          "name": "SQL",
+          "level": "Intermediate",
+          "yearsOfExperience": 2,
+          "context": "PostgreSQL, database design, queries"
+        },
+        {
+          "name": "MATLAB",
+          "level": "Intermediate",
+          "yearsOfExperience": 4,
+          "context": "Engineering analysis and computation"
+        }
+      ]
+    },
+    "frameworks": {
+      "category": "Frameworks & Libraries",
+      "items": [
+        {
+          "name": "React 18",
+          "level": "Advanced"
+        },
+        {
+          "name": "Next.js 14/15",
+          "level": "Advanced"
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "Advanced"
+        },
+        {
+          "name": "Framer Motion",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Node.js",
+          "level": "Advanced"
+        },
+        {
+          "name": "Express.js",
+          "level": "Advanced"
+        }
+      ]
+    },
+    "aiml": {
+      "category": "AI/ML Technologies",
+      "items": [
+        {
+          "name": "OpenAI API (CLIP, GPT-4)",
+          "level": "Advanced"
+        },
+        {
+          "name": "Google Gemini API",
+          "level": "Advanced"
+        },
+        {
+          "name": "Prompt Engineering",
+          "level": "Advanced"
+        },
+        {
+          "name": "Embeddings & Vector Databases",
+          "level": "Intermediate"
+        },
+        {
+          "name": "LangChain",
+          "level": "Beginner"
+        }
+      ]
+    },
+    "databases": {
+      "category": "Databases & Data Storage",
+      "items": [
+        {
+          "name": "PostgreSQL (Supabase)",
+          "level": "Advanced"
+        },
+        {
+          "name": "SQLite",
+          "level": "Intermediate"
+        },
+        {
+          "name": "MongoDB",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Firebase",
+          "level": "Intermediate"
+        }
+      ]
+    },
+    "devops": {
+      "category": "DevOps & Tools",
+      "items": [
+        {
+          "name": "Git",
+          "level": "Advanced"
+        },
+        {
+          "name": "GitHub",
+          "level": "Advanced"
+        },
+        {
+          "name": "Vercel",
+          "level": "Advanced"
+        },
+        {
+          "name": "AWS",
+          "level": "Beginner"
+        },
+        {
+          "name": "CI/CD",
+          "level": "Intermediate"
+        }
+      ]
+    },
+    "technicalWriting": {
+      "category": "Technical Writing & Documentation",
+      "items": [
+        {
+          "name": "API Documentation",
+          "level": "Advanced"
+        },
+        {
+          "name": "User Guides",
+          "level": "Advanced"
+        },
+        {
+          "name": "Developer Tutorials",
+          "level": "Advanced"
+        },
+        {
+          "name": "Markdown/MDX",
+          "level": "Advanced"
+        },
+        {
+          "name": "Docusaurus/GitBook",
+          "level": "Intermediate"
+        }
+      ]
+    }
+  },
+  "certifications": [
+    {
+      "id": "google-data-analytics",
+      "name": "Google Data Analytics Professional Certificate",
+      "issuer": "Google (via Coursera)",
+      "status": "In Progress",
+      "startDate": "2023-09",
+      "completionDate": null,
+      "credentialID": null,
+      "credentialURL": null,
+      "skills": [
+        "Data cleaning",
+        "SQL",
+        "Data visualization",
+        "R programming",
+        "Statistical analysis"
+      ]
+    },
+    {
+      "id": "google-ai-essentials",
+      "name": "Google AI Essentials",
+      "issuer": "Google",
+      "status": "Needs Verification",
+      "startDate": null,
+      "completionDate": null,
+      "credentialID": null,
+      "credentialURL": null,
+      "skills": [
+        "AI fundamentals",
+        "Responsible AI"
+      ]
+    },
+    {
+      "id": "osha-basic-orientation",
+      "name": "OSHA Basic Orientation Plus",
+      "issuer": "OSHA",
+      "status": "Active",
+      "issueDate": null,
+      "expirationDate": null,
+      "credentialType": "Physical Card",
+      "skills": [
+        "Workplace safety",
+        "Hazard recognition",
+        "OSHA compliance"
+      ]
+    },
+    {
+      "id": "twic",
+      "name": "Transportation Worker Identification Credential (TWIC)",
+      "issuer": "TSA",
+      "status": "Active (Needs Verification)",
+      "issueDate": null,
+      "expirationDate": null,
+      "credentialType": "Physical Card (Biometric)",
+      "skills": [
+        "Maritime security clearance"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "id": "google-ux-researcher",
+      "role": "User Experience Researcher",
+      "organization": "Google",
+      "startDate": "2022-11",
+      "endDate": null,
+      "current": true,
+      "description": "Volunteer contributor to Google's UX research initiatives, providing user feedback and insights to improve product experiences.",
+      "responsibilities": [
+        "Participate in user testing sessions for Google products",
+        "Complete feedback surveys and usability studies",
+        "Provide insights on product features and user experience",
+        "Test new features and provide detailed feedback"
+      ]
+    },
+    {
+      "id": "google-local-guide",
+      "role": "Local Guide (Level 5)",
+      "organization": "Google Maps",
+      "startDate": null,
+      "endDate": null,
+      "current": true,
+      "level": 5,
+      "description": "Active contributor to Google Maps, providing high-quality reviews, photos, and location information.",
+      "contributions": {
+        "reviews": "Multiple",
+        "photos": "Multiple",
+        "edits": "Multiple"
       }
     }
+  ],
+  "hobbies": [
+    {
+      "id": "vinyl-collecting",
+      "name": "Vinyl Collecting",
+      "description": "Avid collector of vinyl records with a focus on rock and alternative genres. Check out my collection on Discogs.",
+      "category": "Collecting",
+      "url": "https://www.discogs.com/user/rockit_media/collection",
+      "image": "/images/hobbies/vinyl.jpg",
+      "featured": true
+    },
+    {
+      "id": "graphic-design",
+      "name": "Graphic Design",
+      "description": "Creating visual assets for web and print. Passionate about typography and layout design.",
+      "category": "Creative",
+      "image": "/images/hobbies/design.jpg"
+    },
+    {
+      "id": "web-app-dev",
+      "name": "Web/App Development",
+      "description": "Building useful tools and applications. Constantly learning new frameworks and technologies.",
+      "category": "Technology",
+      "image": "/images/hobbies/coding.jpg",
+      "featured": true
+    },
+    {
+      "id": "ebay-store",
+      "name": "eBay Reselling",
+      "description": "Running 'Ryans Rocket Shop', an online store for vintage items and collectibles.",
+      "category": "Business",
+      "url": "https://www.ebay.com/str/ryansrocketshop",
+      "image": "/images/hobbies/ebay.jpg"
+    },
+    {
+      "id": "landoni-music",
+      "name": "Landoni Music",
+      "description": "Logo and merchandise designer, videography producer, social media manager, and manager for LANDONi Music, New Orleans electronic music producer and DJ.",
+      "category": "Music",
+      "image": "/images/hobbies/music.jpg"
+    }
+  ],
+  "insightsProfile": {
+    "profileType": "Reforming Observer",
+    "energies": {
+      "coolBlue": 64,
+      "fieryRed": 60,
+      "sunshineYellow": 33,
+      "earthGreen": 43
+    },
+    "strengths": [
+      "Analytical Rigor - Strong ability to analyze complex problems systematically",
+      "Results-Oriented - Driven to achieve tangible outcomes and measurable results",
+      "Independent Thinking - Comfortable working autonomously with minimal supervision",
+      "High Standards - Maintains quality and accuracy in all work",
+      "Efficient Execution - Balances thorough analysis with timely decision-making"
+    ],
+    "communicationStyle": {
+      "prefers": "Data-driven discussions, logical arguments, clear objectives",
+      "values": "Precision, efficiency, competence, independence",
+      "approach": "Direct, factual, focused on outcomes"
+    },
+    "workPreferences": {
+      "idealEnvironment": "Structured yet autonomous, with clear goals and metrics",
+      "motivation": "Solving complex problems, achieving measurable results",
+      "decisionMaking": "Evidence-based analysis combined with decisive action"
+    }
   }
+}

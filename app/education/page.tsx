@@ -40,7 +40,7 @@ export default function EducationPage() {
                                 <p className="text-gray-600">{edu.location.city}, {edu.location.state}</p>
                             </div>
                             <div className="text-right mt-4 md:mt-0">
-                                <p className="text-lg font-medium">Graduated: {edu.graduationDate}</p>
+                                <p className="text-lg font-medium">{edu.dateLabel || 'Graduated'}: {edu.graduationDate}</p>
                                 {edu.gpa && <p className="text-gray-600">GPA: {edu.gpa.toFixed(1)}</p>}
                             </div>
                         </div>

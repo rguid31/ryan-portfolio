@@ -128,6 +128,7 @@ export interface Education {
     state: string;
   };
   graduationDate: string;
+  dateLabel?: string;
   gpa?: number;
   relevantCoursework: string[];
   achievements: string[];
