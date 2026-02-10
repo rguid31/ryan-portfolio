@@ -260,30 +260,30 @@ describe('Storage Layer', () => {
             // Wait to ensure version-2 has a later timestamp
             await new Promise(resolve => setTimeout(resolve, 50));
             const pub2 = { ...samplePublic, versionId: 'version-2' };
-            saveSnapshot(handle, 'version-2', pub2, sampleJsonLd, 'hash2');
+            await saveSnapshot(handle, 'version-2', pub2, sampleJsonLd, 'hash2');
 
-            const latest = getLatestSnapshot(handle);
+            const latest = await getLatestSnapshot(handle);
             expect(latest).toBeDefined();
             // Latest should be one of the versions (timing dependent)
             expect(['version-1', 'version-2']).toContain(latest!.version_id);
         });
 
-        it('should return undefined for handle with no published snapshots', () => {
-            saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
-            unpublishSnapshots(handle);
+        it('should return undefined for handle with no published snapshots', async () => {
+            await saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
+            await unpublishSnapshots(handle);
 
-            const latest = getLatestSnapshot(handle);
+            const latest = await getLatestSnapshot(handle);
             expect(latest).toBeUndefined();
         });
 
         it('should get all snapshots for a handle', async () => {
-            saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
+            await saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
             // Wait to ensure version-2 has a later timestamp
             await new Promise(resolve => setTimeout(resolve, 50));
             const pub2 = { ...samplePublic, versionId: 'version-2' };
-            saveSnapshot(handle, 'version-2', pub2, sampleJsonLd, 'hash2');
+            await saveSnapshot(handle, 'version-2', pub2, sampleJsonLd, 'hash2');
 
-            const all = getAllSnapshots(handle);
+            const all = await getAllSnapshots(handle);
             expect(all).toHaveLength(2);
             // DESC order - should be version-2 first if timestamps are different
             const versionIds = all.map(s => s.version_id);
@@ -291,35 +291,35 @@ describe('Storage Layer', () => {
             expect(versionIds).toContain('version-2');
         });
 
-        it('should unpublish all snapshots', () => {
-            saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
-            saveSnapshot(handle, 'version-2', { ...samplePublic, versionId: 'version-2' }, sampleJsonLd, 'hash2');
+        it('should unpublish all snapshots', async () => {
+            await saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
+            await saveSnapshot(handle, 'version-2', { ...samplePublic, versionId: 'version-2' }, sampleJsonLd, 'hash2');
 
-            unpublishSnapshots(handle);
+            await unpublishSnapshots(handle);
 
-            const latest = getLatestSnapshot(handle);
+            const latest = await getLatestSnapshot(handle);
             expect(latest).toBeUndefined();
 
             // But snapshots still exist
-            const all = getAllSnapshots(handle);
+            const all = await getAllSnapshots(handle);
             expect(all).toHaveLength(2);
             expect(all[0].is_published).toBe(0);
             expect(all[1].is_published).toBe(0);
         });
 
-        it('should delete all snapshots', () => {
-            saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
-            saveSnapshot(handle, 'version-2', { ...samplePublic, versionId: 'version-2' }, sampleJsonLd, 'hash2');
+        it('should delete all snapshots', async () => {
+            await saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
+            await saveSnapshot(handle, 'version-2', { ...samplePublic, versionId: 'version-2' }, sampleJsonLd, 'hash2');
 
-            deleteAllSnapshots(handle);
+            await deleteAllSnapshots(handle);
 
-            const all = getAllSnapshots(handle);
+            const all = await getAllSnapshots(handle);
             expect(all).toHaveLength(0);
         });
 
-        it('should enforce unique version_id constraint', () => {
-            saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
-            expect(() => saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1')).toThrow();
+        it('should enforce unique version_id constraint', async () => {
+            await saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
+            await expect(saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1')).rejects.toThrow();
         });
     });
 

@@ -12,7 +12,7 @@ interface ProfilePageProps {
 
 export async function generateMetadata({ params }: ProfilePageProps): Promise<Metadata> {
     const { handle } = await params;
-    const snapshot = getLatestSnapshot(handle);
+    const snapshot = await getLatestSnapshot(handle);
 
     if (!snapshot) {
         return { title: 'Profile Not Found' };
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: ProfilePageProps): Promise<Me
 export default async function PublicProfilePage({ params }: ProfilePageProps) {
     const { handle } = await params;
 
-    const snapshot = getLatestSnapshot(handle);
+    const snapshot = await getLatestSnapshot(handle);
     if (!snapshot) {
         notFound();
     }
