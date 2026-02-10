@@ -18,9 +18,10 @@ export function DeployCard({ handle }: DeployCardProps) {
         ? window.location.origin
         : 'https://ryanguidry.com';
 
-    // We pass both the KEYS and the VALUES
+    // Correct way to pass multiple env vars to Vercel clone: 
+    // &env=KEY1&env=KEY2&KEY1=VAL1&KEY2=VAL2
     const deployUrl = `https://vercel.com/new/clone?repository-url=${encodeURIComponent(TEMPLATE_URL)}` +
-        `&env=NEXT_PUBLIC_TRUTH_ENGINE_HANDLE,NEXT_PUBLIC_TRUTH_ENGINE_API_URL` +
+        `&env=NEXT_PUBLIC_TRUTH_ENGINE_HANDLE&env=NEXT_PUBLIC_TRUTH_ENGINE_API_URL` +
         `&NEXT_PUBLIC_TRUTH_ENGINE_HANDLE=${encodeURIComponent(handle)}` +
         `&NEXT_PUBLIC_TRUTH_ENGINE_API_URL=${encodeURIComponent(apiBaseUrl)}` +
         `&project-name=${handle}-profile` +
