@@ -8,6 +8,7 @@ import { ProfileCompletion } from '@/components/ui/ProfileCompletion';
 import { DashboardEmptyState } from '@/components/ui/EmptyState';
 import { PublishPreviewModal } from '@/components/ui/PublishPreviewModal';
 import { DeployCard } from '@/components/ui/DeployCard';
+import { GitHubImport } from '@/components/social/GitHubImport';
 
 // ─── Default profile template ────────────────────────────────────
 
@@ -250,6 +251,20 @@ export default function DashboardPage() {
                             View Public Profile →
                         </Link>
                     )}
+                </div>
+
+                {/* GitHub Import */}
+                <div className="mb-6">
+                    <GitHubImport onImport={(data) => {
+                        setDraft(prev => ({
+                            ...prev,
+                            identity: { ...prev.identity, ...data.identity },
+                            links: data.links ? { ...prev.links, social: [...(prev.links?.social || []), ...(data.links.social || [])] } : prev.links,
+                            projects: [...(data.projects || []), ...(prev.projects || [])],
+                        }));
+                        success('GitHub data imported!');
+                        handleSave();
+                    }} />
                 </div>
 
                 {/* Status Bar */}
