@@ -95,6 +95,7 @@ export interface Project {
   repoURL: string;
   images: string[];
   narrative?: string;
+  conceptualArchitecture?: string;
   roadmap?: string[];
 }
 

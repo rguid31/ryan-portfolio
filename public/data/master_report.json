@@ -66,7 +66,6 @@
       "order": 1,
       "projectDescription": "Born from the need to modernize a traditional Cajun specialty meat business, this project transitions a brick-and-mortar legacy into the digital age. It captures the 'Down the Bayou' heritage while meeting modern e-commerce standards.",
       "shortDescription": "Modernizing a Cajun specialty meat business with a scalable e-commerce platform.",
-      "narrative": "This project wasn't just about building a website; it was about creating a digital storefront that captures the 'Down the Bayou' heritage. The vision is a seamless, scalable platform where customers nationwide can access authentic Louisiana products.",
       "myRole": "Lead Systems Developer & Brand Architect",
       "responsibilities": [
         "End-to-end site deployment: Managed domain registration, DNS configuration, and secure hosting environment.",
@@ -138,6 +137,8 @@
       ],
       "targetAudience": "Customers, LLM Crawlers, and AI Search Agents",
       "projectURL": "https://downthebayoumeats.com",
+      "narrative": "Modernizing a brick-and-mortar legacy business requires more than a storefront; it requires a digital transformation of brand heritage. The purpose of this project is to build a scalable e-commerce infrastructure that preserves 'Down the Bayou' identity while optimizing for national logistics and AI discoverability.",
+      "conceptualArchitecture": "The platform is built on a decoupled architecture where the content management (WordPress) is hardened with specialized business logic for perishable logistics. It follows a 'Data-First' pattern, ensuring that every product attribute is machine-readable for both human customers and AI search agents.",
       "repoURL": "",
       "images": [
         "/assets/dtb-hero.png",
@@ -154,7 +155,6 @@
       "order": 2,
       "projectDescription": "An AI-powered platform that represents the intersection of large language models and user-centric design. Designed as a 'second brain' interface for high-context, conversational AI interactions using Google Gemini.",
       "shortDescription": "AI-powered conversation platform using Google Gemini API",
-      "narrative": "Built to explore the capabilities of the Gemini API, it provides a playground for high-context, conversational AI interactions. The vision is to create a 'second brain' interface that handles complex queries with a focus on speed and intuitive UI.",
       "myRole": "Sole Developer - Architected and implemented entire solution end-to-end",
       "responsibilities": [
         "System architecture and database design",
@@ -233,6 +233,8 @@
       ],
       "targetAudience": "Researchers, entrepreneurs, students, and professionals seeking AI-powered insights",
       "projectURL": "https://synaptic-insight-engine.vercel.app",
+      "narrative": "As AI moves from novelty to utility, the need for 'Second Brain' interfaces grows. This project explores the intersection of high-context LLMs and intuitive user design, providing a high-performance playground for conversational intelligence using the Google Gemini API.",
+      "conceptualArchitecture": "Architected as a real-time reactive system, the engine utilizes Server-Sent Events (SSE) for streaming AI responses and a session-based state manager. This 'Persistent Context' pattern ensures conversational continuity across complex multi-turn interactions.",
       "repoURL": "https://github.com/rguid31/synaptic-insight-engine",
       "images": [
         "/assets/synaptic-ui.png",
@@ -249,7 +251,6 @@
       "order": 0,
       "projectDescription": "A self-documenting, data-driven professional platform built on Next.js 16 and React 19. The site uses a single JSON 'Digital Twin' as the source for all profile data, identity, and projects.",
       "shortDescription": "Self-documenting Next.js 16 platform powered by a 'digital twin' JSON architecture.",
-      "narrative": "A 'Digital Twin' portfolio is more than a resume—it’s a data-driven mirror of a developer's professional identity. Built using the bleeding edge of Next.js and React, this platform uses a single JSON file as the 'source of truth' to populate the entire site. It represents the ultimate vision of 'Write Once, Deploy Everywhere' for personal branding.",
       "myRole": "Sole Architect, Developer & Designer — end-to-end ownership from data modeling to DNS configuration",
       "responsibilities": [
         "Designed the 'digital twin' JSON schema — a 12-section, deeply nested data model covering all professional facets.",
@@ -330,6 +331,8 @@
       ],
       "targetAudience": "Recruiters, hiring managers, and technical audiences evaluating full-stack architecture skills",
       "projectURL": "https://ryanguidry.com",
+      "narrative": "A professional portfolio should be more than a static document; it should be a data-driven mirror of professional identity. This 'Digital Twin' platform uses a single JSON source of truth to power a high-performance, self-documenting ecosystem built on the bleeding edge of Next.js and React.",
+      "conceptualArchitecture": "The architecture follows a 'Single Source of Truth' (SSOT) pattern, where a central JSON schema drives every route, component, and metadata tag. By leveraging React Server Components (RSC) and the React Compiler, the system achieves near-zero client-side JS while maintaining dynamic data fidelity.",
       "repoURL": "https://github.com/rguid31/ryan-portfolio",
       "images": [
         "/assets/portfolio-lighthouse.png",
@@ -346,7 +349,6 @@
       "order": 3,
       "projectDescription": "A Python-based CLI tool that leverages OpenAI's CLIP model and GPT-4 to automatically categorize thousands of images instantly. It 'sees' the image and writes accurate, SEO-friendly tags.",
       "shortDescription": "Python CLI tool using CLIP and GPT-4 for automated image tagging.",
-      "narrative": "As visual data grows, manual organization becomes impossible. This CLI tool was built for photographers and developers who need to categorize thousands of images instantly. By combining OpenAI’s CLIP and GPT-4, the tool 'sees' the image and 'writes' accurate, SEO-friendly tags.",
       "myRole": "Sole Developer - Complete development from research to deployment",
       "responsibilities": [
         "AI model research and selection (evaluated CLIP, BLIP, ViT).",
@@ -415,6 +417,8 @@
       ],
       "targetAudience": "Photographers, digital asset managers, and content creators",
       "projectURL": null,
+      "narrative": "As visual data grows, manual organization becomes impossible. This CLI tool was built for photographers and developers who need to categorize thousands of images instantly. By combining OpenAI’s CLIP and GPT-4, the tool 'sees' the image and 'writes' accurate, SEO-friendly tags.",
+      "conceptualArchitecture": "The tool implements a 'Vision-to-Language' pipeline. It uses OpenAI CLIP for zero-shot image embedding and GPT-4 for semantic refinement. This modular architecture allows for parallel processing of image batches, significantly reducing latency for large-scale migrations.",
       "repoURL": "https://github.com/rguid31/image-tagging-tool",
       "images": [
         "/assets/cli-demo.gif",
@@ -432,6 +436,7 @@
       "projectDescription": "A Python automation tool built to clean, organize, and standardize metadata for massive music libraries. It reflects a passion for clean data and organized systems through recursive file-tree traversal and API integration.",
       "shortDescription": "Python CLI tool for automated music library organization and metadata cleanup.",
       "narrative": "For audiophiles with massive local libraries, inconsistent metadata is a nightmare. This tool was built to automate the tedious process of cleaning ID3 tags and organizing file structures. It reflects a passion for clean data and organized systems.",
+      "conceptualArchitecture": "The tool uses a recursive traversal engine to map massive file systems. It leverages 'Acoustic Fingerprinting' (AcoustID) to identify tracks by sound profiles, ensuring accuracy even when initial metadata is absent. This 'Identity-First' pattern prevents data corruption across high-volume libraries.",
       "myRole": "Sole Developer - End-to-end ownership",
       "responsibilities": [
         "Requirements analysis and Python architecture design.",
@@ -516,6 +521,7 @@
       "projectDescription": "An experimental web project that turns sound frequencies into a particle-based 'cosmos.' Designed for creators and music enthusiasts who want an immersive, real-time visual experience in their browser.",
       "shortDescription": "Real-time browser audio visualizer with cosmic particle effects.",
       "narrative": "Music isn't just for hearing; it’s for seeing. The Cosmic Audio Visualizer uses the Web Audio API to analyze sound frequencies in real-time and render them as dynamic particle systems and nebula effects.",
+      "conceptualArchitecture": "Built on the Web Audio API, the visualizer uses a 'Fast Fourier Transform' (FFT) analysis pipeline. The frequency data is mapped to particle attributes (size, speed, color) via a high-performance rendering loop optimized for 60fps browser interactions.",
       "myRole": "Sole Developer - Creative coding and audio engineering",
       "responsibilities": [
         "Web Audio API: High-performance real-time frequency analysis.",
@@ -592,6 +598,7 @@
       "projectDescription": "A professional small-business website for local business Down the Bayou Cajun Specialty Meats. Demonstrates ability to deliver client-facing web solutions for local businesses.",
       "shortDescription": "Small business website for a Cajun specialty meats company.",
       "narrative": "Small businesses need a digital footprint as robust as their products. This project was a focused effort to deliver a clean, professional web presence for a local Cajun specialty meat provider.",
+      "conceptualArchitecture": "The site follows a 'Mobile-First' responsive architecture, prioritizing local accessibility. It uses high-fidelity visual assets and optimized load-patterns to ensure a premium experience on both low-bandwidth mobile networks and desktop displays.",
       "myRole": "Web Developer - Full design and development",
       "responsibilities": [
         "Client requirements gathering and brand alignment.",
@@ -653,6 +660,7 @@
       "projectDescription": "A specialized database application for organizing and ranking development ideas. It serves as a personal innovation pipeline for multi-disciplinary solutions.",
       "shortDescription": "Personal innovation pipeline and database for web app ideas.",
       "narrative": "Great ideas are easily lost. This tool was built to capture and organize potential projects, ranking them by feasibility and impact to create a personal innovation pipeline.",
+      "conceptualArchitecture": "Architected as a real-time CRUD application using Firebase, the tool implements a 'Feasibility Weighted Ranking' system. This allows for dynamic prioritization of long-term innovation vs. immediate development opportunities based on weighted time-impact metrics.",
       "myRole": "Sole Developer - Full-stack implementation",
       "responsibilities": [
         "Database schema design for hierarchical idea storage.",
@@ -723,6 +731,7 @@
       "projectDescription": "Built with Next.js 15, this project explored high-fidelity UI/UX through glassmorphism and neumorphism. It served as the experimental predecessor to the current Digital Twin platform.",
       "shortDescription": "Next.js 15 portfolio with neuromorphic design system.",
       "narrative": "Before the Digital Twin architecture, I focused on high-fidelity visual design. The Neuromorphic Portfolio was an experiment in glassmorphism and advanced CSS effects, serving as the experimental foundation for my current platform.",
+      "conceptualArchitecture": "An experimental UI/UX architecture exploring the boundaries of 'Soft UI' and Glassmorphism. The system utilizes advanced CSS3 blurring and translucency filters, integrated with Framer Motion for organic, physics-based interface transitions.",
       "myRole": "Sole Developer & Designer - Complete creative and technical control",
       "responsibilities": [
         "Conceptualized neuromorphic design language.",

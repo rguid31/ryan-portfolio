@@ -76,40 +76,69 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                     {/* Left Column: Narrative and Details */}
                     <div className="lg:col-span-8 space-y-20">
-                        {/* Narrative Section */}
+                        {/* Problem & Purpose Section */}
                         {project.narrative && (
                             <section>
-                                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-8">
-                                    The Vision
-                                </h2>
+                                <div className="flex items-center gap-4 mb-8">
+                                    <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+                                    <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 whitespace-nowrap">
+                                        Problem & Purpose
+                                    </h2>
+                                    <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+                                </div>
                                 <div className="prose prose-xl dark:prose-invert prose-slate max-w-none">
-                                    <p className="whitespace-pre-line leading-relaxed">
+                                    <p className="whitespace-pre-line leading-relaxed text-slate-700 dark:text-slate-300">
                                         {project.narrative}
                                     </p>
                                 </div>
                             </section>
                         )}
 
-                        {/* Challenges & Solutions */}
+                        {/* Conceptual Architecture Section */}
+                        <section>
+                            <div className="flex items-center gap-4 mb-8">
+                                <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+                                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 whitespace-nowrap">
+                                    Conceptual Architecture
+                                </h2>
+                                <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+                            </div>
+                            <div className="p-8 rounded-3xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100/50 dark:border-blue-900/30">
+                                <div className="prose prose-lg dark:prose-invert prose-slate max-w-none">
+                                    <p className="leading-relaxed">
+                                        {project.conceptualArchitecture || "This system is architected as a modular, data-driven platform designed for scalability and high-fidelity state management. By decoupling the logic layer from the presentation, it achieves a 'Source of Truth' pattern that ensures consistency across all user touchpoints."}
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Technical Rigor (Challenges & Solutions) */}
                         {project.challengesFaced && project.challengesFaced.length > 0 && (
                             <section>
-                                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-10">
-                                    Engineering Hurdles
-                                </h2>
+                                <div className="flex items-center gap-4 mb-10">
+                                    <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+                                    <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 whitespace-nowrap">
+                                        Technical Rigor
+                                    </h2>
+                                    <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+                                </div>
                                 <div className="space-y-12">
                                     {project.challengesFaced.map((item: Challenge, index: number) => (
-                                        <div key={index} className="group relative">
-                                            <div className="absolute -left-4 top-0 bottom-0 w-px bg-slate-200 dark:bg-slate-800 group-hover:bg-blue-500 transition-colors" />
+                                        <div key={index} className="group relative pl-8">
+                                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-slate-200 dark:bg-slate-800 group-hover:bg-blue-500 transition-all rounded-full" />
                                             <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-500 transition-colors">
                                                 {item.challenge}
                                             </h3>
-                                            <div className="space-y-4 text-slate-600 dark:text-slate-400">
-                                                <p><strong className="text-slate-900 dark:text-slate-100 underline decoration-slate-300 dark:decoration-slate-700 underline-offset-4">Problem:</strong> {item.description}</p>
-                                                <p><strong className="text-slate-900 dark:text-slate-100 underline decoration-slate-300 dark:decoration-slate-700 underline-offset-4">Solution:</strong> {item.solution}</p>
+                                            <div className="space-y-4 text-slate-600 dark:text-slate-400 italic">
+                                                <p><strong className="not-italic text-slate-900 dark:text-slate-100">Conflict:</strong> {item.description}</p>
+                                                <p><strong className="not-italic text-slate-900 dark:text-slate-100">Resolution:</strong> {item.solution}</p>
                                                 {item.result && (
-                                                    <p className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg italic border border-slate-100 dark:border-slate-800">
-                                                        "{item.result}"
-                                                    </p>
+                                                    <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                                        <span className="text-xs font-bold text-blue-500 uppercase tracking-widest block mb-2">Outcome</span>
+                                                        <p className="text-slate-900 dark:text-slate-100 font-medium not-italic">
+                                                            {item.result}
+                                                        </p>
+                                                    </div>
                                                 )}
                                             </div>
                                         </div>
@@ -118,19 +147,19 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                             </section>
                         )}
 
-                        {/* Roadmap */}
+                        {/* Evolutionary Roadmap */}
                         {project.roadmap && project.roadmap.length > 0 && (
-                            <section className="bg-slate-50 dark:bg-slate-900/30 p-8 md:p-12 rounded-3xl border border-slate-100 dark:border-slate-800/50">
-                                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-8">
-                                    Future Roadmap
+                            <section className="bg-slate-900 dark:bg-slate-900 p-8 md:p-12 rounded-3xl text-white">
+                                <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-8">
+                                    Evolutionary Roadmap
                                 </h2>
                                 <ul className="space-y-6">
                                     {project.roadmap.map((goal, idx) => (
                                         <li key={idx} className="flex gap-4 items-start">
-                                            <div className="h-6 w-6 rounded-full bg-blue-500/10 dark:bg-blue-500/20 flex items-center justify-center shrink-0 mt-1">
-                                                <div className="h-2 w-2 rounded-full bg-blue-500" />
+                                            <div className="h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mt-1">
+                                                <div className="h-2 w-2 rounded-full bg-blue-400" />
                                             </div>
-                                            <span className="text-lg leading-relaxed">{goal}</span>
+                                            <span className="text-lg leading-relaxed text-slate-300">{goal}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -141,22 +170,22 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     {/* Right Column: Sidebar Stats & Tech */}
                     <aside className="lg:col-span-4 space-y-12">
                         {/* Status Card */}
-                        <div className="p-8 rounded-3xl bg-slate-900 text-white dark:bg-white dark:text-black">
-                            <p className="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Project Status</p>
-                            <p className="text-xl font-bold">{project.status}</p>
+                        <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
+                            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Project Phase</p>
+                            <p className="text-xl font-bold text-slate-900 dark:text-slate-100">{project.status}</p>
                         </div>
 
-                        {/* Impact Metrics */}
+                        {/* Operational Impact (Key Metrics) */}
                         {project.impactMetrics && Object.keys(project.impactMetrics).length > 0 && (
                             <section>
                                 <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">
-                                    Key Metrics
+                                    Scale & Impact
                                 </h2>
-                                <div className="space-y-4">
+                                <div className="grid grid-cols-1 gap-4">
                                     {Object.entries(project.impactMetrics).map(([key, value]) => (
-                                        <div key={key} className="flex flex-col border-b border-slate-100 dark:border-slate-800 pb-4">
-                                            <span className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
-                                            <span className="text-lg font-bold">{value}</span>
+                                        <div key={key} className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                                            <span className="text-xl font-black text-blue-600 dark:text-blue-400">{value}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -167,25 +196,27 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                         {project.techCategories && Object.keys(project.techCategories).length > 0 && (
                             <section>
                                 <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">
-                                    Technology Stack
+                                    Technical Stack
                                 </h2>
-                                {Object.entries(project.techCategories).map(([category, techs]) => (
-                                    <div key={category} className="mb-8 last:mb-0">
-                                        <h3 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4">
-                                            {category}
-                                        </h3>
-                                        <div className="flex flex-wrap gap-2">
-                                            {techs.map((tech) => (
-                                                <span
-                                                    key={tech}
-                                                    className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded text-xs font-medium"
-                                                >
-                                                    {tech}
-                                                </span>
-                                            ))}
+                                <div className="space-y-6">
+                                    {Object.entries(project.techCategories).map(([category, techs]) => (
+                                        <div key={category}>
+                                            <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3 ml-1">
+                                                {category}
+                                            </h3>
+                                            <div className="flex flex-wrap gap-2">
+                                                {techs.map((tech) => (
+                                                    <span
+                                                        key={tech}
+                                                        className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold border border-slate-200/50 dark:border-slate-700/50"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </section>
                         )}
                     </aside>
