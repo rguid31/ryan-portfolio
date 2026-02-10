@@ -39,10 +39,13 @@ export default function Navigation() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`transition-colors ${pathname === link.href
-                                    ? 'text-blue-600 dark:text-blue-400 font-semibold'
-                                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-                                    }`}
+                                className={link.label === 'Dashboard'
+                                    ? "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-bold text-sm"
+                                    : `transition-colors text-sm ${pathname === link.href
+                                        ? 'text-blue-600 dark:text-blue-400 font-semibold'
+                                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                                    }`
+                                }
                             >
                                 {link.label}
                             </Link>
