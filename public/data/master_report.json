@@ -1,0 +1,964 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-09",
+    "completeness": 0.75,
+    "purpose": "Single source of truth for professional website, resumes, and AI agents",
+    "schemaVersion": "1.0"
+  },
+  "personal": {
+    "fullName": "Ryan Michael Guidry",
+    "firstName": "Ryan",
+    "lastName": "Guidry",
+    "location": {
+      "city": "Baton Rouge",
+      "state": "Louisiana",
+      "country": "United States",
+      "timezone": "America/Chicago"
+    },
+    "contact": {
+      "email": "inquireryan@gmail.com",
+      "phone": "(985) 722-7475",
+      "website": "http://www.rguidry.dev"
+    },
+    "social": {
+      "linkedin": "http://linkedin.com/in/rmguidry",
+      "github": "http://github.com/rguid31",
+      "twitter": "http://x.com/inquireryan"
+    },
+    "availability": {
+      "status": "open",
+      "preferredRoles": ["Technical Writer", "Data Scientist", "AI/ML Engineer"],
+      "workPreferences": ["Remote", "Hybrid", "On-site (Baton Rouge area)"],
+      "startDate": "Immediate (2-week notice if currently employed)"
+    }
+  },
+  "summary": {
+    "headline": "Technical Writer | Data Scientist | AI/ML Developer",
+    "tagline": "Bridge builder between technical complexity and human understanding",
+    "description": "Results-driven professional with a unique blend of chemical engineering foundation, technical writing expertise, and AI/ML development skills. Demonstrated ability to bridge complex technical concepts with clear communication through 5+ production-deployed projects leveraging cutting-edge technologies (Next.js 15, OpenAI GPT-4, Google Gemini API).",
+    "coreCompetencies": [
+      "Technical Communication - Translating complex engineering and AI/ML concepts into accessible documentation",
+      "Full-Stack Development - End-to-end ownership from architecture to deployment (React, Node.js, Python)",
+      "AI/ML Integration - Production experience with OpenAI CLIP, GPT-4, and Google Gemini APIs",
+      "Data Analysis - Chemical engineering research background + modern data science tools",
+      "Problem Solving - Interdisciplinary approach combining engineering rigor with creative solutions"
+    ],
+    "valueProposition": "Bridge builder between technical complexity and human understanding, with hands-on coding skills and engineering analytical mindset."
+  },
+  "projects": [
+    {
+      "id": "synaptic-insight-engine",
+      "projectName": "Synaptic Insight Engine",
+      "slug": "synaptic-insight-engine",
+      "category": "AI/ML - Full-Stack Application",
+      "status": "Active",
+      "featured": true,
+      "order": 1,
+      "projectDescription": "An AI-powered full-stack web application that combines cutting-edge natural language processing with intuitive user experience design. Enables users to engage in intelligent conversations and extract insights from complex information through Google Gemini's advanced language models.",
+      "shortDescription": "AI-powered conversation platform using Google Gemini API",
+      "myRole": "Sole Developer - Architected and implemented entire solution end-to-end",
+      "responsibilities": [
+        "System architecture and database design",
+        "Frontend development (responsive UI/UX)",
+        "Backend API development and AI integration",
+        "Deployment and production optimization",
+        "Ongoing maintenance and feature development"
+      ],
+      "techStack": [
+        "JavaScript ES6+",
+        "Node.js",
+        "Express.js",
+        "Google Gemini API",
+        "Supabase",
+        "PostgreSQL",
+        "HTML5",
+        "CSS3",
+        "Vercel"
+      ],
+      "techCategories": {
+        "frontend": ["JavaScript ES6+", "HTML5", "CSS3"],
+        "backend": ["Node.js", "Express.js"],
+        "ai": ["Google Gemini API"],
+        "database": ["Supabase", "PostgreSQL"],
+        "deployment": ["Vercel"]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "AI Response Latency",
+          "description": "Initial response times exceeded 3 seconds for complex queries",
+          "solution": "Implemented streaming responses and optimized prompt engineering",
+          "result": "Reduced perceived latency by 60% through progressive rendering"
+        },
+        {
+          "challenge": "State Management Complexity",
+          "description": "Maintaining conversation context across sessions",
+          "solution": "Architected robust session management with Supabase backend",
+          "result": "100% conversation persistence with sub-200ms load times"
+        },
+        {
+          "challenge": "API Cost Optimization",
+          "description": "Balancing performance with API usage costs",
+          "solution": "Implemented intelligent caching and request batching",
+          "result": "40% reduction in API calls while maintaining UX quality"
+        }
+      ],
+      "keyLearnings": [
+        "Mastered integration of generative AI APIs into production applications",
+        "Developed expertise in serverless architecture patterns (Vercel + Supabase)",
+        "Advanced skills in real-time data synchronization and state management",
+        "Deepened understanding of prompt engineering for optimal AI responses",
+        "Learned production-level error handling and graceful degradation strategies"
+      ],
+      "impactMetrics": {
+        "users": "Active user base with growing engagement",
+        "uptime": "99.5%",
+        "responseTime": "< 1.5 seconds average",
+        "bugs": "0 critical bugs in production"
+      },
+      "developmentTimeline": {
+        "duration": "3 months",
+        "phases": ["Concept", "Development", "Deployment"]
+      },
+      "targetAudience": "Researchers, entrepreneurs, students, and professionals seeking AI-powered insights",
+      "projectURL": "https://synaptic-insight-engine.vercel.app",
+      "repoURL": "https://github.com/rguid31/synaptic-insight-engine",
+      "images": []
+    },
+    {
+      "id": "ryan-guidry-portfolio",
+      "projectName": "Ryan Guidry Portfolio",
+      "slug": "ryan-guidry-portfolio",
+      "category": "Web Development - Personal Branding",
+      "status": "Active",
+      "featured": true,
+      "order": 2,
+      "projectDescription": "A modern, performance-optimized personal portfolio website built with Next.js 14 and React. Features dynamic content rendering, SEO optimization, and responsive design. Showcases professional experience, technical projects, and thought leadership through integrated blog functionality.",
+      "shortDescription": "Modern Next.js 14 portfolio with perfect Lighthouse scores",
+      "myRole": "Sole Developer & Designer - Complete ownership of all aspects",
+      "responsibilities": [
+        "UI/UX design and information architecture",
+        "Frontend development with React best practices",
+        "Content strategy and technical writing",
+        "SEO optimization and performance tuning",
+        "Deployment and continuous integration"
+      ],
+      "techStack": [
+        "Next.js 14",
+        "React 18",
+        "TypeScript",
+        "Tailwind CSS",
+        "Markdown",
+        "MDX",
+        "Vercel",
+        "Vercel Analytics"
+      ],
+      "techCategories": {
+        "frontend": ["Next.js 14", "React 18", "TypeScript"],
+        "styling": ["Tailwind CSS"],
+        "content": ["Markdown", "MDX"],
+        "deployment": ["Vercel", "Vercel Analytics"]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "Performance Optimization",
+          "description": "Achieving 100 Lighthouse scores across all categories",
+          "solution": "Implemented image optimization, code splitting, and lazy loading",
+          "result": "100/100/100/100 Lighthouse scores (Performance/Accessibility/Best Practices/SEO)"
+        },
+        {
+          "challenge": "Content Management",
+          "description": "Balancing ease of content updates with performance",
+          "solution": "MDX-based blog system with static generation",
+          "result": "Sub-second page loads with easy content authoring"
+        },
+        {
+          "challenge": "Responsive Design",
+          "description": "Creating seamless experience across all device sizes",
+          "solution": "Mobile-first approach with Tailwind CSS breakpoints",
+          "result": "Consistent UX from mobile (320px) to 4K displays"
+        }
+      ],
+      "keyLearnings": [
+        "Mastered Next.js 14 App Router and React Server Components",
+        "Advanced understanding of static site generation (SSG) and incremental static regeneration (ISR)",
+        "Developed expertise in performance optimization techniques",
+        "Learned modern CSS architecture with utility-first frameworks",
+        "Gained experience in content strategy and SEO best practices"
+      ],
+      "impactMetrics": {
+        "lighthouseScore": "100/100/100/100",
+        "seo": "Page 1 Google rankings for target keywords",
+        "traffic": "Growing organic traffic month-over-month",
+        "engagement": "Average session duration > 3 minutes"
+      },
+      "developmentTimeline": {
+        "duration": "2 months",
+        "weeks1to2": "Design system and component architecture",
+        "weeks3to4": "Core development and content creation",
+        "weeks5to6": "SEO optimization and performance tuning",
+        "weeks7to8": "Testing, deployment, and launch",
+        "ongoing": "Content updates and feature enhancements"
+      },
+      "targetAudience": "Recruiters, hiring managers, potential collaborators, and industry professionals",
+      "projectURL": "http://www.rguidry.dev",
+      "repoURL": "https://github.com/rguid31/portfolio-nextjs",
+      "images": []
+    },
+    {
+      "id": "ai-image-tagging-tool",
+      "projectName": "AI-Powered Image Tagging Tool",
+      "slug": "ai-image-tagging-tool",
+      "category": "AI/ML - Computer Vision & Automation",
+      "status": "Active",
+      "featured": true,
+      "order": 3,
+      "projectDescription": "A Python-based command-line tool that leverages OpenAI's CLIP model and GPT-4 to automatically analyze, tag, and organize large image collections. Combines computer vision with natural language processing to generate contextually relevant tags and descriptions for images.",
+      "shortDescription": "Python CLI tool using CLIP and GPT-4 for automated image tagging",
+      "myRole": "Sole Developer - Complete development from research to deployment",
+      "responsibilities": [
+        "AI model research and selection (evaluated CLIP, BLIP, ViT)",
+        "Python architecture and CLI design",
+        "OpenAI API integration (CLIP + GPT-4)",
+        "Image processing pipeline development",
+        "Documentation and user experience optimization"
+      ],
+      "techStack": [
+        "Python 3.9+",
+        "OpenAI CLIP",
+        "GPT-4",
+        "Pillow",
+        "OpenCV",
+        "Click",
+        "JSON",
+        "SQLite"
+      ],
+      "techCategories": {
+        "language": ["Python 3.9+"],
+        "ai": ["OpenAI CLIP", "GPT-4"],
+        "imageProcessing": ["Pillow", "OpenCV"],
+        "cli": ["Click"],
+        "storage": ["JSON", "SQLite"]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "Model Selection & Accuracy",
+          "description": "Choosing optimal model for diverse image types",
+          "solution": "Benchmarked CLIP vs. alternatives on test dataset",
+          "result": "85%+ accuracy on diverse image categories"
+        },
+        {
+          "challenge": "API Cost Management",
+          "description": "GPT-4 API costs for large image collections",
+          "solution": "Implemented intelligent batching and caching mechanisms",
+          "result": "70% cost reduction through optimization"
+        },
+        {
+          "challenge": "Performance at Scale",
+          "description": "Processing 1000+ images without excessive wait times",
+          "solution": "Parallel processing and progress indicators",
+          "result": "Process 100 images in < 5 minutes on standard hardware"
+        }
+      ],
+      "keyLearnings": [
+        "Gained hands-on experience with state-of-the-art vision models (CLIP)",
+        "Mastered OpenAI API integration and prompt engineering for vision tasks",
+        "Developed expertise in Python CLI tool design and UX",
+        "Learned image processing pipelines and batch optimization",
+        "Understood trade-offs between model accuracy and computational cost"
+      ],
+      "impactMetrics": {
+        "accuracy": "85%+ tag relevance",
+        "performance": "100 images in ~5 minutes",
+        "costEfficiency": "$0.05 per image (optimized from $0.15)"
+      },
+      "developmentTimeline": {
+        "duration": "3 months",
+        "month1": "Model research, prototyping, accuracy benchmarking",
+        "month2": "Production implementation, CLI development",
+        "month3": "Optimization, documentation, GitHub publication"
+      },
+      "targetAudience": "Photographers, digital asset managers, content creators managing large image collections",
+      "projectURL": null,
+      "repoURL": "https://github.com/rguid31/image-tagging-ai",
+      "images": []
+    },
+    {
+      "id": "music-library-cleaner",
+      "projectName": "Music Library Cleaner",
+      "slug": "music-library-cleaner",
+      "category": "Automation - Data Processing",
+      "status": "Active",
+      "featured": false,
+      "order": 4,
+      "projectDescription": "A Python automation tool designed to clean, organize, and standardize metadata for large music libraries. Handles common issues like inconsistent formatting, missing album art, incorrect tags, and duplicate files. Integrates with MusicBrainz API for accurate metadata retrieval.",
+      "shortDescription": "Python CLI for automated music library organization and metadata cleanup",
+      "myRole": "Sole Developer - End-to-end ownership",
+      "responsibilities": [
+        "Requirements analysis (personal pain points + community research)",
+        "Python architecture and file system handling",
+        "Metadata processing logic and API integration",
+        "CLI interface design and user documentation",
+        "Testing across diverse music file formats"
+      ],
+      "techStack": [
+        "Python 3.9+",
+        "Mutagen",
+        "PyDub",
+        "MusicBrainz API",
+        "AcoustID",
+        "argparse",
+        "pandas",
+        "yt-dlp"
+      ],
+      "techCategories": {
+        "language": ["Python 3.9+"],
+        "audioLibraries": ["Mutagen", "PyDub"],
+        "apis": ["MusicBrainz API", "AcoustID"],
+        "cli": ["argparse"],
+        "dataProcessing": ["pandas"],
+        "download": ["yt-dlp"]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "File Format Diversity",
+          "description": "Supporting MP3, FLAC, AAC, M4A, OGG, etc.",
+          "solution": "Leveraged Mutagen's universal metadata handling",
+          "result": "95%+ format compatibility"
+        },
+        {
+          "challenge": "Duplicate Detection",
+          "description": "Identifying duplicates despite different filenames/bitrates",
+          "solution": "Implemented audio fingerprinting with AcoustID",
+          "result": "98% duplicate detection accuracy"
+        },
+        {
+          "challenge": "Metadata Consistency",
+          "description": "Standardizing tags across different music sources",
+          "solution": "MusicBrainz API integration with fallback logic",
+          "result": "90%+ metadata accuracy improvement"
+        }
+      ],
+      "keyLearnings": [
+        "Mastered Python audio processing libraries and metadata standards",
+        "Developed expertise in file system operations and batch processing",
+        "Learned API integration patterns for music metadata services",
+        "Gained experience in CLI tool design for non-technical users",
+        "Understood audio fingerprinting algorithms and duplicate detection"
+      ],
+      "impactMetrics": {
+        "processingSpeed": "1000 files in ~10 minutes",
+        "accuracy": "90%+ metadata improvement",
+        "duplicateDetection": "98% accuracy",
+        "filesProcessed": "10,000+ files organized"
+      },
+      "developmentTimeline": {
+        "duration": "2 months",
+        "weeks1to2": "Research and proof-of-concept",
+        "weeks3to4": "Core development and testing",
+        "weeks5to6": "CLI refinement and documentation",
+        "weeks7to8": "GitHub publication and community feedback"
+      },
+      "targetAudience": "Music enthusiasts, DJs, audio engineers managing large digital music collections",
+      "projectURL": null,
+      "repoURL": "https://github.com/rguid31/music-library-cleaner",
+      "images": []
+    },
+    {
+      "id": "neuromorphic-portfolio",
+      "projectName": "Neuromorphic Portfolio",
+      "slug": "neuromorphic-portfolio",
+      "category": "Web Development - Next-Generation UI/UX",
+      "status": "Active",
+      "featured": true,
+      "order": 5,
+      "projectDescription": "A cutting-edge portfolio website built with Next.js 15 and TypeScript, featuring an innovative neuromorphic design system. Implements glassmorphism, neumorphism, and advanced CSS effects to create a unique visual identity. Demonstrates mastery of modern web technologies and design trends.",
+      "shortDescription": "Next.js 15 portfolio with neuromorphic design system",
+      "myRole": "Sole Developer & Designer - Complete creative and technical control",
+      "responsibilities": [
+        "Conceptualized neuromorphic design language",
+        "Architected Next.js 15 application with App Router",
+        "Developed custom design system with Tailwind CSS",
+        "Implemented complex animations and interactions",
+        "Deployed to production with CI/CD automation"
+      ],
+      "techStack": [
+        "Next.js 15",
+        "TypeScript 5+",
+        "Tailwind CSS 3.4",
+        "Framer Motion",
+        "React 18",
+        "Vercel",
+        "Zod",
+        "Jest",
+        "React Testing Library"
+      ],
+      "techCategories": {
+        "framework": ["Next.js 15"],
+        "language": ["TypeScript 5+"],
+        "styling": ["Tailwind CSS 3.4", "Custom CSS"],
+        "animation": ["Framer Motion"],
+        "frontend": ["React 18"],
+        "deployment": ["Vercel"],
+        "validation": ["Zod"],
+        "testing": ["Jest", "React Testing Library"]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "Neuromorphic Design Implementation",
+          "description": "Translating neuromorphic concepts to web interfaces",
+          "solution": "Custom CSS with box-shadows, gradients, and blur effects",
+          "result": "Unique visual identity with 60fps performance"
+        },
+        {
+          "challenge": "TypeScript Migration Complexity",
+          "description": "Ensuring type safety across entire application",
+          "solution": "Strict TypeScript config with Zod runtime validation",
+          "result": "0 type errors, improved developer experience"
+        },
+        {
+          "challenge": "Performance vs. Visual Fidelity",
+          "description": "Maintaining performance with heavy visual effects",
+          "solution": "GPU acceleration, CSS optimization, lazy loading",
+          "result": "Lighthouse performance score > 95"
+        }
+      ],
+      "keyLearnings": [
+        "Mastered Next.js 15 and latest React Server Components patterns",
+        "Advanced TypeScript skills (generics, utility types, strict mode)",
+        "Developed expertise in modern CSS techniques (neuromorphism, glassmorphism)",
+        "Learned animation performance optimization and GPU acceleration",
+        "Gained experience balancing visual design with web performance"
+      ],
+      "impactMetrics": {
+        "lighthouseScore": "95+ performance",
+        "typeSafety": "100% TypeScript coverage, 0 type errors",
+        "accessibility": "WCAG 2.1 AA compliant",
+        "loadTime": "< 1.5s first contentful paint"
+      },
+      "developmentTimeline": {
+        "duration": "4 months",
+        "month1": "Design system creation, visual language definition",
+        "month2": "Next.js 15 setup, component architecture",
+        "month3": "Feature implementation, animations, interactions",
+        "month4": "Performance optimization, testing, deployment",
+        "ongoing": "Content updates, design refinements"
+      },
+      "targetAudience": "Design-conscious clients, creative agencies, tech companies seeking innovative frontend developers",
+      "projectURL": "https://neuromorphic-portfolio.vercel.app",
+      "repoURL": "https://github.com/rguid31/neuromorphic-portfolio",
+      "images": []
+    }
+  ],
+  "education": [
+    {
+      "id": "lsu-bs-chemical-engineering",
+      "institution": "Louisiana State University (LSU)",
+      "degree": "Bachelor of Science (B.S.)",
+      "field": "Chemical Engineering",
+      "location": {
+        "city": "Baton Rouge",
+        "state": "Louisiana"
+      },
+      "graduationDate": "2018-05",
+      "gpa": 3.0,
+      "relevantCoursework": [
+        "Advanced Engineering Mathematics",
+        "Statistical Analysis and Data Interpretation",
+        "Computer-Aided Process Design",
+        "Technical Writing for Engineers",
+        "Process Control and Instrumentation"
+      ],
+      "achievements": [
+        "Completed 18-credit senior design capstone project",
+        "Developed expertise in MATLAB, Excel, and engineering simulation software",
+        "Strong foundation in analytical problem-solving and quantitative analysis"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "outlier-ai-math-specialist",
+      "title": "AI Math Specialist",
+      "company": "Outlier AI",
+      "employmentType": "Contract",
+      "location": "Remote",
+      "startDate": "2024-08",
+      "endDate": null,
+      "current": true,
+      "description": "Specialized AI training role focused on improving mathematical reasoning capabilities of large language models through expert evaluation, feedback, and quality assessment.",
+      "responsibilities": [
+        "Evaluate AI-generated mathematical solutions for accuracy, clarity, and pedagogical effectiveness",
+        "Provide detailed feedback to improve model performance on complex math problems",
+        "Create high-quality training examples across algebra, calculus, statistics, and applied mathematics",
+        "Assess model responses for logical consistency and mathematical rigor",
+        "Collaborate with ML engineers to identify model weaknesses and improvement opportunities"
+      ],
+      "skills": [
+        "Advanced mathematics",
+        "Critical evaluation",
+        "Technical writing",
+        "Quality assurance",
+        "AI/ML model evaluation"
+      ],
+      "achievements": [
+        "Contributed to improving mathematical reasoning capabilities of frontier AI models",
+        "Maintained high-quality standards across 100+ evaluation tasks",
+        "Identified and documented patterns in model performance gaps"
+      ]
+    },
+    {
+      "id": "freelance-technical-writer",
+      "title": "Technical Writing Freelancer",
+      "company": "Self-Employed",
+      "employmentType": "Freelance",
+      "location": "Remote",
+      "startDate": "2023-11",
+      "endDate": null,
+      "current": true,
+      "description": "Independent technical writer providing documentation, content creation, and communication services for technology companies, SaaS platforms, and engineering firms.",
+      "responsibilities": [
+        "Research, write, and edit technical documentation (API docs, user guides, tutorials)",
+        "Translate complex technical concepts into accessible content for diverse audiences",
+        "Collaborate with engineering teams to document software features and workflows",
+        "Create developer documentation with code examples and integration guides",
+        "Maintain documentation version control and content management systems"
+      ],
+      "skills": [
+        "Technical writing",
+        "API documentation",
+        "Markdown",
+        "Git",
+        "Information architecture"
+      ],
+      "achievements": [
+        "Improved documentation clarity scores by 40% (measured via user feedback)",
+        "Reduced support ticket volume through comprehensive troubleshooting guides",
+        "Built long-term client relationships with high satisfaction ratings"
+      ]
+    },
+    {
+      "id": "freelance-fullstack-developer",
+      "title": "Freelance Full-Stack Developer",
+      "company": "Self-Employed",
+      "employmentType": "Freelance",
+      "location": "Remote",
+      "startDate": "2023-01",
+      "endDate": null,
+      "current": true,
+      "description": "Independent software developer building modern web applications with focus on AI/ML integration, full-stack JavaScript/TypeScript, and Python automation tools.",
+      "responsibilities": [
+        "Architect and develop full-stack applications using Next.js, React, Node.js",
+        "Integrate AI/ML APIs (OpenAI, Google Gemini) into production applications",
+        "Build Python CLI tools for automation and data processing",
+        "Deploy and maintain applications on cloud platforms (Vercel, AWS)",
+        "Implement responsive UI/UX with modern CSS frameworks (Tailwind CSS)"
+      ],
+      "skills": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "Python",
+        "OpenAI API",
+        "Google Gemini API",
+        "Vercel",
+        "Tailwind CSS"
+      ],
+      "achievements": [
+        "Deployed 5 production applications with 99%+ uptime",
+        "Built growing portfolio attracting client inquiries and collaboration opportunities",
+        "Demonstrated mastery of modern web development and AI/ML integration"
+      ]
+    },
+    {
+      "id": "emerson-application-engineer",
+      "title": "Application Engineer",
+      "company": "Emerson",
+      "employmentType": "Full-time",
+      "location": "Houston, Texas",
+      "startDate": "2022-06",
+      "endDate": "2022-08",
+      "current": false,
+      "description": "Engineering role focused on developing technical solutions and client-facing applications for industrial automation systems.",
+      "responsibilities": [
+        "Designed and implemented engineering applications for process control systems",
+        "Collaborated with sales and engineering teams on client solutions",
+        "Created technical documentation and user guides for industrial software",
+        "Troubleshot complex automation system issues",
+        "Provided technical support to clients and field engineers"
+      ],
+      "skills": [
+        "Engineering problem-solving",
+        "Technical documentation",
+        "Industrial automation",
+        "DCS",
+        "SCADA"
+      ],
+      "achievements": [
+        "Successfully delivered client solutions within tight project timelines",
+        "Contributed to engineering documentation improvements"
+      ]
+    },
+    {
+      "id": "georgia-pacific-production-specialist",
+      "title": "Production Specialist",
+      "company": "Georgia-Pacific",
+      "employmentType": "Full-time",
+      "location": "Port Hudson, Louisiana",
+      "startDate": "2021-09",
+      "endDate": "2022-05",
+      "current": false,
+      "description": "Process optimization and production support role in chemical manufacturing facility.",
+      "responsibilities": [
+        "Monitored and optimized chemical production processes",
+        "Analyzed production data to identify efficiency improvements",
+        "Troubleshot process equipment and instrumentation issues",
+        "Collaborated with operations teams on process safety initiatives",
+        "Maintained detailed production records and documentation"
+      ],
+      "skills": [
+        "Chemical process engineering",
+        "Data analysis",
+        "Process optimization",
+        "Safety protocols"
+      ],
+      "achievements": [
+        "Contributed to process efficiency improvements",
+        "Maintained safety record through rigorous protocol adherence"
+      ]
+    },
+    {
+      "id": "totalenergies-project-development-engineer",
+      "title": "Project Development Engineer",
+      "company": "TotalEnergies",
+      "employmentType": "Internship",
+      "location": "Port Arthur, Texas",
+      "startDate": "2021-06",
+      "endDate": "2021-08",
+      "current": false,
+      "description": "Engineering internship focused on project development and process improvement initiatives at large-scale refinery.",
+      "responsibilities": [
+        "Supported engineering projects from concept through implementation",
+        "Conducted process analysis and feasibility studies",
+        "Created technical reports and project documentation",
+        "Collaborated with senior engineers on design reviews",
+        "Assisted in project cost estimation and timeline planning"
+      ],
+      "skills": [
+        "Engineering project management",
+        "Technical writing",
+        "Process simulation",
+        "Cost-benefit analysis"
+      ],
+      "achievements": [
+        "Successfully completed assigned engineering projects",
+        "Gained hands-on experience in large-scale industrial operations"
+      ]
+    },
+    {
+      "id": "ism-jacobs-safety-coop",
+      "title": "Safety Co-Op",
+      "company": "ISM - Jacobs",
+      "employmentType": "Co-op",
+      "location": "Geismar, Louisiana",
+      "startDate": "2020-01",
+      "endDate": "2020-08",
+      "current": false,
+      "description": "Safety engineering co-op supporting process safety initiatives and risk management at chemical manufacturing facility.",
+      "responsibilities": [
+        "Conducted safety audits and inspections",
+        "Developed safety documentation and training materials",
+        "Analyzed incident reports and recommended corrective actions",
+        "Supported Process Hazard Analyses (PHA) and risk assessments",
+        "Created safety metrics dashboards and reports"
+      ],
+      "skills": [
+        "Process safety engineering",
+        "Technical writing",
+        "Risk analysis",
+        "OSHA compliance"
+      ],
+      "achievements": [
+        "Contributed to improved safety metrics and compliance",
+        "Developed comprehensive safety training documentation"
+      ]
+    },
+    {
+      "id": "ism-jacobs-field-engineer",
+      "title": "Field Engineer - Process Engineering Intern",
+      "company": "ISM - Jacobs",
+      "employmentType": "Internship",
+      "location": "Geismar, Louisiana",
+      "startDate": "2019-08",
+      "endDate": "2019-12",
+      "current": false,
+      "description": "Field engineering internship focused on process engineering support and on-site troubleshooting.",
+      "responsibilities": [
+        "Supported process optimization initiatives",
+        "Conducted field inspections and equipment assessments",
+        "Created technical documentation for process improvements",
+        "Assisted in process troubleshooting and root cause analysis",
+        "Collaborated with operations and maintenance teams"
+      ],
+      "skills": [
+        "Chemical process engineering",
+        "Field engineering",
+        "Technical documentation",
+        "Problem-solving"
+      ],
+      "achievements": [
+        "Successfully completed field engineering assignments",
+        "Gained practical experience in industrial process operations"
+      ]
+    },
+    {
+      "id": "weyerhaeuser-chemical-engineering-intern",
+      "title": "Chemical Engineering Intern",
+      "company": "Weyerhaeuser",
+      "employmentType": "Internship",
+      "location": "Columbus, Mississippi",
+      "startDate": "2019-05",
+      "endDate": "2019-08",
+      "current": false,
+      "description": "Summer internship in chemical engineering department at pulp and paper manufacturing facility.",
+      "responsibilities": [
+        "Supported chemical process optimization projects",
+        "Conducted process data analysis and statistical studies",
+        "Created engineering reports and presentations",
+        "Assisted in process troubleshooting and improvement initiatives",
+        "Collaborated with cross-functional teams on sustainability projects"
+      ],
+      "skills": [
+        "Chemical engineering",
+        "Data analysis",
+        "Technical writing",
+        "Process optimization"
+      ],
+      "achievements": [
+        "Completed assigned engineering projects ahead of schedule",
+        "Contributed to process efficiency improvements"
+      ]
+    },
+    {
+      "id": "lsu-research-assistant",
+      "title": "Chemical Engineering Research Assistant",
+      "company": "Louisiana State University (LSU)",
+      "employmentType": "Part-time",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2017-08",
+      "endDate": "2018-05",
+      "current": false,
+      "description": "Undergraduate research position supporting chemical engineering faculty research on sustainable energy systems and catalysis.",
+      "responsibilities": [
+        "Conducted laboratory experiments and data collection",
+        "Analyzed experimental data using statistical methods",
+        "Created technical reports and research presentations",
+        "Maintained laboratory equipment and safety protocols",
+        "Collaborated with graduate students on research projects",
+        "Presented findings at departmental research symposium"
+      ],
+      "skills": [
+        "Laboratory techniques",
+        "Data analysis",
+        "MATLAB",
+        "Technical writing",
+        "Research methodology"
+      ],
+      "achievements": [
+        "Contributed to ongoing research project with publishable results",
+        "Presented research findings at LSU Engineering Research Symposium",
+        "Gained hands-on experience with analytical instrumentation"
+      ]
+    }
+  ],
+  "skills": {
+    "programming": {
+      "category": "Programming Languages",
+      "items": [
+        {
+          "name": "JavaScript/TypeScript",
+          "level": "Advanced",
+          "yearsOfExperience": 3,
+          "context": "Production experience with Next.js, React, Node.js"
+        },
+        {
+          "name": "Python",
+          "level": "Advanced",
+          "yearsOfExperience": 3,
+          "context": "CLI tools, automation, data processing, AI/ML integration"
+        },
+        {
+          "name": "HTML/CSS",
+          "level": "Advanced",
+          "yearsOfExperience": 3,
+          "context": "Modern semantic HTML5, CSS3, responsive design"
+        },
+        {
+          "name": "SQL",
+          "level": "Intermediate",
+          "yearsOfExperience": 2,
+          "context": "PostgreSQL, database design, queries"
+        },
+        {
+          "name": "MATLAB",
+          "level": "Intermediate",
+          "yearsOfExperience": 4,
+          "context": "Engineering analysis and computation"
+        }
+      ]
+    },
+    "frameworks": {
+      "category": "Frameworks & Libraries",
+      "items": [
+        {"name": "React 18", "level": "Advanced"},
+        {"name": "Next.js 14/15", "level": "Advanced"},
+        {"name": "Tailwind CSS", "level": "Advanced"},
+        {"name": "Framer Motion", "level": "Intermediate"},
+        {"name": "Node.js", "level": "Advanced"},
+        {"name": "Express.js", "level": "Advanced"}
+      ]
+    },
+    "aiml": {
+      "category": "AI/ML Technologies",
+      "items": [
+        {"name": "OpenAI API (CLIP, GPT-4)", "level": "Advanced"},
+        {"name": "Google Gemini API", "level": "Advanced"},
+        {"name": "Prompt Engineering", "level": "Advanced"},
+        {"name": "Embeddings & Vector Databases", "level": "Intermediate"},
+        {"name": "LangChain", "level": "Beginner"}
+      ]
+    },
+    "databases": {
+      "category": "Databases & Data Storage",
+      "items": [
+        {"name": "PostgreSQL (Supabase)", "level": "Advanced"},
+        {"name": "SQLite", "level": "Intermediate"},
+        {"name": "MongoDB", "level": "Intermediate"},
+        {"name": "Firebase", "level": "Intermediate"}
+      ]
+    },
+    "devops": {
+      "category": "DevOps & Tools",
+      "items": [
+        {"name": "Git", "level": "Advanced"},
+        {"name": "GitHub", "level": "Advanced"},
+        {"name": "Vercel", "level": "Advanced"},
+        {"name": "AWS", "level": "Beginner"},
+        {"name": "CI/CD", "level": "Intermediate"}
+      ]
+    },
+    "technicalWriting": {
+      "category": "Technical Writing & Documentation",
+      "items": [
+        {"name": "API Documentation", "level": "Advanced"},
+        {"name": "User Guides", "level": "Advanced"},
+        {"name": "Developer Tutorials", "level": "Advanced"},
+        {"name": "Markdown/MDX", "level": "Advanced"},
+        {"name": "Docusaurus/GitBook", "level": "Intermediate"}
+      ]
+    }
+  },
+  "certifications": [
+    {
+      "id": "google-data-analytics",
+      "name": "Google Data Analytics Professional Certificate",
+      "issuer": "Google (via Coursera)",
+      "status": "In Progress",
+      "startDate": "2023-09",
+      "completionDate": null,
+      "credentialID": null,
+      "credentialURL": null,
+      "skills": ["Data cleaning", "SQL", "Data visualization", "R programming", "Statistical analysis"]
+    },
+    {
+      "id": "google-ai-essentials",
+      "name": "Google AI Essentials",
+      "issuer": "Google",
+      "status": "Needs Verification",
+      "startDate": null,
+      "completionDate": null,
+      "credentialID": null,
+      "credentialURL": null,
+      "skills": ["AI fundamentals", "Responsible AI"]
+    },
+    {
+      "id": "osha-basic-orientation",
+      "name": "OSHA Basic Orientation Plus",
+      "issuer": "OSHA",
+      "status": "Active",
+      "issueDate": null,
+      "expirationDate": null,
+      "credentialType": "Physical Card",
+      "skills": ["Workplace safety", "Hazard recognition", "OSHA compliance"]
+    },
+    {
+      "id": "twic",
+      "name": "Transportation Worker Identification Credential (TWIC)",
+      "issuer": "TSA",
+      "status": "Active (Needs Verification)",
+      "issueDate": null,
+      "expirationDate": null,
+      "credentialType": "Physical Card (Biometric)",
+      "skills": ["Maritime security clearance"]
+    }
+  ],
+  "volunteer": [
+    {
+      "id": "google-ux-researcher",
+      "role": "User Experience Researcher",
+      "organization": "Google",
+      "startDate": "2022-11",
+      "endDate": null,
+      "current": true,
+      "description": "Volunteer contributor to Google's UX research initiatives, providing user feedback and insights to improve product experiences.",
+      "responsibilities": [
+        "Participate in user testing sessions for Google products",
+        "Complete feedback surveys and usability studies",
+        "Provide insights on product features and user experience",
+        "Test new features and provide detailed feedback"
+      ]
+    },
+    {
+      "id": "google-local-guide",
+      "role": "Local Guide (Level 5)",
+      "organization": "Google Maps",
+      "startDate": null,
+      "endDate": null,
+      "current": true,
+      "level": 5,
+      "description": "Active contributor to Google Maps, providing high-quality reviews, photos, and location information.",
+      "contributions": {
+        "reviews": "Multiple",
+        "photos": "Multiple",
+        "edits": "Multiple"
+      }
+    }
+  ],
+  "insightsProfile": {
+    "profileType": "Reforming Observer",
+    "energies": {
+      "coolBlue": 64,
+      "fieryRed": 60,
+      "sunshineYellow": 33,
+      "earthGreen": 43
+    },
+    "strengths": [
+      "Analytical Rigor - Strong ability to analyze complex problems systematically",
+      "Results-Oriented - Driven to achieve tangible outcomes and measurable results",
+      "Independent Thinking - Comfortable working autonomously with minimal supervision",
+      "High Standards - Maintains quality and accuracy in all work",
+      "Efficient Execution - Balances thorough analysis with timely decision-making"
+    ],
+    "communicationStyle": {
+      "prefers": "Data-driven discussions, logical arguments, clear objectives",
+      "values": "Precision, efficiency, competence, independence",
+      "approach": "Direct, factual, focused on outcomes"
+    },
+    "workPreferences": {
+      "idealEnvironment": "Structured yet autonomous, with clear goals and metrics",
+      "motivation": "Solving complex problems, achieving measurable results",
+      "decisionMaking": "Evidence-based analysis combined with decisive action"
+    }
+  }
+}
