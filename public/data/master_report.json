@@ -153,95 +153,84 @@
       "images": []
     },
     {
-      "id": "ryan-guidry-portfolio",
+      "id": "ryan-portfolio",
       "projectName": "Ryan Guidry Portfolio",
-      "slug": "ryan-guidry-portfolio",
+      "slug": "ryan-portfolio",
       "category": "Web Development - Personal Branding",
       "status": "Active",
       "featured": true,
       "order": 2,
-      "projectDescription": "A modern, performance-optimized personal portfolio website built with Next.js 14 and React. Features dynamic content rendering, SEO optimization, and responsive design. Showcases professional experience, technical projects, and thought leadership through integrated blog functionality.",
-      "shortDescription": "Modern Next.js 14 portfolio with perfect Lighthouse scores",
+      "projectDescription": "A modern, data-driven personal portfolio website built with Next.js 16 and TypeScript. All content is rendered from a single master_report.json file acting as a digital twin — a normalized, version-controlled representation of identity, experience, credentials, skills, and projects. Features responsive navigation, dynamic project pages, and automatic Vercel deployments.",
+      "shortDescription": "Next.js 16 portfolio powered by a single JSON data source",
       "myRole": "Sole Developer & Designer - Complete ownership of all aspects",
       "responsibilities": [
         "UI/UX design and information architecture",
-        "Frontend development with React best practices",
-        "Content strategy and technical writing",
+        "Frontend development with React and TypeScript",
+        "Data architecture with JSON-driven content system",
         "SEO optimization and performance tuning",
-        "Deployment and continuous integration"
+        "Deployment via GitHub + Vercel CI/CD pipeline"
       ],
       "techStack": [
-        "Next.js 14",
-        "React 18",
+        "Next.js 16",
+        "React 19",
         "TypeScript",
-        "Tailwind CSS",
-        "Markdown",
-        "MDX",
-        "Vercel",
-        "Vercel Analytics"
+        "CSS3",
+        "Vercel"
       ],
       "techCategories": {
         "frontend": [
-          "Next.js 14",
-          "React 18",
+          "Next.js 16",
+          "React 19",
           "TypeScript"
         ],
         "styling": [
-          "Tailwind CSS"
-        ],
-        "content": [
-          "Markdown",
-          "MDX"
+          "CSS3"
         ],
         "deployment": [
-          "Vercel",
-          "Vercel Analytics"
+          "Vercel"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "Performance Optimization",
-          "description": "Achieving 100 Lighthouse scores across all categories",
-          "solution": "Implemented image optimization, code splitting, and lazy loading",
-          "result": "100/100/100/100 Lighthouse scores (Performance/Accessibility/Best Practices/SEO)"
+          "challenge": "Data-Driven Architecture",
+          "description": "Rendering all site content from a single JSON file",
+          "solution": "Built typed data access layer with masterReport.ts utility functions",
+          "result": "Single source of truth for all portfolio content, easily updatable"
         },
         {
-          "challenge": "Content Management",
-          "description": "Balancing ease of content updates with performance",
-          "solution": "MDX-based blog system with static generation",
-          "result": "Sub-second page loads with easy content authoring"
+          "challenge": "Dynamic Routing",
+          "description": "Generating static pages for each project from JSON data",
+          "solution": "Used Next.js generateStaticParams with JSON-based slugs",
+          "result": "All project detail pages pre-rendered at build time"
         },
         {
-          "challenge": "Responsive Design",
-          "description": "Creating seamless experience across all device sizes",
-          "solution": "Mobile-first approach with Tailwind CSS breakpoints",
-          "result": "Consistent UX from mobile (320px) to 4K displays"
+          "challenge": "Deployment Pipeline",
+          "description": "Setting up automatic deployments from GitHub",
+          "solution": "Configured Vercel with GitHub integration and custom domain DNS",
+          "result": "Push-to-deploy workflow with ryanguidry.com custom domain"
         }
       ],
       "keyLearnings": [
-        "Mastered Next.js 14 App Router and React Server Components",
-        "Advanced understanding of static site generation (SSG) and incremental static regeneration (ISR)",
-        "Developed expertise in performance optimization techniques",
-        "Learned modern CSS architecture with utility-first frameworks",
-        "Gained experience in content strategy and SEO best practices"
+        "Mastered Next.js 16 App Router and React Server Components",
+        "Developed a JSON-driven content architecture pattern",
+        "Learned DNS configuration and domain management (Vercel + Bluehost)",
+        "Gained experience with TypeScript strict mode and type-safe data layers",
+        "Built CI/CD pipeline with GitHub and Vercel"
       ],
       "impactMetrics": {
-        "lighthouseScore": "100/100/100/100",
-        "seo": "Page 1 Google rankings for target keywords",
-        "traffic": "Growing organic traffic month-over-month",
-        "engagement": "Average session duration > 3 minutes"
+        "deployment": "Automatic via git push",
+        "contentUpdates": "Edit one JSON file to update entire site",
+        "domain": "Custom domain at ryanguidry.com"
       },
       "developmentTimeline": {
-        "duration": "2 months",
-        "weeks1to2": "Design system and component architecture",
-        "weeks3to4": "Core development and content creation",
-        "weeks5to6": "SEO optimization and performance tuning",
-        "weeks7to8": "Testing, deployment, and launch",
-        "ongoing": "Content updates and feature enhancements"
+        "duration": "1 week",
+        "phase1": "Next.js scaffolding and data architecture",
+        "phase2": "Page development and component creation",
+        "phase3": "Deployment, DNS configuration, and domain setup"
       },
       "targetAudience": "Recruiters, hiring managers, potential collaborators, and industry professionals",
-      "projectURL": "http://www.rguidry.dev",
-      "repoURL": "https://github.com/rguid31/portfolio-nextjs",
+      "projectURL": "https://ryanguidry.com",
+      "repoURL": "https://github.com/rguid31/ryan-portfolio",
       "images": []
     },
     {
@@ -332,7 +321,7 @@
       },
       "targetAudience": "Photographers, digital asset managers, content creators managing large image collections",
       "projectURL": null,
-      "repoURL": "https://github.com/rguid31/image-tagging-ai",
+      "repoURL": "https://github.com/rguid31/image-tagging-tool",
       "images": []
     },
     {
@@ -431,21 +420,208 @@
       "images": []
     },
     {
+      "id": "cosmic-audio-visualizer",
+      "projectName": "Cosmic Audio Visualizer",
+      "slug": "cosmic-audio-visualizer",
+      "category": "Web Development - Creative Coding",
+      "status": "Active",
+      "featured": true,
+      "order": 5,
+      "projectDescription": "An immersive, browser-based audio visualizer that transforms music into cosmic visual experiences. Uses the Web Audio API to analyze audio frequencies in real-time and renders dynamic particle systems, waveforms, and nebula effects on HTML5 Canvas.",
+      "shortDescription": "Real-time browser audio visualizer with cosmic particle effects",
+      "myRole": "Sole Developer - Creative coding and audio engineering",
+      "responsibilities": [
+        "Web Audio API integration and frequency analysis",
+        "HTML5 Canvas rendering and particle system design",
+        "Real-time audio visualization algorithms",
+        "UI/UX design for interactive music experience",
+        "Deployment to Vercel"
+      ],
+      "techStack": [
+        "JavaScript ES6+",
+        "HTML5 Canvas",
+        "Web Audio API",
+        "CSS3",
+        "Vercel"
+      ],
+      "techCategories": {
+        "frontend": [
+          "JavaScript ES6+",
+          "HTML5 Canvas"
+        ],
+        "audio": [
+          "Web Audio API"
+        ],
+        "styling": [
+          "CSS3"
+        ],
+        "deployment": [
+          "Vercel"
+        ]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "Real-Time Performance",
+          "description": "Rendering thousands of particles at 60fps while analyzing audio",
+          "solution": "Optimized Canvas rendering loop with requestAnimationFrame and object pooling",
+          "result": "Smooth 60fps visualization with complex particle systems"
+        },
+        {
+          "challenge": "Audio Frequency Mapping",
+          "description": "Translating raw FFT data into visually meaningful effects",
+          "solution": "Custom frequency band mapping with logarithmic scaling",
+          "result": "Visually responsive effects that match the music feel"
+        }
+      ],
+      "keyLearnings": [
+        "Mastered Web Audio API and real-time frequency analysis",
+        "Developed expertise in HTML5 Canvas animation and particle systems",
+        "Learned performance optimization for real-time graphics rendering",
+        "Gained experience in creative coding and generative art"
+      ],
+      "impactMetrics": {
+        "performance": "60fps with 1000+ particles",
+        "stars": "1 GitHub star"
+      },
+      "developmentTimeline": {
+        "duration": "2 weeks"
+      },
+      "targetAudience": "Music enthusiasts, creative coders, and anyone who loves visual art",
+      "projectURL": "https://cosmic-audio-visualizer.vercel.app",
+      "repoURL": "https://github.com/rguid31/cosmic-audio-visualizer",
+      "images": []
+    },
+    {
+      "id": "cajun-specialty-meats",
+      "projectName": "Down the Bayou Cajun Specialty Meats",
+      "slug": "cajun-specialty-meats",
+      "category": "Web Development - Small Business",
+      "status": "Active",
+      "featured": false,
+      "order": 6,
+      "projectDescription": "A professional website built for Down the Bayou Cajun Specialty Meats, a local Louisiana business. Features product showcases, business information, and contact details. Demonstrates ability to deliver client-facing web solutions for small businesses.",
+      "shortDescription": "Small business website for a Cajun specialty meats company",
+      "myRole": "Web Developer - Full design and development",
+      "responsibilities": [
+        "Client requirements gathering",
+        "Website design and development",
+        "Responsive layout implementation",
+        "Deployment and hosting setup"
+      ],
+      "techStack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Vercel"
+      ],
+      "techCategories": {
+        "frontend": [
+          "HTML5",
+          "CSS3",
+          "JavaScript"
+        ],
+        "deployment": [
+          "Vercel"
+        ]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "Client Communication",
+          "description": "Translating business needs into web design",
+          "solution": "Iterative design process with client feedback loops",
+          "result": "Website that accurately represents the brand"
+        }
+      ],
+      "keyLearnings": [
+        "Gained experience in client-facing web development",
+        "Learned to translate business requirements into functional websites",
+        "Developed skills in responsive design for small business sites"
+      ],
+      "impactMetrics": {
+        "status": "Live and serving customers"
+      },
+      "developmentTimeline": {
+        "duration": "1 month"
+      },
+      "targetAudience": "Local customers and online shoppers looking for authentic Cajun meats",
+      "projectURL": "https://cajun-specialty-meats.vercel.app",
+      "repoURL": "https://github.com/rguid31/cajun-specialty-meats",
+      "images": []
+    },
+    {
+      "id": "web-app-idea-management",
+      "projectName": "Web App Idea Management",
+      "slug": "web-app-idea-management",
+      "category": "Web Development - Productivity Tool",
+      "status": "Active",
+      "featured": false,
+      "order": 7,
+      "projectDescription": "A database-driven application for storing, organizing, and building upon web app ideas. Serves as a personal innovation pipeline for capturing inspiration, tracking feasibility, and prioritizing projects for development.",
+      "shortDescription": "Database for storing and developing web app ideas",
+      "myRole": "Sole Developer - Full-stack implementation",
+      "responsibilities": [
+        "Database schema design for idea storage",
+        "Frontend UI for idea creation and browsing",
+        "Search and filter functionality",
+        "Data persistence and management"
+      ],
+      "techStack": [
+        "JavaScript",
+        "Node.js",
+        "HTML5",
+        "CSS3"
+      ],
+      "techCategories": {
+        "frontend": [
+          "JavaScript",
+          "HTML5",
+          "CSS3"
+        ],
+        "backend": [
+          "Node.js"
+        ]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "Data Organization",
+          "description": "Structuring idea data for easy retrieval and categorization",
+          "solution": "Designed flexible schema with tags, categories, and priority levels",
+          "result": "Quick idea capture and organized browsing"
+        }
+      ],
+      "keyLearnings": [
+        "Learned database design patterns for flexible content storage",
+        "Developed CRUD application architecture skills",
+        "Gained experience in personal productivity tool development"
+      ],
+      "impactMetrics": {
+        "ideas": "Active idea database with growing collection",
+        "stars": "1 GitHub star"
+      },
+      "developmentTimeline": {
+        "duration": "3 weeks"
+      },
+      "targetAudience": "Developers and entrepreneurs looking to organize project ideas",
+      "projectURL": null,
+      "repoURL": "https://github.com/rguid31/web-app-idea-management",
+      "images": []
+    },
+    {
       "id": "neuromorphic-portfolio",
       "projectName": "Neuromorphic Portfolio",
       "slug": "neuromorphic-portfolio",
       "category": "Web Development - Next-Generation UI/UX",
-      "status": "Active",
-      "featured": true,
-      "order": 5,
-      "projectDescription": "A cutting-edge portfolio website built with Next.js 15 and TypeScript, featuring an innovative neuromorphic design system. Implements glassmorphism, neumorphism, and advanced CSS effects to create a unique visual identity. Demonstrates mastery of modern web technologies and design trends.",
+      "status": "Archived",
+      "featured": false,
+      "order": 8,
+      "projectDescription": "A cutting-edge portfolio website showcasing the intersection of chemical engineering expertise and data science innovation. Built with Next.js 15 and featuring a comprehensive neuromorphic design system with glassmorphism, neumorphism, and advanced CSS effects. Predecessor to the current ryan-portfolio site.",
       "shortDescription": "Next.js 15 portfolio with neuromorphic design system",
       "myRole": "Sole Developer & Designer - Complete creative and technical control",
       "responsibilities": [
         "Conceptualized neuromorphic design language",
         "Architected Next.js 15 application with App Router",
         "Developed custom design system with Tailwind CSS",
-        "Implemented complex animations and interactions",
+        "Implemented complex animations with Framer Motion",
         "Deployed to production with CI/CD automation"
       ],
       "techStack": [
@@ -454,10 +630,7 @@
         "Tailwind CSS 3.4",
         "Framer Motion",
         "React 18",
-        "Vercel",
-        "Zod",
-        "Jest",
-        "React Testing Library"
+        "Vercel"
       ],
       "techCategories": {
         "framework": [
@@ -478,13 +651,6 @@
         ],
         "deployment": [
           "Vercel"
-        ],
-        "validation": [
-          "Zod"
-        ],
-        "testing": [
-          "Jest",
-          "React Testing Library"
         ]
       },
       "challengesFaced": [
@@ -495,12 +661,6 @@
           "result": "Unique visual identity with 60fps performance"
         },
         {
-          "challenge": "TypeScript Migration Complexity",
-          "description": "Ensuring type safety across entire application",
-          "solution": "Strict TypeScript config with Zod runtime validation",
-          "result": "0 type errors, improved developer experience"
-        },
-        {
           "challenge": "Performance vs. Visual Fidelity",
           "description": "Maintaining performance with heavy visual effects",
           "solution": "GPU acceleration, CSS optimization, lazy loading",
@@ -508,29 +668,21 @@
         }
       ],
       "keyLearnings": [
-        "Mastered Next.js 15 and latest React Server Components patterns",
+        "Mastered Next.js 15 and React Server Components patterns",
         "Advanced TypeScript skills (generics, utility types, strict mode)",
         "Developed expertise in modern CSS techniques (neuromorphism, glassmorphism)",
-        "Learned animation performance optimization and GPU acceleration",
-        "Gained experience balancing visual design with web performance"
+        "Learned animation performance optimization and GPU acceleration"
       ],
       "impactMetrics": {
         "lighthouseScore": "95+ performance",
-        "typeSafety": "100% TypeScript coverage, 0 type errors",
-        "accessibility": "WCAG 2.1 AA compliant",
-        "loadTime": "< 1.5s first contentful paint"
+        "typeSafety": "100% TypeScript coverage"
       },
       "developmentTimeline": {
-        "duration": "4 months",
-        "month1": "Design system creation, visual language definition",
-        "month2": "Next.js 15 setup, component architecture",
-        "month3": "Feature implementation, animations, interactions",
-        "month4": "Performance optimization, testing, deployment",
-        "ongoing": "Content updates, design refinements"
+        "duration": "4 months"
       },
-      "targetAudience": "Design-conscious clients, creative agencies, tech companies seeking innovative frontend developers",
-      "projectURL": "https://neuromorphic-portfolio.vercel.app",
-      "repoURL": "https://github.com/rguid31/neuromorphic-portfolio",
+      "targetAudience": "Design-conscious clients and creative agencies",
+      "projectURL": null,
+      "repoURL": "https://github.com/rguid31/Neuromorphic-Portfolio",
       "images": []
     }
   ],
