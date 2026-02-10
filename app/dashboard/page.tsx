@@ -263,7 +263,7 @@ export default function DashboardPage() {
                             projects: [...(data.projects || []), ...(prev.projects || [])],
                         }));
                         success('GitHub data imported!');
-                        handleSave();
+                        saveDraft();
                     }} />
                 </div>
 
