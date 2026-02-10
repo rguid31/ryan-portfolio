@@ -19,7 +19,7 @@
     "contact": {
       "email": "inquireryan@gmail.com",
       "phone": "(985) 722-7475",
-      "website": "http://www.rguidry.dev"
+      "website": "http://www.ryanguidry.com"
     },
     "social": {
       "linkedin": "http://linkedin.com/in/rmguidry",
@@ -28,15 +28,24 @@
     },
     "availability": {
       "status": "open",
-      "preferredRoles": ["Technical Writer", "Data Scientist", "AI/ML Engineer"],
-      "workPreferences": ["Remote", "Hybrid", "On-site (Baton Rouge area)"],
+      "preferredRoles": [
+        "Technical Writer",
+        "Data Scientist",
+        "AI/ML Engineer",
+        "Web/App Developer"
+      ],
+      "workPreferences": [
+        "Remote",
+        "Hybrid",
+        "On-site (Baton Rouge area)"
+      ],
       "startDate": "Immediate (2-week notice if currently employed)"
     }
   },
   "summary": {
-    "headline": "Technical Writer | Data Scientist | AI/ML Developer",
+    "headline": "Mathematics Major | Engineering Student | Web/App Developer | AI/ML Enthusiast",
     "tagline": "Bridge builder between technical complexity and human understanding",
-    "description": "Results-driven professional with a unique blend of chemical engineering foundation, technical writing expertise, and AI/ML development skills. Demonstrated ability to bridge complex technical concepts with clear communication through 5+ production-deployed projects leveraging cutting-edge technologies (Next.js 15, OpenAI GPT-4, Google Gemini API).",
+    "description": "Results-driven professional with a unique blend of chemical engineering foundation, technical writing expertise, web/app development skills, and AI/ML technical aptitude. Demonstrated ability to bridge complex technical concepts with clear communication through 5+ production-deployed projects leveraging cutting-edge technologies (Next.js 15, OpenAI GPT-4, Google Gemini API).",
     "coreCompetencies": [
       "Technical Communication - Translating complex engineering and AI/ML concepts into accessible documentation",
       "Full-Stack Development - End-to-end ownership from architecture to deployment (React, Node.js, Python)",
@@ -77,11 +86,25 @@
         "Vercel"
       ],
       "techCategories": {
-        "frontend": ["JavaScript ES6+", "HTML5", "CSS3"],
-        "backend": ["Node.js", "Express.js"],
-        "ai": ["Google Gemini API"],
-        "database": ["Supabase", "PostgreSQL"],
-        "deployment": ["Vercel"]
+        "frontend": [
+          "JavaScript ES6+",
+          "HTML5",
+          "CSS3"
+        ],
+        "backend": [
+          "Node.js",
+          "Express.js"
+        ],
+        "ai": [
+          "Google Gemini API"
+        ],
+        "database": [
+          "Supabase",
+          "PostgreSQL"
+        ],
+        "deployment": [
+          "Vercel"
+        ]
       },
       "challengesFaced": [
         {
@@ -118,7 +141,11 @@
       },
       "developmentTimeline": {
         "duration": "3 months",
-        "phases": ["Concept", "Development", "Deployment"]
+        "phases": [
+          "Concept",
+          "Development",
+          "Deployment"
+        ]
       },
       "targetAudience": "Researchers, entrepreneurs, students, and professionals seeking AI-powered insights",
       "projectURL": "https://synaptic-insight-engine.vercel.app",
@@ -154,10 +181,22 @@
         "Vercel Analytics"
       ],
       "techCategories": {
-        "frontend": ["Next.js 14", "React 18", "TypeScript"],
-        "styling": ["Tailwind CSS"],
-        "content": ["Markdown", "MDX"],
-        "deployment": ["Vercel", "Vercel Analytics"]
+        "frontend": [
+          "Next.js 14",
+          "React 18",
+          "TypeScript"
+        ],
+        "styling": [
+          "Tailwind CSS"
+        ],
+        "content": [
+          "Markdown",
+          "MDX"
+        ],
+        "deployment": [
+          "Vercel",
+          "Vercel Analytics"
+        ]
       },
       "challengesFaced": [
         {
@@ -234,11 +273,24 @@
         "SQLite"
       ],
       "techCategories": {
-        "language": ["Python 3.9+"],
-        "ai": ["OpenAI CLIP", "GPT-4"],
-        "imageProcessing": ["Pillow", "OpenCV"],
-        "cli": ["Click"],
-        "storage": ["JSON", "SQLite"]
+        "language": [
+          "Python 3.9+"
+        ],
+        "ai": [
+          "OpenAI CLIP",
+          "GPT-4"
+        ],
+        "imageProcessing": [
+          "Pillow",
+          "OpenCV"
+        ],
+        "cli": [
+          "Click"
+        ],
+        "storage": [
+          "JSON",
+          "SQLite"
+        ]
       },
       "challengesFaced": [
         {
@@ -312,12 +364,26 @@
         "yt-dlp"
       ],
       "techCategories": {
-        "language": ["Python 3.9+"],
-        "audioLibraries": ["Mutagen", "PyDub"],
-        "apis": ["MusicBrainz API", "AcoustID"],
-        "cli": ["argparse"],
-        "dataProcessing": ["pandas"],
-        "download": ["yt-dlp"]
+        "language": [
+          "Python 3.9+"
+        ],
+        "audioLibraries": [
+          "Mutagen",
+          "PyDub"
+        ],
+        "apis": [
+          "MusicBrainz API",
+          "AcoustID"
+        ],
+        "cli": [
+          "argparse"
+        ],
+        "dataProcessing": [
+          "pandas"
+        ],
+        "download": [
+          "yt-dlp"
+        ]
       },
       "challengesFaced": [
         {
@@ -394,14 +460,32 @@
         "React Testing Library"
       ],
       "techCategories": {
-        "framework": ["Next.js 15"],
-        "language": ["TypeScript 5+"],
-        "styling": ["Tailwind CSS 3.4", "Custom CSS"],
-        "animation": ["Framer Motion"],
-        "frontend": ["React 18"],
-        "deployment": ["Vercel"],
-        "validation": ["Zod"],
-        "testing": ["Jest", "React Testing Library"]
+        "framework": [
+          "Next.js 15"
+        ],
+        "language": [
+          "TypeScript 5+"
+        ],
+        "styling": [
+          "Tailwind CSS 3.4",
+          "Custom CSS"
+        ],
+        "animation": [
+          "Framer Motion"
+        ],
+        "frontend": [
+          "React 18"
+        ],
+        "deployment": [
+          "Vercel"
+        ],
+        "validation": [
+          "Zod"
+        ],
+        "testing": [
+          "Jest",
+          "React Testing Library"
+        ]
       },
       "challengesFaced": [
         {
@@ -811,51 +895,126 @@
     "frameworks": {
       "category": "Frameworks & Libraries",
       "items": [
-        {"name": "React 18", "level": "Advanced"},
-        {"name": "Next.js 14/15", "level": "Advanced"},
-        {"name": "Tailwind CSS", "level": "Advanced"},
-        {"name": "Framer Motion", "level": "Intermediate"},
-        {"name": "Node.js", "level": "Advanced"},
-        {"name": "Express.js", "level": "Advanced"}
+        {
+          "name": "React 18",
+          "level": "Advanced"
+        },
+        {
+          "name": "Next.js 14/15",
+          "level": "Advanced"
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "Advanced"
+        },
+        {
+          "name": "Framer Motion",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Node.js",
+          "level": "Advanced"
+        },
+        {
+          "name": "Express.js",
+          "level": "Advanced"
+        }
       ]
     },
     "aiml": {
       "category": "AI/ML Technologies",
       "items": [
-        {"name": "OpenAI API (CLIP, GPT-4)", "level": "Advanced"},
-        {"name": "Google Gemini API", "level": "Advanced"},
-        {"name": "Prompt Engineering", "level": "Advanced"},
-        {"name": "Embeddings & Vector Databases", "level": "Intermediate"},
-        {"name": "LangChain", "level": "Beginner"}
+        {
+          "name": "OpenAI API (CLIP, GPT-4)",
+          "level": "Advanced"
+        },
+        {
+          "name": "Google Gemini API",
+          "level": "Advanced"
+        },
+        {
+          "name": "Prompt Engineering",
+          "level": "Advanced"
+        },
+        {
+          "name": "Embeddings & Vector Databases",
+          "level": "Intermediate"
+        },
+        {
+          "name": "LangChain",
+          "level": "Beginner"
+        }
       ]
     },
     "databases": {
       "category": "Databases & Data Storage",
       "items": [
-        {"name": "PostgreSQL (Supabase)", "level": "Advanced"},
-        {"name": "SQLite", "level": "Intermediate"},
-        {"name": "MongoDB", "level": "Intermediate"},
-        {"name": "Firebase", "level": "Intermediate"}
+        {
+          "name": "PostgreSQL (Supabase)",
+          "level": "Advanced"
+        },
+        {
+          "name": "SQLite",
+          "level": "Intermediate"
+        },
+        {
+          "name": "MongoDB",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Firebase",
+          "level": "Intermediate"
+        }
       ]
     },
     "devops": {
       "category": "DevOps & Tools",
       "items": [
-        {"name": "Git", "level": "Advanced"},
-        {"name": "GitHub", "level": "Advanced"},
-        {"name": "Vercel", "level": "Advanced"},
-        {"name": "AWS", "level": "Beginner"},
-        {"name": "CI/CD", "level": "Intermediate"}
+        {
+          "name": "Git",
+          "level": "Advanced"
+        },
+        {
+          "name": "GitHub",
+          "level": "Advanced"
+        },
+        {
+          "name": "Vercel",
+          "level": "Advanced"
+        },
+        {
+          "name": "AWS",
+          "level": "Beginner"
+        },
+        {
+          "name": "CI/CD",
+          "level": "Intermediate"
+        }
       ]
     },
     "technicalWriting": {
       "category": "Technical Writing & Documentation",
       "items": [
-        {"name": "API Documentation", "level": "Advanced"},
-        {"name": "User Guides", "level": "Advanced"},
-        {"name": "Developer Tutorials", "level": "Advanced"},
-        {"name": "Markdown/MDX", "level": "Advanced"},
-        {"name": "Docusaurus/GitBook", "level": "Intermediate"}
+        {
+          "name": "API Documentation",
+          "level": "Advanced"
+        },
+        {
+          "name": "User Guides",
+          "level": "Advanced"
+        },
+        {
+          "name": "Developer Tutorials",
+          "level": "Advanced"
+        },
+        {
+          "name": "Markdown/MDX",
+          "level": "Advanced"
+        },
+        {
+          "name": "Docusaurus/GitBook",
+          "level": "Intermediate"
+        }
       ]
     }
   },
@@ -869,7 +1028,13 @@
       "completionDate": null,
       "credentialID": null,
       "credentialURL": null,
-      "skills": ["Data cleaning", "SQL", "Data visualization", "R programming", "Statistical analysis"]
+      "skills": [
+        "Data cleaning",
+        "SQL",
+        "Data visualization",
+        "R programming",
+        "Statistical analysis"
+      ]
     },
     {
       "id": "google-ai-essentials",
@@ -880,7 +1045,10 @@
       "completionDate": null,
       "credentialID": null,
       "credentialURL": null,
-      "skills": ["AI fundamentals", "Responsible AI"]
+      "skills": [
+        "AI fundamentals",
+        "Responsible AI"
+      ]
     },
     {
       "id": "osha-basic-orientation",
@@ -890,7 +1058,11 @@
       "issueDate": null,
       "expirationDate": null,
       "credentialType": "Physical Card",
-      "skills": ["Workplace safety", "Hazard recognition", "OSHA compliance"]
+      "skills": [
+        "Workplace safety",
+        "Hazard recognition",
+        "OSHA compliance"
+      ]
     },
     {
       "id": "twic",
@@ -900,7 +1072,9 @@
       "issueDate": null,
       "expirationDate": null,
       "credentialType": "Physical Card (Biometric)",
-      "skills": ["Maritime security clearance"]
+      "skills": [
+        "Maritime security clearance"
+      ]
     }
   ],
   "volunteer": [
