@@ -937,65 +937,6 @@
         "Successfully completed assigned engineering projects",
         "Gained hands-on experience in large-scale industrial operations"
       ]
-    },
-    {
-      "id": "weyerhaeuser-chemical-engineering-intern",
-      "title": "Chemical Engineering Intern",
-      "company": "Weyerhaeuser",
-      "employmentType": "Internship",
-      "location": "Columbus, Mississippi",
-      "startDate": "2019-05",
-      "endDate": "2019-08",
-      "current": false,
-      "description": "Summer internship in chemical engineering department at pulp and paper manufacturing facility.",
-      "responsibilities": [
-        "Supported chemical process optimization projects",
-        "Conducted process data analysis and statistical studies",
-        "Created engineering reports and presentations",
-        "Assisted in process troubleshooting and improvement initiatives",
-        "Collaborated with cross-functional teams on sustainability projects"
-      ],
-      "skills": [
-        "Chemical engineering",
-        "Data analysis",
-        "Technical writing",
-        "Process optimization"
-      ],
-      "achievements": [
-        "Completed assigned engineering projects ahead of schedule",
-        "Contributed to process efficiency improvements"
-      ]
-    },
-    {
-      "id": "lsu-research-assistant",
-      "title": "Chemical Engineering Research Assistant",
-      "company": "Louisiana State University (LSU)",
-      "employmentType": "Part-time",
-      "location": "Baton Rouge, Louisiana",
-      "startDate": "2017-08",
-      "endDate": "2018-05",
-      "current": false,
-      "description": "Undergraduate research position supporting chemical engineering faculty research on sustainable energy systems and catalysis.",
-      "responsibilities": [
-        "Conducted laboratory experiments and data collection",
-        "Analyzed experimental data using statistical methods",
-        "Created technical reports and research presentations",
-        "Maintained laboratory equipment and safety protocols",
-        "Collaborated with graduate students on research projects",
-        "Presented findings at departmental research symposium"
-      ],
-      "skills": [
-        "Laboratory techniques",
-        "Data analysis",
-        "MATLAB",
-        "Technical writing",
-        "Research methodology"
-      ],
-      "achievements": [
-        "Contributed to ongoing research project with publishable results",
-        "Presented research findings at LSU Engineering Research Symposium",
-        "Gained hands-on experience with analytical instrumentation"
-      ]
     }
   ],
   "skills": {
