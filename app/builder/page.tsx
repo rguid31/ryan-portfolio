@@ -48,7 +48,7 @@ const TABS: { key: Tab; label: string; icon: string }[] = [
 
 // ─── Main Dashboard Component ────────────────────────────────────
 
-export default function DashboardPage() {
+export default function BuilderPage() {
     const [draft, setDraft] = useState<CanonicalProfile>(DEFAULT_DRAFT);
     const [visibility, setVisibility] = useState<VisibilitySettings>(DEFAULT_VISIBILITY);
     const [activeTab, setActiveTab] = useState<Tab>('identity');
@@ -144,7 +144,7 @@ export default function DashboardPage() {
             if (res.ok) {
                 setSaveStatus('saved');
                 setValidation(data.validation);
-                success('Draft saved successfully!');
+                success('Progress saved successfully!');
                 setTimeout(() => setSaveStatus('idle'), 3000);
             } else {
                 setSaveStatus('error');
@@ -260,7 +260,7 @@ export default function DashboardPage() {
     // ─── Main Dashboard ─────────────────────────────────────────
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-950 pb-24">
             <div className="max-w-6xl mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="flex items-center justify-end gap-3 mb-6">
@@ -467,7 +467,7 @@ export default function DashboardPage() {
                         {/* Action Bar */}
                         <div className="mt-6 flex items-center justify-between">
                             <div className="text-sm text-gray-500">
-                                {saveStatus === 'saved' && <span className="text-green-600">✓ Draft saved</span>}
+                                {saveStatus === 'saved' && <span className="text-green-600">✓ Progress saved</span>}
                                 {saveStatus === 'error' && <span className="text-red-600">✗ Save failed</span>}
                             </div>
                             <div className="flex gap-3">
@@ -476,7 +476,7 @@ export default function DashboardPage() {
                                     disabled={isSaving}
                                     className="px-5 py-2.5 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900 rounded-lg font-medium text-sm hover:bg-gray-700 dark:hover:bg-gray-300 transition disabled:opacity-50"
                                 >
-                                    {isSaving ? 'Saving...' : 'Save Draft'}
+                                    {isSaving ? 'Saving...' : 'Save Progress'}
                                 </button>
                                 <button
                                     onClick={handlePublishClick}
@@ -514,7 +514,7 @@ function WelcomeModal({ onClose }: { onClose: () => void }) {
                         <span className="text-4xl">👋</span>
                     </div>
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                        Build Your Own Digital Twin
+                        Profile Builder
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400">
                         Create a privacy-first professional profile and deploy your own portfolio site in minutes.
