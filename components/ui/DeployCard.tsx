@@ -61,11 +61,11 @@ export function DeployCard({ handle }: DeployCardProps) {
                             </div>
                             <div className="bg-black/20 p-3 rounded-xl border border-white/10 relative group/item">
                                 <label className="block text-[10px] uppercase tracking-widest text-blue-200 mb-1">Source API</label>
-                                <div className="flex items-center justify-between">
-                                    <code className="text-sm font-mono text-white truncate max-w-[120px]">{apiBaseUrl.replace('https://', '')}</code>
+                                <div className="flex items-center justify-between gap-2">
+                                    <code className="text-sm font-mono text-white truncate flex-1 min-w-0">{apiBaseUrl.replace('https://', '')}</code>
                                     <button
                                         onClick={() => navigator.clipboard.writeText(apiBaseUrl)}
-                                        className="p-1 hover:bg-white/10 rounded transition text-blue-200"
+                                        className="p-1 hover:bg-white/10 rounded transition text-blue-200 flex-shrink-0"
                                         title="Copy API URL"
                                     >
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
