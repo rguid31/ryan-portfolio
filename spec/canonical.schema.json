@@ -1,0 +1,343 @@
+{
+    "title": "CanonicalProfileDraft",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "handle",
+        "identity"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "const": "1.0.0"
+        },
+        "handle": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{2,29}$",
+            "description": "Unique handle, lowercase, 3-30 chars"
+        },
+        "identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                },
+                "headline": {
+                    "type": "string",
+                    "maxLength": 140
+                },
+                "summary": {
+                    "type": "string",
+                    "maxLength": 2000
+                },
+                "image": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "location": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "city": {
+                            "type": "string",
+                            "maxLength": 80
+                        },
+                        "region": {
+                            "type": "string",
+                            "maxLength": 80
+                        },
+                        "country": {
+                            "type": "string",
+                            "maxLength": 80
+                        }
+                    }
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "PII - private by default"
+                }
+            }
+        },
+        "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "website": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "sameAs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "maxItems": 25
+                }
+            }
+        },
+        "contact": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "phone": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "description": "PII - private by default"
+                },
+                "emails": {
+                    "type": "array",
+                    "maxItems": 10,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "email",
+                            "type"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "format": "email"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "public",
+                                    "personal",
+                                    "school",
+                                    "work"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "address": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "PII - private by default",
+            "properties": {
+                "street1": {
+                    "type": "string",
+                    "maxLength": 120
+                },
+                "street2": {
+                    "type": "string",
+                    "maxLength": 120
+                },
+                "city": {
+                    "type": "string",
+                    "maxLength": 80
+                },
+                "region": {
+                    "type": "string",
+                    "maxLength": 80
+                },
+                "postalCode": {
+                    "type": "string",
+                    "maxLength": 20
+                },
+                "country": {
+                    "type": "string",
+                    "maxLength": 80
+                }
+            }
+        },
+        "experience": {
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "organization",
+                    "title"
+                ],
+                "properties": {
+                    "organization": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120
+                    },
+                    "title": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120
+                    },
+                    "location": {
+                        "type": "string",
+                        "maxLength": 120
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "isCurrent": {
+                        "type": "boolean"
+                    },
+                    "highlights": {
+                        "type": "array",
+                        "maxItems": 25,
+                        "items": {
+                            "type": "string",
+                            "maxLength": 240
+                        }
+                    },
+                    "tags": {
+                        "type": "array",
+                        "maxItems": 25,
+                        "items": {
+                            "type": "string",
+                            "maxLength": 60
+                        }
+                    },
+                    "privateNotes": {
+                        "type": "string",
+                        "maxLength": 2000,
+                        "description": "Never public (MVP)"
+                    }
+                }
+            }
+        },
+        "education": {
+            "type": "array",
+            "maxItems": 50,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "institution"
+                ],
+                "properties": {
+                    "institution": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 140
+                    },
+                    "program": {
+                        "type": "string",
+                        "maxLength": 140
+                    },
+                    "degree": {
+                        "type": "string",
+                        "maxLength": 140
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "completed",
+                            "in-progress",
+                            "incomplete",
+                            "withdrawn"
+                        ]
+                    }
+                }
+            }
+        },
+        "skills": {
+            "type": "array",
+            "maxItems": 50,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "category",
+                    "items"
+                ],
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80
+                    },
+                    "items": {
+                        "type": "array",
+                        "maxItems": 200,
+                        "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80
+                        }
+                    }
+                }
+            }
+        },
+        "projects": {
+            "type": "array",
+            "maxItems": 50,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120
+                    },
+                    "description": {
+                        "type": "string",
+                        "maxLength": 1200
+                    },
+                    "tech": {
+                        "type": "array",
+                        "maxItems": 50,
+                        "items": {
+                            "type": "string",
+                            "maxLength": 60
+                        }
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "repoUrl": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "role": {
+                        "type": "string",
+                        "maxLength": 120
+                    },
+                    "highlights": {
+                        "type": "array",
+                        "maxItems": 25,
+                        "items": {
+                            "type": "string",
+                            "maxLength": 240
+                        }
+                    },
+                    "privateNotes": {
+                        "type": "string",
+                        "maxLength": 2000,
+                        "description": "Never public (MVP)"
+                    }
+                }
+            }
+        }
+    }
+}
