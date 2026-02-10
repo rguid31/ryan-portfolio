@@ -389,18 +389,25 @@ export default function DashboardPage() {
                         /> */}
                     </div>
                     {/* Tab Navigation */}
-                    <nav className="col-span-12 md:col-span-3">
-                        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+                    <nav className="col-span-12 md:col-span-3" aria-label="Profile Sections">
+                        <div
+                            className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden"
+                            role="tablist"
+                        >
                             {TABS.map(tab => (
                                 <button
                                     key={tab.key}
+                                    id={`tab-${tab.key}`}
+                                    role="tab"
+                                    aria-selected={activeTab === tab.key}
+                                    aria-controls={`panel-${tab.key}`}
                                     onClick={() => setActiveTab(tab.key)}
                                     className={`w-full flex items-center gap-3 px-4 py-3 text-left text-sm font-medium transition ${activeTab === tab.key
                                         ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-l-4 border-blue-600'
                                         : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 border-l-4 border-transparent'
                                         }`}
                                 >
-                                    <span>{tab.icon}</span>
+                                    <span aria-hidden="true">{tab.icon}</span>
                                     <span>{tab.label}</span>
                                     <VisibilityBadge level={visibility.sections[tab.key]} />
                                 </button>
@@ -427,28 +434,34 @@ export default function DashboardPage() {
                                 </button>
                             </div>
 
-                            {/* Tab Content */}
-                            {activeTab === 'identity' && (
-                                <IdentityEditor draft={draft} updateDraft={updateDraft} />
-                            )}
-                            {activeTab === 'links' && (
-                                <LinksEditor draft={draft} updateDraft={updateDraft} />
-                            )}
-                            {activeTab === 'experience' && (
-                                <ExperienceEditor draft={draft} setDraft={setDraft} />
-                            )}
-                            {activeTab === 'education' && (
-                                <EducationEditor draft={draft} setDraft={setDraft} />
-                            )}
-                            {activeTab === 'skills' && (
-                                <SkillsEditor draft={draft} setDraft={setDraft} />
-                            )}
-                            {activeTab === 'projects' && (
-                                <ProjectsEditor draft={draft} setDraft={setDraft} />
-                            )}
-                            {activeTab === 'contact' && (
-                                <ContactEditor draft={draft} updateDraft={updateDraft} visibility={visibility} setVisibility={setVisibility} />
-                            )}
+                            <div
+                                id={`panel-${activeTab}`}
+                                role="tabpanel"
+                                aria-labelledby={`tab-${activeTab}`}
+                                className="min-h-[400px]"
+                            >
+                                {activeTab === 'identity' && (
+                                    <IdentityEditor draft={draft} updateDraft={updateDraft} />
+                                )}
+                                {activeTab === 'links' && (
+                                    <LinksEditor draft={draft} updateDraft={updateDraft} />
+                                )}
+                                {activeTab === 'experience' && (
+                                    <ExperienceEditor draft={draft} setDraft={setDraft} />
+                                )}
+                                {activeTab === 'education' && (
+                                    <EducationEditor draft={draft} setDraft={setDraft} />
+                                )}
+                                {activeTab === 'skills' && (
+                                    <SkillsEditor draft={draft} setDraft={setDraft} />
+                                )}
+                                {activeTab === 'projects' && (
+                                    <ProjectsEditor draft={draft} setDraft={setDraft} />
+                                )}
+                                {activeTab === 'contact' && (
+                                    <ContactEditor draft={draft} updateDraft={updateDraft} visibility={visibility} setVisibility={setVisibility} />
+                                )}
+                            </div>
                         </div>
 
                         {/* Action Bar */}
@@ -566,11 +579,17 @@ function WelcomeModal({ onClose }: { onClose: () => void }) {
 // ─── Sub-Components ──────────────────────────────────────────────
 
 function VisibilityBadge({ level }: { level: VisibilityLevel }) {
+    const label = level === 'public' ? 'Public' : 'Private';
     return (
-        <span className={`ml-auto text-xs px-1.5 py-0.5 rounded ${level === 'public'
-            ? 'bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400'
-            : 'bg-gray-100 dark:bg-gray-800 text-gray-500'
-            }`}>
+        <span
+            className={`ml-auto text-xs px-1.5 py-0.5 rounded ${level === 'public'
+                ? 'bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-500'
+                }`}
+            role="img"
+            aria-label={`Visibility: ${label}`}
+            title={`This section is ${label}`}
+        >
             {level === 'public' ? '🔓' : '🔒'}
         </span>
     );
@@ -580,20 +599,28 @@ function FieldInput({ label, value, onChange, placeholder, type = 'text', maxLen
     label: string; value: string; onChange: (v: string) => void;
     placeholder?: string; type?: string; maxLength?: number; required?: boolean; hint?: string;
 }) {
+    const id = label.toLowerCase().replace(/[^a-z0-9]/g, '-');
     return (
         <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                {label} {required && <span className="text-red-500">*</span>}
+            <label
+                htmlFor={id}
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >
+                {label} {required && <span className="text-red-500" aria-hidden="true">*</span>}
+                {required && <span className="sr-only">(required)</span>}
             </label>
             <input
+                id={id}
                 type={type}
                 value={value || ''}
                 onChange={e => onChange(e.target.value)}
                 placeholder={placeholder}
                 maxLength={maxLength}
+                required={required}
+                aria-describedby={hint ? `${id}-hint` : undefined}
                 className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
-            {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}
+            {hint && <p id={`${id}-hint`} className="text-xs text-gray-400 mt-1">{hint}</p>}
         </div>
     );
 }
@@ -602,19 +629,30 @@ function TextArea({ label, value, onChange, placeholder, maxLength, rows = 4 }: 
     label: string; value: string; onChange: (v: string) => void;
     placeholder?: string; maxLength?: number; rows?: number;
 }) {
+    const id = label.toLowerCase().replace(/[^a-z0-9]/g, '-');
     return (
         <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}</label>
+            <label
+                htmlFor={id}
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >
+                {label}
+            </label>
             <textarea
+                id={id}
                 value={value || ''}
                 onChange={e => onChange(e.target.value)}
                 placeholder={placeholder}
                 maxLength={maxLength}
                 rows={rows}
+                aria-describedby={maxLength ? `${id}-counter` : undefined}
                 className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
             />
             {maxLength && (
-                <p className="text-xs text-gray-400 mt-1">{(value || '').length}/{maxLength}</p>
+                <p id={`${id}-counter`} className="text-xs text-gray-400 mt-1">
+                    <span className="sr-only">Characters used: </span>
+                    {(value || '').length} / {maxLength}
+                </p>
             )}
         </div>
     );
@@ -686,6 +724,7 @@ function LinksEditor({ draft, updateDraft }: { draft: CanonicalProfile; updateDr
                         <button
                             onClick={() => updateDraft('links.sameAs', sameAs.filter((_, j) => j !== i))}
                             className="px-3 py-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg text-sm transition"
+                            aria-label="Remove link"
                         >
                             ✕
                         </button>
