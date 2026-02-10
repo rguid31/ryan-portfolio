@@ -124,6 +124,17 @@ function cleanProfileData(data: any): any {
                     continue; // Drop invalid status
                 }
 
+                // Strict schema enforcement for known objects with additionalProperties: false
+                if (key === 'links' && typeof cleanedValue === 'object' && cleanedValue !== null) {
+                    const allowed = ['website', 'sameAs'];
+                    const linksObj: any = {};
+                    for (const k of allowed) {
+                        if (cleanedValue[k]) linksObj[k] = cleanedValue[k];
+                    }
+                    cleaned[key] = linksObj;
+                    continue;
+                }
+
                 cleaned[key] = cleanedValue;
             }
         }

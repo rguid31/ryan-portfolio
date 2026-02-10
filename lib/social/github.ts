@@ -17,7 +17,7 @@ export async function fetchGitHubData(username: string) {
     },
     links: {
       website: profile.blog || undefined,
-      social: [{ platform: 'GitHub', url: profile.html_url, handle: profile.login }],
+      sameAs: [profile.html_url],
     },
     projects: repos.filter((r: any) => !r.fork).map((r: any) => ({
       name: r.name,

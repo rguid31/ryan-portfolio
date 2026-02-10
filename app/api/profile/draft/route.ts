@@ -33,24 +33,44 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // EXPERT: Deep Scrubber. Protect against additionalProperties: false and format errors.
+        // We clean the draft before validation to ensure a smooth UX.
+        const cleanDraft = (obj: any): any => {
+            if (Array.isArray(obj)) return obj.map(cleanDraft);
+            if (obj && typeof obj === 'object') {
+                const cleaned: any = {};
+                for (const key in obj) {
+                    const val = obj[key];
+                    if (val === "" || val === null || val === undefined) continue;
+                    cleaned[key] = cleanDraft(val);
+                }
+                return cleaned;
+            }
+            return obj;
+        };
+        const scrubbedDraft = cleanDraft(draft);
+
         // Validate canonical draft against schema
-        const validation = validateCanonicalProfile(draft);
+        const validation = validateCanonicalProfile(scrubbedDraft);
+
+        // Use scrubbedDraft for the rest of the operation
+        const finalDraft = scrubbedDraft as CanonicalProfile;
 
         // Ensure user has a handle matching the draft handle
         let handle = await getHandleByUserId(user.id);
-        if (!handle && draft.handle) {
+        if (!handle && finalDraft.handle) {
             try {
-                handle = await claimHandle(user.id, draft.handle);
+                handle = await claimHandle(user.id, finalDraft.handle);
             } catch {
                 return NextResponse.json(
-                    { code: 'CONFLICT', message: `Handle "${draft.handle}" is already taken.` } satisfies ApiError,
+                    { code: 'CONFLICT', message: `Handle "${finalDraft.handle}" is already taken.` } satisfies ApiError,
                     { status: 409 },
                 );
             }
         }
 
-        // Save draft (even if validation fails — let user fix iteratively)
-        const saved = await saveDraft(user.id, draft, visibility);
+        // Save draft
+        const saved = await saveDraft(user.id, finalDraft, visibility);
 
         return NextResponse.json({
             saved: true,

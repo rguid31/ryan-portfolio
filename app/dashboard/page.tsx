@@ -647,6 +647,24 @@ function IdentityEditor({ draft, updateDraft }: { draft: CanonicalProfile; updat
 function LinksEditor({ draft, updateDraft }: { draft: CanonicalProfile; updateDraft: (p: string, v: unknown) => void }) {
     const sameAs = draft.links?.sameAs || [];
 
+    // EXPERT: Self-healing logic. If the draft has invalid properties (like 'social' from an old import bug), 
+    // we strip them immediately to unblock publishing.
+    useEffect(() => {
+        if (draft.links) {
+            const keys = Object.keys(draft.links);
+            const validKeys = ['website', 'sameAs'];
+            const hasInvalid = keys.some(k => !validKeys.includes(k));
+
+            if (hasInvalid) {
+                console.log('✨ Truth Engine: Self-healing profile links...');
+                const cleaned: any = {};
+                if (draft.links.website) cleaned.website = draft.links.website;
+                if (draft.links.sameAs) cleaned.sameAs = draft.links.sameAs;
+                updateDraft('links', cleaned);
+            }
+        }
+    }, [draft.links, updateDraft]);
+
     return (
         <div>
             <FieldInput label="Website" value={draft.links?.website || ''} onChange={v => updateDraft('links.website', v)} placeholder="https://yoursite.com" type="url" />
