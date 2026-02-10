@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  serverExternalPackages: ['better-sqlite3'],
+  // serverExternalPackages: ['@libsql/client'], // Add if needed, but usually works without
   async rewrites() {
     return [
       // /u/:handle.json → /api/u/:handle/json

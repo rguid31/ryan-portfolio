@@ -12,7 +12,7 @@ Truth Engine is a decentralized-inspired professional profile platform. It treat
 ## 2. Core Accomplishments
 
 ### 🏗️ Backend Infrastructure (The "Engine")
-- **SQLite Persistence**: Implemented a robust local database layer using `better-sqlite3` for high-performance structured storage.
+- **Cloud-Ready Persistence**: Implemented a flexible database layer using `@libsql/client` (Turso), supporting both local SQLite for development and cloud-hosted LibSQL for production.
 - **Relational Schema**: 
     - `users`: Secure account management with `bcryptjs` hashing.
     - `handles`: Claimable unique identifiers (e.g., `@ryan`).
@@ -35,7 +35,7 @@ Truth Engine is a decentralized-inspired professional profile platform. It treat
 ### 🛡️ Security & Reliability
 - **Rate Limiting**: Added IP-based rate limiting to prevent auth abuse (10 req/min) and public read spam.
 - **Safe Logging**: Created a `safe-logger` that redacts PII (Personally Identifiable Information) from server logs while still providing debug context.
-- **C++ Native Module Fix**: Optimized Next.js configuration (`serverExternalPackages`) to support `better-sqlite3` native bindings.
+- **C++ Native Module Removal**: Switched from `better-sqlite3` to `@libsql/client` to eliminate native module bundling issues in Serverless environments.
 
 ---
 
