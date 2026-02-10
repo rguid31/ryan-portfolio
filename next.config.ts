@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  serverExternalPackages: ['better-sqlite3'],
   async rewrites() {
     return [
       // /u/:handle.json → /api/u/:handle/json
