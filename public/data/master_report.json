@@ -1432,9 +1432,9 @@
       "id": "google-data-analytics",
       "name": "Google Data Analytics Professional Certificate",
       "issuer": "Google (via Coursera)",
-      "status": "In Progress",
+      "status": "Completed",
       "startDate": "2023-09",
-      "completionDate": null,
+      "completionDate": "2025-01",
       "credentialID": null,
       "credentialURL": null,
       "skills": [
@@ -1448,10 +1448,10 @@
     {
       "id": "google-ai-essentials",
       "name": "Google AI Essentials",
-      "issuer": "Google",
-      "status": "Needs Verification",
+      "issuer": "Google (via Coursera)",
+      "status": "Completed",
       "startDate": null,
-      "completionDate": null,
+      "completionDate": "2025-01",
       "credentialID": null,
       "credentialURL": null,
       "skills": [
@@ -1522,7 +1522,7 @@
     {
       "id": "vinyl-collecting",
       "name": "Vinyl Collecting",
-      "description": "Avid collector of vinyl records with a focus on rock and alternative genres. Check out my collection on Discogs.",
+      "description": "Avid collector of vinyl records with a focus on electronic, rock, and alternative genres. Check out my collection on Discogs.",
       "category": "Collecting",
       "url": "https://www.discogs.com/user/Rockit_Media",
       "linkText": "My Discogs profile",
