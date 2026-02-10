@@ -963,8 +963,12 @@ function LoginRegisterForm({ onSuccess }: { onSuccess: () => void }) {
             } else {
                 onSuccess();
             }
-        } catch {
-            setError('Network error. Please try again.');
+        } catch (err) {
+            if (window.location.hostname.includes('vercel.app')) {
+                setError('Database access failed. Note: SQLite local files are not supported in Vercel Serverless. Please move to Turso/Cloud to enable live dashboard features.');
+            } else {
+                setError('Connection failed. Ensure the dev server is running and the database is accessible.');
+            }
         } finally {
             setLoading(false);
         }
