@@ -939,62 +939,6 @@
       ]
     },
     {
-      "id": "ism-jacobs-safety-coop",
-      "title": "Safety Co-Op",
-      "company": "ISM - Jacobs",
-      "employmentType": "Co-op",
-      "location": "Geismar, Louisiana",
-      "startDate": "2020-01",
-      "endDate": "2020-08",
-      "current": false,
-      "description": "Safety engineering co-op supporting process safety initiatives and risk management at chemical manufacturing facility.",
-      "responsibilities": [
-        "Conducted safety audits and inspections",
-        "Developed safety documentation and training materials",
-        "Analyzed incident reports and recommended corrective actions",
-        "Supported Process Hazard Analyses (PHA) and risk assessments",
-        "Created safety metrics dashboards and reports"
-      ],
-      "skills": [
-        "Process safety engineering",
-        "Technical writing",
-        "Risk analysis",
-        "OSHA compliance"
-      ],
-      "achievements": [
-        "Contributed to improved safety metrics and compliance",
-        "Developed comprehensive safety training documentation"
-      ]
-    },
-    {
-      "id": "ism-jacobs-field-engineer",
-      "title": "Field Engineer - Process Engineering Intern",
-      "company": "ISM - Jacobs",
-      "employmentType": "Internship",
-      "location": "Geismar, Louisiana",
-      "startDate": "2019-08",
-      "endDate": "2019-12",
-      "current": false,
-      "description": "Field engineering internship focused on process engineering support and on-site troubleshooting.",
-      "responsibilities": [
-        "Supported process optimization initiatives",
-        "Conducted field inspections and equipment assessments",
-        "Created technical documentation for process improvements",
-        "Assisted in process troubleshooting and root cause analysis",
-        "Collaborated with operations and maintenance teams"
-      ],
-      "skills": [
-        "Chemical process engineering",
-        "Field engineering",
-        "Technical documentation",
-        "Problem-solving"
-      ],
-      "achievements": [
-        "Successfully completed field engineering assignments",
-        "Gained practical experience in industrial process operations"
-      ]
-    },
-    {
       "id": "weyerhaeuser-chemical-engineering-intern",
       "title": "Chemical Engineering Intern",
       "company": "Weyerhaeuser",
