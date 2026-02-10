@@ -16,6 +16,8 @@ export default function Navigation() {
         { href: '/education', label: 'Education' },
         { href: '/skills', label: 'Skills' },
         { href: '/hobbies', label: 'Hobbies' },
+        { href: '/resources', label: 'Resources' },
+        { href: '/blog', label: 'Blog' },
         { href: '/resume', label: 'Resume' },
         { href: '/contact', label: 'Contact' },
         { href: '/builder', label: 'Build Your Site' },
