@@ -1516,7 +1516,7 @@
       "name": "Vinyl Collecting",
       "description": "Avid collector of vinyl records with a focus on rock and alternative genres. Check out my collection on Discogs.",
       "category": "Collecting",
-      "url": "https://www.discogs.com/user/rockit_media/collection",
+      "url": "https://www.discogs.com/user/Rockit_Media",
       "image": "/images/hobbies/vinyl.png",
       "featured": true
     },
@@ -1540,7 +1540,7 @@
       "name": "eBay Reselling",
       "description": "Running 'Ryans Rocket Shop', an online store for vintage items and collectibles.",
       "category": "Business",
-      "url": "https://www.ebay.com/str/ryansrocketshop",
+      "url": "https://www.ebay.com/usr/ryans_rocket_shop",
       "image": "/images/hobbies/ebay.png"
     },
     {
