@@ -24,6 +24,9 @@ export async function GET(
         headers: {
             'Content-Type': 'application/ld+json',
             'Cache-Control': 'public, max-age=60, stale-while-revalidate=300',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
         },
     });
 }
