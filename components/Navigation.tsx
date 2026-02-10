@@ -18,6 +18,7 @@ export default function Navigation() {
         { href: '/skills', label: 'Skills' },
         { href: '/resume', label: 'Resume' },
         { href: '/contact', label: 'Contact' },
+        { href: '/dashboard', label: 'Dashboard' },
     ];
 
     return (

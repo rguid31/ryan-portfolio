@@ -57,7 +57,7 @@ export function generateJsonLd(profile: PublicProfile): object {
             const role: Record<string, unknown> = {
                 '@type': 'Role',
                 roleName: exp.title,
-                'schema:memberOf': {
+                memberOf: {
                     '@type': 'Organization',
                     name: exp.organization,
                 },
@@ -65,7 +65,7 @@ export function generateJsonLd(profile: PublicProfile): object {
             if (exp.startDate) role.startDate = exp.startDate;
             if (exp.endDate) role.endDate = exp.endDate;
             if (exp.location) {
-                (role['schema:memberOf'] as Record<string, unknown>).location = exp.location;
+                (role['memberOf'] as Record<string, unknown>).location = exp.location;
             }
             if (exp.highlights?.length) {
                 role.description = exp.highlights.join('; ');

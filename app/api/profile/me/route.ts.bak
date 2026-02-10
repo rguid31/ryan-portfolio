@@ -1,0 +1,48 @@
+// GET /api/profile/me — Get canonical draft + visibility settings
+import { NextRequest, NextResponse } from 'next/server';
+import {
+    requireAuth,
+    getDraft,
+    getHandleByUserId,
+    getLatestSnapshot,
+,
+    safeLogError,
+} from '@/lib/truth-engine';;
+import type { ApiError ,
+    safeLogError,
+} from '@/lib/truth-engine';;
+
+export async function GET() {
+    try {
+        const user = await requireAuth();
+
+        const handle = getHandleByUserId(user.id);
+        const draftRow = getDraft(user.id);
+
+        const latestSnapshot = handle
+            ? getLatestSnapshot(handle.handle)
+            : null;
+
+        return NextResponse.json({
+            handle: handle?.handle || null,
+            published: !!latestSnapshot,
+            draft: draftRow ? JSON.parse(draftRow.canonical_json) : null,
+            visibility: draftRow ? JSON.parse(draftRow.visibility_json) : null,
+            latestPublished: latestSnapshot
+                ? {
+                    versionId: latestSnapshot.version_id,
+                    publishedAt: latestSnapshot.created_at,
+                }
+                : null,
+        });
+    } catch (err) {
+        if ((err as ApiError).code === 'UNAUTHORIZED') {
+            return NextResponse.json(err, { status: 401 });
+        }
+        console.error('GET /api/profile/me error:', err);
+        return NextResponse.json(
+            { code: 'INTERNAL', message: 'Internal server error.' } satisfies ApiError,
+            { status: 500 },
+        );
+    }
+}
