@@ -79,7 +79,7 @@ function WelcomeStep({ onNext }: { onNext: () => void }) {
           Get Started
         </button>
         <button
-          onClick={() => window.location.href = '/dashboard'}
+          onClick={() => window.location.href = '/builder'}
           className="w-full px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors"
         >
           Skip for Now
@@ -583,7 +583,7 @@ function ReviewStep({
       }
 
       // Redirect to dashboard
-      window.location.href = '/dashboard';
+      window.location.href = '/builder';
     } catch (error) {
       console.error('Error saving profile:', error);
       alert('Failed to save profile. Please try again.');
@@ -757,11 +757,10 @@ export default function OnboardingPage() {
               {STEPS.slice(1).map((step, idx) => (
                 <div
                   key={idx}
-                  className={`text-xs transition-colors ${
-                    idx + 1 <= currentStep
+                  className={`text-xs transition-colors ${idx + 1 <= currentStep
                       ? 'text-blue-600 dark:text-blue-400 font-medium'
                       : 'text-gray-400 dark:text-gray-600'
-                  }`}
+                    }`}
                 >
                   {idx + 1 < currentStep ? '✓' : idx + 1 === currentStep ? '●' : '○'}
                 </div>

@@ -121,7 +121,7 @@ export default function DashboardSettingsPage() {
             <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950">
                 <div className="text-center">
                     <p className="text-gray-500 mb-4">You need to be logged in.</p>
-                    <Link href="/dashboard" className="text-blue-600 hover:underline">Go to Dashboard →</Link>
+                    <Link href="/builder" className="text-blue-600 hover:underline">Go to Profile Builder →</Link>
                 </div>
             </div>
         );

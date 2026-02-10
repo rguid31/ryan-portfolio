@@ -11,9 +11,9 @@ export default function DashboardLayout({
     const pathname = usePathname();
 
     const navLinks = [
-        { href: '/dashboard', label: 'Editor', icon: '📝' },
-        { href: '/dashboard/privacy', label: 'Privacy', icon: '🔒' },
-        { href: '/dashboard/settings', label: 'Settings', icon: '⚙️' },
+        { href: '/builder', label: 'Editor', icon: '📝' },
+        { href: '/builder/privacy', label: 'Privacy', icon: '🔒' },
+        { href: '/builder/settings', label: 'Settings', icon: '⚙️' },
     ];
 
     return (
@@ -29,8 +29,8 @@ export default function DashboardLayout({
                                     key={link.href}
                                     href={link.href}
                                     className={`flex items-center gap-2 text-sm font-medium transition-colors h-full border-b-2 px-1 ${isActive
-                                            ? 'text-blue-600 border-blue-600'
-                                            : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 border-transparent'
+                                        ? 'text-blue-600 border-blue-600'
+                                        : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 border-transparent'
                                         }`}
                                 >
                                     <span>{link.icon}</span>
