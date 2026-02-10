@@ -41,8 +41,7 @@ export function DeployCard({ handle }: DeployCardProps) {
                             <h2 className="text-2xl font-bold">Launch Your Website</h2>
                         </div>
                         <p className="text-blue-100 max-w-xl mb-6">
-                            Vercel will clone the portfolio template and ask you to confirm two settings.
-                            We've pre-filled them for you below.
+                            Click Deploy Now. Vercel will show the pre-filled settings below - just click Deploy to confirm.
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
@@ -88,7 +87,7 @@ export function DeployCard({ handle }: DeployCardProps) {
                                 </svg>
                                 DEPLOY NOW
                             </span>
-                            <span className="text-[10px] opacity-60 font-medium italic">Redirects to Vercel</span>
+                            <span className="text-[10px] opacity-60 font-medium italic">Pre-filled & Ready</span>
                         </a>
                     </div>
                 </div>
