@@ -63,7 +63,7 @@
       "category": "AI/ML - Full-Stack Application",
       "status": "Active",
       "featured": true,
-      "order": 1,
+      "order": 2,
       "projectDescription": "An AI-powered full-stack web application that combines cutting-edge natural language processing with intuitive user experience design. Enables users to engage in intelligent conversations and extract insights from complex information through Google Gemini's advanced language models.",
       "shortDescription": "AI-powered conversation platform using Google Gemini API",
       "myRole": "Sole Developer - Architected and implemented entire solution end-to-end",
@@ -154,81 +154,127 @@
     },
     {
       "id": "ryan-portfolio",
-      "projectName": "Ryan Guidry Portfolio",
+      "projectName": "Ryan Guidry — Digital Twin Portfolio",
       "slug": "ryan-portfolio",
-      "category": "Web Development - Personal Branding",
-      "status": "Active",
+      "category": "Full-Stack Architecture — Data-Driven Web Platform",
+      "status": "Active — Ongoing Development",
       "featured": true,
-      "order": 2,
-      "projectDescription": "A modern, data-driven personal portfolio website built with Next.js 16 and TypeScript. All content is rendered from a single master_report.json file acting as a digital twin — a normalized, version-controlled representation of identity, experience, credentials, skills, and projects. Features responsive navigation, dynamic project pages, and automatic Vercel deployments.",
-      "shortDescription": "Next.js 16 portfolio powered by a single JSON data source",
-      "myRole": "Sole Developer & Designer - Complete ownership of all aspects",
+      "order": 1,
+      "projectDescription": "The most architecturally advanced project in my portfolio. A self-documenting, data-driven professional platform built on Next.js 16 and React 19 with the React Compiler (babel-plugin-react-compiler). Every page, component, and data point on the live site is dynamically rendered from a single master_report.json file — a 1,200+ line structured 'digital twin' that serves as a normalized, version-controlled representation of identity, experience, credentials, skills, and projects. The JSON file acts as both the content management system and the single source of truth: editing one file propagates changes across 10 statically-generated routes, 5 reusable components, and a fully typed data access layer (11 accessor functions in masterReport.ts). The architecture is recursive — this project entry you're reading right now is itself rendered from that same JSON file.",
+      "shortDescription": "Self-documenting Next.js 16 platform powered by a 'digital twin' JSON architecture",
+      "myRole": "Sole Architect, Developer & Designer — end-to-end ownership from data modeling to DNS configuration",
       "responsibilities": [
-        "UI/UX design and information architecture",
-        "Frontend development with React and TypeScript",
-        "Data architecture with JSON-driven content system",
-        "SEO optimization and performance tuning",
-        "Deployment via GitHub + Vercel CI/CD pipeline"
+        "Designed the 'digital twin' JSON schema — a 12-section, deeply nested data model covering personal info, projects, experience, education, skills, certifications, volunteer work, and personality insights",
+        "Built a fully typed data access layer (masterReport.ts) with 11 accessor functions providing type-safe reads across the entire schema",
+        "Architected 10 Next.js App Router routes with React Server Components for zero-JS page loads",
+        "Developed 5 reusable React components (Navigation, Footer, ProjectCard, ContactForm, PrintButton) with responsive design, dark mode support, and mobile-first UX",
+        "Implemented dynamic project routing with generateStaticParams — 8 project detail pages pre-rendered at build time from JSON slugs",
+        "Configured production deployment pipeline: GitHub → Vercel CI/CD with custom domain DNS (A record + CNAME → ryanguidry.com)",
+        "Applied SEO best practices: semantic HTML, meta tags, Open Graph, structured heading hierarchy, and descriptive page titles",
+        "Defined TypeScript interfaces (types.ts) covering 13 exported types with strict mode enforcement"
       ],
       "techStack": [
-        "Next.js 16",
-        "React 19",
-        "TypeScript",
+        "Next.js 16.1.6",
+        "React 19.2.3",
+        "React Compiler (babel-plugin-react-compiler 1.0.0)",
+        "TypeScript 5+",
+        "Tailwind CSS 4",
         "CSS3",
-        "Vercel"
+        "ESLint 9",
+        "PostCSS",
+        "Node.js",
+        "Vercel",
+        "Git/GitHub"
       ],
       "techCategories": {
+        "framework": [
+          "Next.js 16.1.6 (App Router, React Server Components, generateStaticParams)"
+        ],
         "frontend": [
-          "Next.js 16",
-          "React 19",
-          "TypeScript"
+          "React 19.2.3",
+          "React Compiler (babel-plugin-react-compiler 1.0.0)"
+        ],
+        "language": [
+          "TypeScript 5+ (strict mode, 13 exported interfaces)"
         ],
         "styling": [
-          "CSS3"
+          "Tailwind CSS 4",
+          "CSS3",
+          "PostCSS"
+        ],
+        "dataArchitecture": [
+          "JSON-as-CMS (1,200+ line master_report.json)",
+          "Typed data access layer (masterReport.ts — 11 functions)"
+        ],
+        "tooling": [
+          "ESLint 9",
+          "eslint-config-next"
         ],
         "deployment": [
-          "Vercel"
+          "Vercel (CI/CD, Edge Network, custom domain)",
+          "Git/GitHub"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "Data-Driven Architecture",
-          "description": "Rendering all site content from a single JSON file",
-          "solution": "Built typed data access layer with masterReport.ts utility functions",
-          "result": "Single source of truth for all portfolio content, easily updatable"
+          "challenge": "Digital Twin Data Architecture",
+          "description": "Needed a content system that could represent an entire professional identity — projects, experience, education, skills, certifications, and personality profile — in a single, version-controlled file without a database or CMS",
+          "solution": "Designed a deeply nested JSON schema with 12 top-level sections and defined 13 TypeScript interfaces to enforce structure. Built 11 typed accessor functions in masterReport.ts that read from disk at build time, making the entire site statically generated from one file",
+          "result": "Zero-database architecture. Content updates require editing one JSON file and pushing to GitHub. The entire site rebuilds automatically in under 60 seconds via Vercel"
         },
         {
-          "challenge": "Dynamic Routing",
-          "description": "Generating static pages for each project from JSON data",
-          "solution": "Used Next.js generateStaticParams with JSON-based slugs",
-          "result": "All project detail pages pre-rendered at build time"
+          "challenge": "Type-Safe Data Layer Across 10 Routes",
+          "description": "Each page (Home, About, Projects, Project Detail, Experience, Education, Skills, Resume, Contact) needed guaranteed access to specific slices of the JSON schema without runtime errors",
+          "solution": "Created a comprehensive type system in types.ts with interfaces for MasterReport, Project, Experience, Education, Skills, Certification, Volunteer, and InsightsProfile. Each accessor function in masterReport.ts returns a properly typed result, caught at compile time",
+          "result": "Zero runtime type errors in production. TypeScript catches all data access issues at build time before deployment"
         },
         {
-          "challenge": "Deployment Pipeline",
-          "description": "Setting up automatic deployments from GitHub",
-          "solution": "Configured Vercel with GitHub integration and custom domain DNS",
-          "result": "Push-to-deploy workflow with ryanguidry.com custom domain"
+          "challenge": "Dynamic Static Generation for Project Pages",
+          "description": "8 individual project detail pages needed to be statically generated from JSON data, each with unique slugs, tech stacks, challenges, and metrics",
+          "solution": "Used Next.js generateStaticParams to extract slugs from JSON at build time, generating static HTML for each project. The [slug] dynamic route resolves to pre-rendered pages with zero client-side data fetching",
+          "result": "All 8 project pages load instantly as static HTML. Adding a new project requires only adding a JSON object — no new files, no new routes, no code changes"
+        },
+        {
+          "challenge": "Production Deployment with Custom Domain",
+          "description": "Configuring DNS records across two providers (Bluehost registrar + Vercel hosting) with proper A records, CNAME records, and SSL",
+          "solution": "Set up A record (76.76.21.21) and CNAME (cname.vercel-dns.com) on Bluehost, connected GitHub repo to Vercel for automatic deployments, and verified DNS propagation",
+          "result": "Live at ryanguidry.com with automatic SSL, push-to-deploy from any git commit, and global CDN distribution via Vercel's Edge Network"
+        },
+        {
+          "challenge": "Self-Documenting Architecture",
+          "description": "The portfolio needed to showcase technical depth while also being the technical depth — the codebase is both the product and the proof of skill",
+          "solution": "Designed the system so the project entry for ryan-portfolio within master_report.json describes the exact architecture that renders it. The data model documents itself",
+          "result": "Recursive self-reference: this project description is rendered by the system it describes, demonstrating the architecture in real-time to anyone viewing the site"
         }
       ],
       "keyLearnings": [
-        "Mastered Next.js 16 App Router and React Server Components",
-        "Developed a JSON-driven content architecture pattern",
-        "Learned DNS configuration and domain management (Vercel + Bluehost)",
-        "Gained experience with TypeScript strict mode and type-safe data layers",
-        "Built CI/CD pipeline with GitHub and Vercel"
+        "Designed and implemented a 'digital twin' architecture — a pattern where a single JSON file represents an entire professional identity and drives all UI rendering",
+        "Mastered Next.js 16 App Router with React Server Components, achieving zero client-side JavaScript on static pages",
+        "Leveraged React 19 with the React Compiler (babel-plugin-react-compiler) for automatic performance optimization",
+        "Built a production TypeScript data access layer with 13 interfaces and 11 typed accessor functions",
+        "Learned end-to-end DNS configuration: domain registration, A/CNAME records, SSL provisioning, and CDN distribution",
+        "Developed expertise in static site generation with dynamic data — generating 8 unique project routes from a single JSON file",
+        "Applied information architecture principles to model complex, multi-dimensional professional data in a flat JSON structure",
+        "Gained fluency in CI/CD workflows: GitHub push → Vercel build → automatic deployment in under 60 seconds"
       ],
       "impactMetrics": {
-        "deployment": "Automatic via git push",
-        "contentUpdates": "Edit one JSON file to update entire site",
-        "domain": "Custom domain at ryanguidry.com"
+        "architecture": "Zero-database, single-file content system driving 10 routes and 5 components",
+        "typeSafety": "13 TypeScript interfaces, 11 typed accessor functions, 0 runtime type errors",
+        "performance": "100% static pages — zero client-side data fetching on initial loads",
+        "deployment": "Push-to-deploy in <60 seconds via GitHub → Vercel CI/CD pipeline",
+        "contentVelocity": "Update entire site by editing one JSON file — no code changes needed",
+        "codebase": "1,200+ line JSON schema, 55-line typed data layer, 185-line type definitions",
+        "domain": "Custom domain at ryanguidry.com with automatic SSL and global CDN"
       },
       "developmentTimeline": {
-        "duration": "1 week",
-        "phase1": "Next.js scaffolding and data architecture",
-        "phase2": "Page development and component creation",
-        "phase3": "Deployment, DNS configuration, and domain setup"
+        "duration": "Ongoing (initial build: 1 week, continuous iteration)",
+        "phase1": "Data architecture design — JSON schema definition and TypeScript interface modeling",
+        "phase2": "Core platform build — Next.js 16 scaffolding, data access layer, 10 routes, 5 components",
+        "phase3": "Production deployment — Vercel CI/CD, DNS configuration, custom domain setup",
+        "phase4": "Content population — Migrating all professional data into master_report.json",
+        "ongoing": "Continuous iteration — adding projects, refining UI, expanding data model, improving SEO"
       },
-      "targetAudience": "Recruiters, hiring managers, potential collaborators, and industry professionals",
+      "targetAudience": "Recruiters, hiring managers, potential collaborators, and technical audiences evaluating full-stack architecture skills",
       "projectURL": "https://ryanguidry.com",
       "repoURL": "https://github.com/rguid31/ryan-portfolio",
       "images": []
