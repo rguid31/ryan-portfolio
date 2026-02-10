@@ -1414,6 +1414,13 @@
       "description": "Logo and merchandise designer, videography producer, social media manager, and manager for LANDONi Music, New Orleans electronic music producer and DJ.",
       "category": "Music",
       "image": "/images/hobbies/music.jpg"
+    },
+    {
+      "id": "blockchain",
+      "name": "Blockchain & Decentralization",
+      "description": "Fascinated by the technical and social implications of blockchain technology, with a strong focus on decentralization, distributed ledgers, and the future of web3.",
+      "category": "Technology",
+      "image": "/images/hobbies/blockchain.jpg"
     }
   ],
   "insightsProfile": {
