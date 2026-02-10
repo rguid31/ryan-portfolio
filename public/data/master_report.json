@@ -68,14 +68,13 @@
       "shortDescription": "Modernizing a Cajun specialty meat business with a scalable e-commerce platform.",
       "myRole": "Lead Systems Developer & Brand Architect",
       "responsibilities": [
-        "End-to-end site deployment: Managed domain registration, DNS configuration, and secure hosting environment.",
-        "Infrastructure Setup: Configured SSL certificates and SMTP protocols for professional domain-based email and reliable contact form delivery.",
-        "Semantic SEO & AI Optimization: Implemented machine-readable metadata and descriptive alt-text strategies to optimize for LLM crawlers and AI search agents.",
-        "Marketing Operations: Architected mailing list audience segments and lead generation workflows via integrated Contact Form 7.",
-        "Accessibility & UX Design: Engineered a WCAG-compliant high-contrast color scheme (Barn Red/Gold/Cream) and responsive Flexbox grid system.",
-        "Dynamic Inventory Sync: Real-time updates between the online store and physical stock levels.",
-        "Custom Shipping Logic: Implemented specialized shipping zones and rates for perishable goods (cold chain logistics).",
-        "Automated Email Pipelines: Post-purchase customer journeys built to encourage repeat orders."
+        "Managed domain registration, DNS configuration, SSL certificates, and SMTP setup for secure communications",
+        "Implemented semantic SEO with machine-readable metadata optimized for AI search agents and LLM crawlers",
+        "Built lead-generation workflows and mailing list segmentation using Contact Form 7",
+        "Designed WCAG-compliant responsive UI with high-contrast branding (Barn Red/Gold/Cream)",
+        "Configured real-time inventory sync between online store and physical stock",
+        "Developed custom shipping logic for perishable goods with zone-based rate calculation",
+        "Automated post-purchase email sequences to drive customer retention"
       ],
       "techStack": [
         "WordPress",
