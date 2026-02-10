@@ -1517,7 +1517,7 @@
       "description": "Avid collector of vinyl records with a focus on rock and alternative genres. Check out my collection on Discogs.",
       "category": "Collecting",
       "url": "https://www.discogs.com/user/rockit_media/collection",
-      "image": "/images/hobbies/vinyl.jpg",
+      "image": "/images/hobbies/vinyl.png",
       "featured": true
     },
     {
@@ -1532,7 +1532,7 @@
       "name": "Web/App Development",
       "description": "Building useful tools and applications. Constantly learning new frameworks and technologies.",
       "category": "Technology",
-      "image": "/images/hobbies/coding.jpg",
+      "image": "/images/hobbies/coding.png",
       "featured": true
     },
     {
@@ -1555,7 +1555,7 @@
       "name": "Blockchain & Decentralization",
       "description": "Fascinated by the technical and social implications of blockchain technology, with a strong focus on decentralization, distributed ledgers, and the future of web3.",
       "category": "Technology",
-      "image": "/images/hobbies/blockchain.jpg"
+      "image": "/images/hobbies/blockchain.png"
     }
   ],
   "insightsProfile": {
