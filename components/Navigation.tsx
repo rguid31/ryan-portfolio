@@ -10,12 +10,12 @@ export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
 
     const navLinks = [
-        { href: '/', label: 'Home' },
         { href: '/about', label: 'About' },
         { href: '/projects', label: 'Projects' },
         { href: '/experience', label: 'Experience' },
         { href: '/education', label: 'Education' },
         { href: '/skills', label: 'Skills' },
+        { href: '/hobbies', label: 'Hobbies' },
         { href: '/resume', label: 'Resume' },
         { href: '/contact', label: 'Contact' },
         { href: '/builder', label: 'Build Your Site' },
@@ -34,7 +34,7 @@ export default function Navigation() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex space-x-8">
+                    <div className="hidden md:flex space-x-6">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}

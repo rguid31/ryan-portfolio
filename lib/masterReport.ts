@@ -52,3 +52,8 @@ export function getSummary() {
   const data = getMasterReport();
   return data.summary;
 }
+
+export function getHobbies() {
+  const data = getMasterReport();
+  return data.hobbies;
+}

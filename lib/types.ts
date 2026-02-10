@@ -9,6 +9,17 @@ export interface MasterReport {
   certifications: Certification[];
   volunteer: Volunteer[];
   insightsProfile: InsightsProfile;
+  hobbies: Hobby[];
+}
+
+export interface Hobby {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  url?: string;
+  image?: string;
+  featured?: boolean;
 }
 
 export interface Metadata {
@@ -117,7 +128,7 @@ export interface Education {
     state: string;
   };
   graduationDate: string;
-  gpa: number;
+  gpa?: number;
   relevantCoursework: string[];
   achievements: string[];
 }

@@ -734,27 +734,24 @@
   ],
   "education": [
     {
-      "id": "lsu-mathematics",
+      "id": "lsu-mathematics-2025",
       "institution": "Louisiana State University",
-      "degree": "Bachelor of Science (B.S.)",
-      "field": "Mathematics",
+      "degree": "Mathematics",
+      "field": "Mathematics and Chemical Engineering",
       "location": {
         "city": "Baton Rouge",
         "state": "Louisiana"
       },
       "startDate": "2025-08",
       "graduationDate": "2027-12",
-      "status": "In Progress",
-      "description": "Pursuing Mathematics with a focus on statistical analysis and computational modeling. 88/120 credits complete.",
-      "achievements": [
-        "Secondary discipline in Chemical Engineering (131 credit hours completed)",
-        "Focus on Data Analysis and Machine Learning foundations"
-      ]
+      "gpa": null,
+      "description": "Transferred from Chemical Engineering to Mathematics to focus on advanced data analysis and computational modeling, leveraging a strong engineering foundation.",
+      "achievements": []
     },
     {
-      "id": "lsu-chemical-engineering",
+      "id": "lsu-che-incomplete",
       "institution": "Louisiana State University",
-      "degree": "Coursework towards B.S.",
+      "degree": "Bachelor's degree (incomplete)",
       "field": "Chemical Engineering",
       "location": {
         "city": "Baton Rouge",
@@ -762,7 +759,11 @@
       },
       "startDate": "2014-08",
       "graduationDate": "2023-12",
-      "description": "Completed extensive coursework (131/139 hours) in Chemical Engineering before pivoting to Mathematics to focus on data science and analytics."
+      "gpa": null,
+      "description": "Completed 131/139 credit hours in Chemical Engineering before pivoting to Mathematics to specialize in data science and analytics.",
+      "achievements": [
+        "131/139 credit hours completed"
+      ]
     }
   ],
   "experience": [
@@ -977,6 +978,102 @@
       "achievements": []
     },
     {
+      "id": "new-orleans-daiquiris-bartender",
+      "title": "Bartender",
+      "company": "New Orleans Original Daiquiris",
+      "employmentType": "Part-time",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2017-07",
+      "endDate": "2017-09",
+      "current": false,
+      "description": "Provided customer service and maintained operations in a fast-paced environment.",
+      "responsibilities": [
+        "Developed customer business relations through effective social interaction",
+        "Ensured customer satisfaction in a fast-paced environment",
+        "Exhibited strong time management and work ethic balancing school and work"
+      ],
+      "skills": [
+        "Customer Service",
+        "Time Management",
+        "Communication",
+        "Operations"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "gp-chemical-sales-intern-nj",
+      "title": "Chemical Sales Intern",
+      "company": "Georgia-Pacific LLC",
+      "employmentType": "Internship",
+      "location": "Hasbrouck Heights, New Jersey",
+      "startDate": "2016-12",
+      "endDate": "2017-01",
+      "current": false,
+      "description": "Participated in chemical trials and customer facility service.",
+      "responsibilities": [
+        "Participated in chemical trials to gain service of a customer facility",
+        "Completed wet-end testing on pulp samples (system charge, pH, conductivity, turbidity)"
+      ],
+      "skills": [
+        "Chemical Testing",
+        "Client Service",
+        "Technical Analysis",
+        "Lab Procedures"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "gp-chemical-sales-intern-ny",
+      "title": "Chemical Sales Intern",
+      "company": "Georgia-Pacific LLC",
+      "employmentType": "Internship",
+      "location": "New York, Pennsylvania, New Jersey",
+      "startDate": "2016-05",
+      "endDate": "2016-08",
+      "current": false,
+      "description": "Optimized chemical processes and conducted technical studies at paper mills.",
+      "responsibilities": [
+        "Conducted wet-end tests and optimized chemical additive injection rates",
+        "Performed pulp receptivity studies on recycled furnishes",
+        "Created PFDs of paper making process for optimal injection location"
+      ],
+      "skills": [
+        "Process Optimization",
+        "Technical Analysis",
+        "PFD Creation",
+        "Cost Reduction"
+      ],
+      "achievements": [
+        "Minimized production costs through optimization",
+        "Met product benchmarks"
+      ]
+    },
+    {
+      "id": "home-servicing-mortgage-lender",
+      "title": "Mortgage Lender",
+      "company": "Home Servicing, LLC",
+      "employmentType": "Seasonal",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2015-05",
+      "endDate": "2015-08",
+      "current": false,
+      "description": "Managed mortgage communications and documentation. Also worked Winter Break 2014.",
+      "responsibilities": [
+        "Communicated with homeowners and agents regarding taxes, insurance, and mortgages",
+        "Organized and filed paperwork into computer database and physical library",
+        "Acquired customer information using Service Director and Citrix programs"
+      ],
+      "skills": [
+        "Data Entry",
+        "Customer Communication",
+        "Document Management",
+        "Citrix"
+      ],
+      "achievements": [
+        " improved accessibility of customer information"
+      ]
+    },
+    {
       "id": "st-charles-computer-tech",
       "title": "Computer Technician",
       "company": "St. Charles Parish Public Schools",
@@ -985,7 +1082,7 @@
       "startDate": "2014-05",
       "endDate": "2014-08",
       "current": false,
-      "description": "Deployed and optimized school technology infrastructure.",
+      "description": "Deployed and optimized school technology infrastructure. Also worked Summer 2013.",
       "responsibilities": [
         "Efficiently installed and configured computers and software across classrooms",
         "Provided timely troubleshooting of hardware, software, and network issues",
@@ -1254,6 +1351,47 @@
         "photos": "Multiple",
         "edits": "Multiple"
       }
+    }
+  ],
+  "hobbies": [
+    {
+      "id": "vinyl-collecting",
+      "name": "Vinyl Collecting",
+      "description": "Avid collector of vinyl records with a focus on rock and alternative genres. Check out my collection on Discogs.",
+      "category": "Collecting",
+      "url": "https://www.discogs.com/user/rockit_media/collection",
+      "image": "/images/hobbies/vinyl.jpg",
+      "featured": true
+    },
+    {
+      "id": "graphic-design",
+      "name": "Graphic Design",
+      "description": "Creating visual assets for web and print. Passionate about typography and layout design.",
+      "category": "Creative",
+      "image": "/images/hobbies/design.jpg"
+    },
+    {
+      "id": "web-app-dev",
+      "name": "Web/App Development",
+      "description": "Building useful tools and applications. Constantly learning new frameworks and technologies.",
+      "category": "Technology",
+      "image": "/images/hobbies/coding.jpg",
+      "featured": true
+    },
+    {
+      "id": "ebay-store",
+      "name": "eBay Reselling",
+      "description": "Running 'Ryans Rocket Shop', an online store for vintage items and collectibles.",
+      "category": "Business",
+      "url": "https://www.ebay.com/str/ryansrocketshop",
+      "image": "/images/hobbies/ebay.jpg"
+    },
+    {
+      "id": "landoni-music",
+      "name": "Landoni Music",
+      "description": "Producing and creating original music under the moniker 'Landoni'. Exploring soundscapes and composition.",
+      "category": "Music",
+      "image": "/images/hobbies/music.jpg"
     }
   ],
   "insightsProfile": {
