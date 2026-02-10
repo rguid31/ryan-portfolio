@@ -60,9 +60,9 @@ export function DeployCard({ handle }: DeployCardProps) {
                                 </div>
                             </div>
                             <div className="bg-black/20 p-3 rounded-xl border border-white/10 relative group/item">
-                                <label className="block text-[10px] uppercase tracking-widest text-blue-200 mb-1">Source API</label>
+                                <label className="block text-[10px] uppercase tracking-widest text-blue-200 mb-1">API URL</label>
                                 <div className="flex items-center justify-between gap-2">
-                                    <code className="text-sm font-mono text-white truncate flex-1 min-w-0">{apiBaseUrl.replace('https://', '')}</code>
+                                    <code className="text-xs font-mono text-white truncate flex-1 min-w-0">{apiBaseUrl.replace('https://', '')}</code>
                                     <button
                                         onClick={() => navigator.clipboard.writeText(apiBaseUrl)}
                                         className="p-1 hover:bg-white/10 rounded transition text-blue-200 flex-shrink-0"
