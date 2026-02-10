@@ -14,7 +14,6 @@ export function DeployCard({ handle }: DeployCardProps) {
     const TEMPLATE_URL = 'https://github.com/rguid31/truth-engine-viewer';
 
     // Construct Vercel Deploy URL with PRE-FILLED values
-    // Vercel allows pre-filling env values via &VAR_NAME=VALUE syntax in the clone URL
     const apiBaseUrl = typeof window !== 'undefined' && !window.location.hostname.includes('localhost')
         ? window.location.origin
         : 'https://ryanguidry.com';
