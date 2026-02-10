@@ -18,6 +18,7 @@ export interface Hobby {
   description: string;
   category: string;
   url?: string;
+  linkText?: string;
   image?: string;
   featured?: boolean;
 }

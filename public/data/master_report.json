@@ -1526,6 +1526,7 @@
       "description": "Avid collector of vinyl records with a focus on rock and alternative genres. Check out my collection on Discogs.",
       "category": "Collecting",
       "url": "https://www.discogs.com/user/Rockit_Media",
+      "linkText": "My Discogs profile",
       "image": "/images/hobbies/vinyl.png",
       "featured": true
     },
@@ -1534,6 +1535,8 @@
       "name": "Graphic Design",
       "description": "Creating visual assets for web and print. Passionate about typography and layout design.",
       "category": "Creative",
+      "url": "/designs",
+      "linkText": "View my designs",
       "image": "/images/hobbies/design.png"
     },
     {
@@ -1541,6 +1544,8 @@
       "name": "Web/App Development",
       "description": "Building useful tools and applications. Constantly learning new frameworks and technologies.",
       "category": "Technology",
+      "url": "https://github.com/rguid31",
+      "linkText": "See my code",
       "image": "/images/hobbies/coding.png",
       "featured": true
     },
@@ -1550,6 +1555,7 @@
       "description": "Running 'Ryans Rocket Shop', an online store for vintage items and collectibles.",
       "category": "Business",
       "url": "https://www.ebay.com/usr/ryans_rocket_shop",
+      "linkText": "Check out my eBay store",
       "image": "/images/hobbies/ebay.png"
     },
     {
@@ -1557,6 +1563,8 @@
       "name": "LANDONi Music",
       "description": "Logo and merchandise designer, videography producer, social media manager, and manager for LANDONi Music, New Orleans electronic music producer and DJ.",
       "category": "Music",
+      "url": "https://www.youtube.com/@LANDONiMusic",
+      "linkText": "Listen to LANDONi",
       "image": "/images/hobbies/music.png"
     },
     {
@@ -1564,6 +1572,8 @@
       "name": "Blockchain & Decentralization",
       "description": "Fascinated by the technical and social implications of blockchain technology, with a strong focus on decentralization, distributed ledgers, and the future of web3.",
       "category": "Technology",
+      "url": "https://ethereum.org/",
+      "linkText": "Explore Ethereum",
       "image": "/images/hobbies/blockchain.png"
     }
   ],
