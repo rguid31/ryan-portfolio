@@ -57,6 +57,79 @@
   },
   "projects": [
     {
+      "id": "down-the-bayou-meats",
+      "projectName": "Down the Bayou Meats",
+      "slug": "down-the-bayou-meats",
+      "category": "Full-Stack Infrastructure & Brand Architecture",
+      "status": "Active / In-Development",
+      "featured": true,
+      "order": 0,
+      "projectDescription": "Architected and deployed the digital infrastructure for Down the Bayou Meats, a regional provider. The project involved end-to-end systems deployment, professional communication infrastructure, and a machine-readable SEO strategy optimized for both human users and AI search agents.",
+      "shortDescription": "Full-stack infrastructure and brand architecture for an e-commerce platform.",
+      "myRole": "Lead Systems Developer & Brand Architect",
+      "responsibilities": [
+        "End-to-end site deployment: Managed domain registration, DNS configuration, and secure hosting environment.",
+        "Infrastructure Setup: Configured SSL certificates and SMTP protocols for professional domain-based email and reliable contact form delivery.",
+        "Semantic SEO & AI Optimization: Implemented machine-readable metadata and descriptive alt-text strategies to optimize for LLM crawlers and AI search agents.",
+        "Marketing Operations: Architected mailing list audience segments and lead generation workflows via integrated Contact Form 7.",
+        "Accessibility & UX Design: Engineered a WCAG-compliant high-contrast color scheme (Barn Red/Gold/Cream) and responsive Flexbox grid system."
+      ],
+      "techStack": [
+        "WordPress",
+        "Elementor Pro",
+        "Google Workspace",
+        "SSL/TLS",
+        "SMTP",
+        "Yoast SEO"
+      ],
+      "techCategories": {
+        "platform": [
+          "WordPress",
+          "Elementor Pro"
+        ],
+        "infrastructure": [
+          "DNS Management",
+          "SSL/TLS",
+          "SMTP Protocols"
+        ],
+        "business": [
+          "Google Workspace",
+          "Yoast SEO"
+        ]
+      },
+      "challengesFaced": [
+        {
+          "challenge": "System Interoperability & AI-Discoverability",
+          "description": "Ensuring cross-platform system interoperability and AI-discoverability while maintaining 99.9% uptime during DNS propagation.",
+          "solution": "Utilized advanced DNS management and structured data (Schema.org) to create a robust, machine-readable digital footprint that remains performant on both mobile and desktop hardware.",
+          "result": "Maintained 100% availability during migration and achieved high accessibility scores."
+        }
+      ],
+      "keyLearnings": [
+        "Mastered advanced DNS and SMTP configuration for business-critical communications",
+        "Developed strategies for AI-first SEO and machine-readable web content",
+        "Applied WCAG standards to branding and UI design",
+        "Streamlined lead generation through integrated marketing workflows"
+      ],
+      "impactMetrics": {
+        "uptime": "99.9%",
+        "accessibility": "WCAG Compliant",
+        "deployment": "End-to-end management"
+      },
+      "developmentTimeline": {
+        "duration": "Ongoing",
+        "phases": [
+          "DNS & Infrastructure",
+          "UX Design & Branding",
+          "SEO & AI Optimization"
+        ]
+      },
+      "targetAudience": "Customers, LLM Crawlers, and AI Search Agents",
+      "projectURL": "https://downthebayoumeats.com",
+      "repoURL": "",
+      "images": []
+    },
+    {
       "id": "synaptic-insight-engine",
       "projectName": "Synaptic Insight Engine",
       "slug": "synaptic-insight-engine",
@@ -780,15 +853,46 @@
       },
       "graduationDate": "2014-05",
       "dateLabel": "Graduated",
-      "description": "Focused on STEM subjects including AutoCAD, drafting, engineering, and physics. Graduated from the Honors Program.",
+      "description": "Focused on STEM subjects including electronics, robotics, drafting, engineering, and physics. Graduated from the Honors Program.",
       "achievements": [
         "Honors Program Graduate",
         "Member of the DHS Soccer Team",
-        "Specialized coursework in AutoCAD and Drafting"
+        "Specialized coursework in STEM focused on engineering, electronics, robotics, and drafting"
       ]
     }
   ],
   "experience": [
+    {
+      "id": "down-the-bayou-meats-role",
+      "title": "Lead Systems Developer & Brand Architect",
+      "company": "Down the Bayou Meats",
+      "employmentType": "Freelance",
+      "location": "Remote / New Orleans",
+      "startDate": "2025-12",
+      "endDate": null,
+      "current": true,
+      "description": "Architecting the technical foundation and brand identity for a growing regional business, with a focus on cross-platform interoperability and AI-discoverability.",
+      "responsibilities": [
+        "Managed domain registration, DNS configuration, and secure hosting environments",
+        "Configured SSL certificates and SMTP protocols for reliable professional communication",
+        "Implemented semantic SEO and structured data to optimize for AI crawlers and LLM search agents",
+        "Architected lead generation workflows and audience segmentation strategies",
+        "Designed WCAG-compliant high-contrast UI and brand color schemes"
+      ],
+      "skills": [
+        "Systems Infrastructure",
+        "DNS Management",
+        "SMTP/Email Security",
+        "Semantic SEO",
+        "WordPress/Elementor",
+        "UX Design"
+      ],
+      "achievements": [
+        "Established robust, machine-readable digital footprint",
+        "Achieved 99.9% uptime during complex DNS propagation",
+        "Delivered fully responsive, accessibility-first web design"
+      ]
+    },
     {
       "id": "outlier-ai-math-specialist",
       "title": "AI Math Specialist",
@@ -1410,7 +1514,7 @@
     },
     {
       "id": "landoni-music",
-      "name": "Landoni Music",
+      "name": "LANDONi Music",
       "description": "Logo and merchandise designer, videography producer, social media manager, and manager for LANDONi Music, New Orleans electronic music producer and DJ.",
       "category": "Music",
       "image": "/images/hobbies/music.jpg"
