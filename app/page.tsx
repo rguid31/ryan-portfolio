@@ -1,12 +1,16 @@
 import { getFeaturedProjects, getSummary, getPersonalInfo } from '@/lib/masterReport';
 import { generatePersonSchema, generateWebSiteSchema } from '@/lib/structuredData';
+import { getPortfolioStats } from '@/lib/stats';
 import ProjectCard from '@/components/ProjectCard';
+import StatsCard from '@/components/StatsCard';
 import Link from 'next/link';
+import { Briefcase, Code, GraduationCap, Award, FolderGit2, Star } from 'lucide-react';
 
 export default function HomePage() {
   const summary = getSummary();
   const personal = getPersonalInfo();
   const featuredProjects = getFeaturedProjects();
+  const stats = getPortfolioStats();
 
   const personSchema = generatePersonSchema();
   const websiteSchema = generateWebSiteSchema();
@@ -43,6 +47,57 @@ export default function HomePage() {
           >
             Contact Me
           </a>
+        </div>
+      </section>
+
+      {/* Stats Dashboard */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            Portfolio at a Glance
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400">
+            Self-documenting metrics from the Digital Twin architecture
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StatsCard
+            icon={FolderGit2}
+            value={stats.totalProjects}
+            label="Total Projects"
+            description="Full-stack, AI/ML, and automation projects"
+          />
+          <StatsCard
+            icon={Star}
+            value={stats.featuredProjects}
+            label="Featured Projects"
+            description="Highlighted portfolio pieces"
+          />
+          <StatsCard
+            icon={Briefcase}
+            value={`${stats.yearsExperience}+`}
+            label="Years Experience"
+            description="Professional and academic experience"
+          />
+          <StatsCard
+            icon={Code}
+            value={stats.totalSkills}
+            label="Technical Skills"
+            description="Across all technology categories"
+          />
+          <StatsCard
+            icon={GraduationCap}
+            value={`${stats.educationProgress.percentage}%`}
+            label="Degree Progress"
+            description={`${stats.educationProgress.completed}/${stats.educationProgress.total} credits complete`}
+          />
+          <StatsCard
+            icon={Award}
+            value={stats.activeCertifications}
+            label="Active Certifications"
+            description="Professional credentials"
+          />
         </div>
       </section>
 
