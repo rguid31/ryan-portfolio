@@ -43,17 +43,17 @@
     }
   },
   "summary": {
-    "headline": "Mathematics Major | Engineering Student | Web/App Developer | AI/ML Enthusiast",
-    "tagline": "Bridge builder between technical complexity and human understanding",
-    "description": "Results-driven professional with a unique blend of chemical engineering foundation, technical writing expertise, web/app development skills, and AI/ML technical aptitude. Demonstrated ability to bridge complex technical concepts with clear communication through 5+ production-deployed projects leveraging cutting-edge technologies (Next.js 15, OpenAI GPT-4, Google Gemini API).",
+    "headline": "Math & AI Specialist | Turning Ideas into Reality with Data & Logic",
+    "tagline": "Building an AI that turns ideas into reality using my experiences as a Chemical Engineering Academic, Data Analysis Professional, Future Mathematics Major, & AI Advocate",
+    "description": "Mathematically minded problem solver with a passion for turning complex data into actionable insights. Currently pursuing a B.S. in Mathematics with a secondary discipline in Chemical Engineering at LSU (88/120 credits complete), building a strong foundation in statistical analysis, computational modeling, and applied problem-solving. My career shift from chemical engineering to mathematics reflects my commitment to data-driven decision-making and my interest in the rapidly evolving fields of analytics, machine learning, and AI.",
     "coreCompetencies": [
-      "Technical Communication - Translating complex engineering and AI/ML concepts into accessible documentation",
-      "Full-Stack Development - End-to-end ownership from architecture to deployment (React, Node.js, Python)",
-      "AI/ML Integration - Production experience with OpenAI CLIP, GPT-4, and Google Gemini APIs",
-      "Data Analysis - Chemical engineering research background + modern data science tools",
-      "Problem Solving - Interdisciplinary approach combining engineering rigor with creative solutions"
+      "Data Analysis & Visualization (Python, SQL, Tableau)",
+      "Statistical Modeling (Regression, Hypothesis Testing)",
+      "Process Optimization & Efficiency Modeling",
+      "AI/ML Model Training & Evaluation (RLHF)",
+      "Technical Innovation & Field Instrumentation"
     ],
-    "valueProposition": "Bridge builder between technical complexity and human understanding, with hands-on coding skills and engineering analytical mindset."
+    "valueProposition": "Merging mathematical rigor, data science skills, and creative problem-solving to deliver measurable impact in innovation-driven environments."
   },
   "projects": [
     {
@@ -734,208 +734,272 @@
   ],
   "education": [
     {
-      "id": "lsu-bs-chemical-engineering",
-      "institution": "Louisiana State University (LSU)",
+      "id": "lsu-mathematics",
+      "institution": "Louisiana State University",
       "degree": "Bachelor of Science (B.S.)",
+      "field": "Mathematics",
+      "location": {
+        "city": "Baton Rouge",
+        "state": "Louisiana"
+      },
+      "startDate": "2025-08",
+      "graduationDate": "2027-12",
+      "status": "In Progress",
+      "description": "Pursuing Mathematics with a focus on statistical analysis and computational modeling. 88/120 credits complete.",
+      "achievements": [
+        "Secondary discipline in Chemical Engineering (131 credit hours completed)",
+        "Focus on Data Analysis and Machine Learning foundations"
+      ]
+    },
+    {
+      "id": "lsu-chemical-engineering",
+      "institution": "Louisiana State University",
+      "degree": "Coursework towards B.S.",
       "field": "Chemical Engineering",
       "location": {
         "city": "Baton Rouge",
         "state": "Louisiana"
       },
-      "graduationDate": "2018-05",
-      "gpa": 3.0,
-      "relevantCoursework": [
-        "Advanced Engineering Mathematics",
-        "Statistical Analysis and Data Interpretation",
-        "Computer-Aided Process Design",
-        "Technical Writing for Engineers",
-        "Process Control and Instrumentation"
-      ],
-      "achievements": [
-        "Completed 18-credit senior design capstone project",
-        "Developed expertise in MATLAB, Excel, and engineering simulation software",
-        "Strong foundation in analytical problem-solving and quantitative analysis"
-      ]
+      "startDate": "2014-08",
+      "graduationDate": "2023-12",
+      "description": "Completed extensive coursework (131/139 hours) in Chemical Engineering before pivoting to Mathematics to focus on data science and analytics."
     }
   ],
   "experience": [
     {
       "id": "outlier-ai-math-specialist",
       "title": "AI Math Specialist",
-      "company": "Outlier AI",
+      "company": "OutlierAI",
+      "employmentType": "Freelance",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2024-06",
+      "endDate": null,
+      "current": true,
+      "description": "Training and evaluating generative AI models to enhance mathematical reasoning and response accuracy.",
+      "responsibilities": [
+        "Generate high-quality training data for STEM subjects to advance model capabilities",
+        "Train AI models by rating, reviewing, and rewriting responses (RLHF) to enhance accuracy",
+        "Evaluate model performance on complex mathematical problems",
+        "Improve the relationship between human intent and AI data processing"
+      ],
+      "skills": [
+        "Reinforcement Learning from Human Feedback (RLHF)",
+        "Mathematical Modeling",
+        "AI Evaluation",
+        "Prompt Engineering",
+        "Data Labeling"
+      ],
+      "achievements": [
+        "Improved accuracy of math-related model outputs",
+        "Consistently maintained high quality ratings for training data generation"
+      ]
+    },
+    {
+      "id": "tracerco-field-technician",
+      "title": "Field Technician",
+      "company": "Tracerco",
       "employmentType": "Contract",
-      "location": "Remote",
-      "startDate": "2024-08",
-      "endDate": null,
-      "current": true,
-      "description": "Specialized AI training role focused on improving mathematical reasoning capabilities of large language models through expert evaluation, feedback, and quality assessment.",
+      "location": "Baton Rouge, Louisiana",
+      "startDate": "2024-04",
+      "endDate": "2024-05",
+      "current": false,
+      "description": "Technical innovation role focusing on scanning, tracing, and nucleonic instrumentation.",
       "responsibilities": [
-        "Evaluate AI-generated mathematical solutions for accuracy, clarity, and pedagogical effectiveness",
-        "Provide detailed feedback to improve model performance on complex math problems",
-        "Create high-quality training examples across algebra, calculus, statistics, and applied mathematics",
-        "Assess model responses for logical consistency and mathematical rigor",
-        "Collaborate with ML engineers to identify model weaknesses and improvement opportunities"
+        "Oversaw technical innovation as a subject matter expert in core technologies (scanning, tracing, nucleonic instrumentation)",
+        "Maintained strategic client partnerships to deliver tailored solutions",
+        "Enhanced operational efficiency and safety across diverse industries through data-driven diagnostics"
       ],
       "skills": [
-        "Advanced mathematics",
-        "Critical evaluation",
-        "Technical writing",
-        "Quality assurance",
-        "AI/ML model evaluation"
+        "Nucleonic Instrumentation",
+        "Field Data Collection",
+        "Process Diagnostics",
+        "Client Relationship Management"
       ],
-      "achievements": [
-        "Contributed to improving mathematical reasoning capabilities of frontier AI models",
-        "Maintained high-quality standards across 100+ evaluation tasks",
-        "Identified and documented patterns in model performance gaps"
-      ]
+      "achievements": []
     },
     {
-      "id": "freelance-technical-writer",
-      "title": "Technical Writing Freelancer",
-      "company": "Self-Employed",
-      "employmentType": "Freelance",
-      "location": "Remote",
-      "startDate": "2023-11",
-      "endDate": null,
-      "current": true,
-      "description": "Independent technical writer providing documentation, content creation, and communication services for technology companies, SaaS platforms, and engineering firms.",
+      "id": "acbl-safety-coordinator",
+      "title": "Safety and Training Coordinator",
+      "company": "American Commercial Barge Line (ACBL)",
+      "employmentType": "Full-time",
+      "location": "Harahan, Louisiana",
+      "startDate": "2023-10",
+      "endDate": "2024-03",
+      "current": false,
+      "description": "Cultivated a proactive safety culture through data analysis and training initiatives.",
       "responsibilities": [
-        "Research, write, and edit technical documentation (API docs, user guides, tutorials)",
-        "Translate complex technical concepts into accessible content for diverse audiences",
-        "Collaborate with engineering teams to document software features and workflows",
-        "Create developer documentation with code examples and integration guides",
-        "Maintain documentation version control and content management systems"
+        "Cultivated a proactive safety culture through promotion of safe work practices",
+        "Streamlined reporting procedures resulting in improved compliance ratings",
+        "Empowered employees through engaging safety training sessions",
+        "Proactively identified and mitigated potential safety hazards through expert analysis",
+        "Maintained safety programs at the forefront of industry standards"
       ],
       "skills": [
-        "Technical writing",
-        "API documentation",
-        "Markdown",
-        "Git",
-        "Information architecture"
+        "Safety Data Analysis",
+        "Training Facilitation",
+        "Risk Mitigation",
+        "Regulatory Compliance",
+        "Process Improvement"
       ],
       "achievements": [
-        "Improved documentation clarity scores by 40% (measured via user feedback)",
-        "Reduced support ticket volume through comprehensive troubleshooting guides",
-        "Built long-term client relationships with high satisfaction ratings"
-      ]
-    },
-    {
-      "id": "freelance-fullstack-developer",
-      "title": "Freelance Full-Stack Developer",
-      "company": "Self-Employed",
-      "employmentType": "Freelance",
-      "location": "Remote",
-      "startDate": "2023-01",
-      "endDate": null,
-      "current": true,
-      "description": "Independent software developer building modern web applications with focus on AI/ML integration, full-stack JavaScript/TypeScript, and Python automation tools.",
-      "responsibilities": [
-        "Architect and develop full-stack applications using Next.js, React, Node.js",
-        "Integrate AI/ML APIs (OpenAI, Google Gemini) into production applications",
-        "Build Python CLI tools for automation and data processing",
-        "Deploy and maintain applications on cloud platforms (Vercel, AWS)",
-        "Implement responsive UI/UX with modern CSS frameworks (Tailwind CSS)"
-      ],
-      "skills": [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Node.js",
-        "Python",
-        "OpenAI API",
-        "Google Gemini API",
-        "Vercel",
-        "Tailwind CSS"
-      ],
-      "achievements": [
-        "Deployed 5 production applications with 99%+ uptime",
-        "Built growing portfolio attracting client inquiries and collaboration opportunities",
-        "Demonstrated mastery of modern web development and AI/ML integration"
+        "Improved compliance ratings",
+        "Reduced reporting turnaround times"
       ]
     },
     {
       "id": "emerson-application-engineer",
       "title": "Application Engineer",
-      "company": "Emerson",
-      "employmentType": "Full-time",
-      "location": "Houston, Texas",
+      "company": "Emerson Automation Solutions",
+      "employmentType": "Internship",
+      "location": "Baton Rouge, Louisiana",
       "startDate": "2022-06",
       "endDate": "2022-08",
       "current": false,
-      "description": "Engineering role focused on developing technical solutions and client-facing applications for industrial automation systems.",
+      "description": "Developed automation solutions and software configurations for industrial control systems.",
       "responsibilities": [
-        "Designed and implemented engineering applications for process control systems",
-        "Collaborated with sales and engineering teams on client solutions",
-        "Created technical documentation and user guides for industrial software",
-        "Troubleshot complex automation system issues",
-        "Provided technical support to clients and field engineers"
+        "Established AgileOps suite of software applications on DeltaV, Honeywell, and Siemens platforms",
+        "Directed proposition to deploy admin distribution management (WSUS) to over 1200 virtual machines",
+        "Coded Excel macros in VBA to automate UI customization and maximize user efficiency",
+        "Pre-populated Site Information Documents using plant data from customer .FHX files"
       ],
       "skills": [
-        "Engineering problem-solving",
-        "Technical documentation",
-        "Industrial automation",
-        "DCS",
-        "SCADA"
+        "VBA Scripting",
+        "Windows Server Administration (WSUS)",
+        "SQL",
+        "AgileOps",
+        "Data Parsing"
       ],
       "achievements": [
-        "Successfully delivered client solutions within tight project timelines",
-        "Contributed to engineering documentation improvements"
+        "Automated security and maintenance updates for company network",
+        "Simplified user experience through custom Excel tooling"
       ]
     },
     {
-      "id": "georgia-pacific-production-specialist",
-      "title": "Production Specialist",
-      "company": "Georgia-Pacific",
-      "employmentType": "Full-time",
-      "location": "Port Hudson, Louisiana",
-      "startDate": "2021-09",
-      "endDate": "2022-05",
-      "current": false,
-      "description": "Process optimization and production support role in chemical manufacturing facility.",
-      "responsibilities": [
-        "Monitored and optimized chemical production processes",
-        "Analyzed production data to identify efficiency improvements",
-        "Troubleshot process equipment and instrumentation issues",
-        "Collaborated with operations teams on process safety initiatives",
-        "Maintained detailed production records and documentation"
-      ],
-      "skills": [
-        "Chemical process engineering",
-        "Data analysis",
-        "Process optimization",
-        "Safety protocols"
-      ],
-      "achievements": [
-        "Contributed to process efficiency improvements",
-        "Maintained safety record through rigorous protocol adherence"
-      ]
-    },
-    {
-      "id": "totalenergies-project-development-engineer",
-      "title": "Project Development Engineer",
+      "id": "totalenergies-project-intern",
+      "title": "Project Engineering Intern",
       "company": "TotalEnergies",
       "employmentType": "Internship",
       "location": "Port Arthur, Texas",
       "startDate": "2021-06",
       "endDate": "2021-08",
       "current": false,
-      "description": "Engineering internship focused on project development and process improvement initiatives at large-scale refinery.",
+      "description": "Led pre-FEED planning and process simulation for refinery optimization projects.",
       "responsibilities": [
-        "Supported engineering projects from concept through implementation",
-        "Conducted process analysis and feasibility studies",
-        "Created technical reports and project documentation",
-        "Collaborated with senior engineers on design reviews",
-        "Assisted in project cost estimation and timeline planning"
+        "Led pre-FEED planning for Condensate Splitter Unit (CSU) optimization project",
+        "Created working model of refinery CWS piping network using SimSci Pipephase software",
+        "Constructed test data sheets for evaluating VFD pump performance",
+        "Studied feasibility of CSU modifications for improved corrosion control"
       ],
       "skills": [
-        "Engineering project management",
-        "Technical writing",
-        "Process simulation",
-        "Cost-benefit analysis"
+        "SimSci Pipephase",
+        "Project Management",
+        "Process Simulation",
+        "Data Analysis",
+        "Cost Estimation"
       ],
       "achievements": [
-        "Successfully completed assigned engineering projects",
-        "Gained hands-on experience in large-scale industrial operations"
+        "Delivered comprehensive execution plan for FEED phase",
+        "Successfully modeled complex piping network"
+      ]
+    },
+    {
+      "id": "dwl-tech-sales-intern",
+      "title": "Industrial Equipment Sales Intern",
+      "company": "DWL Technology",
+      "employmentType": "Internship",
+      "location": "Walker, Louisiana",
+      "startDate": "2019-05",
+      "endDate": "2019-09",
+      "current": false,
+      "description": "Managed e-commerce operations, inventory, and sales analytics.",
+      "responsibilities": [
+        "Managed, organized, and sold surplus industrial engineering parts globally",
+        "Created e-commerce sales presence with over 200 transactions",
+        "Managed e-commerce sales metrics and KPIs to improve listing SEO",
+        "Attained eBay Top-Rated Seller status"
+      ],
+      "skills": [
+        "E-commerce Management",
+        "SEO",
+        "Sales Analytics",
+        "Inventory Management",
+        "Customer Service"
+      ],
+      "achievements": [
+        "100% positive customer sales feedback",
+        "Defect rating of less than 0.5%"
+      ]
+    },
+    {
+      "id": "nalco-tech-sales",
+      "title": "Technical Sales Engineer",
+      "company": "NALCO Champion",
+      "employmentType": "Internship",
+      "location": "Lafayette, Louisiana",
+      "startDate": "2018-05",
+      "endDate": "2018-08",
+      "current": false,
+      "description": "Provided specialty chemical recommendations and corrosion monitoring services.",
+      "responsibilities": [
+        "Conducted daily upstream oilfield surveys and provided chemical additive recommendations",
+        "Revamped pipeline corrosion monitoring services using computer modeling",
+        "correlated new failures with past data to forecast future flowline failures"
+      ],
+      "skills": [
+        "Corrosion Monitoring",
+        "Chemical Modeling",
+        "Data Correlation",
+        "Technical Sales"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "cornerstone-process-intern",
+      "title": "Process Engineering Intern",
+      "company": "Cornerstone Chemical Company",
+      "employmentType": "Internship",
+      "location": "Westwego, Louisiana",
+      "startDate": "2017-12",
+      "endDate": "2018-01",
+      "current": false,
+      "description": "Analyzed plant data and equipment performance.",
+      "responsibilities": [
+        "Utilized Pi ProcessBook and Pi Datalink to analyze plant data on production costs",
+        "Verified P&IDs with lead process engineers",
+        "Examined industrial turbines and compressors for failure mechanisms"
+      ],
+      "skills": [
+        "Pi ProcessBook",
+        "Data Analysis",
+        "Process Engineering",
+        "P&ID Verification"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "st-charles-computer-tech",
+      "title": "Computer Technician",
+      "company": "St. Charles Parish Public Schools",
+      "employmentType": "Summer",
+      "location": "Destrehan, Louisiana",
+      "startDate": "2014-05",
+      "endDate": "2014-08",
+      "current": false,
+      "description": "Deployed and optimized school technology infrastructure.",
+      "responsibilities": [
+        "Efficiently installed and configured computers and software across classrooms",
+        "Provided timely troubleshooting of hardware, software, and network issues",
+        "Developed and implemented an efficient photo identification system"
+      ],
+      "skills": [
+        "IT Support",
+        "Hardware Deployment",
+        "Network Configuration",
+        "System Administration"
+      ],
+      "achievements": [
+        "Streamlined school identification process",
+        "Maximized utilization of technology resources"
       ]
     }
   ],
