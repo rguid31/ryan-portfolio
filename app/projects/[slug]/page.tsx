@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getProjectBySlug, getProjects } from '@/lib/masterReport';
+import { generateProjectSchema } from '@/lib/structuredData';
 import Link from 'next/link';
 import { Project, Challenge } from '@/lib/types';
 
@@ -24,8 +25,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         notFound();
     }
 
+    const projectSchema = generateProjectSchema(project);
+
     return (
         <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-slate-100 selection:bg-blue-500/30">
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+            />
             {/* Navigation Header */}
             <div className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">

@@ -1,4 +1,5 @@
 import { getFeaturedProjects, getSummary, getPersonalInfo } from '@/lib/masterReport';
+import { generatePersonSchema, generateWebSiteSchema } from '@/lib/structuredData';
 import ProjectCard from '@/components/ProjectCard';
 import Link from 'next/link';
 
@@ -7,8 +8,21 @@ export default function HomePage() {
   const personal = getPersonalInfo();
   const featuredProjects = getFeaturedProjects();
 
+  const personSchema = generatePersonSchema();
+  const websiteSchema = generateWebSiteSchema();
+
   return (
     <div>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-24">
         <h1 className="text-6xl font-bold mb-6">{personal.fullName}</h1>
