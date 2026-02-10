@@ -94,6 +94,8 @@ export interface Project {
   projectURL: string | null;
   repoURL: string;
   images: string[];
+  narrative?: string;
+  roadmap?: string[];
 }
 
 export interface Challenge {
@@ -131,7 +133,11 @@ export interface Education {
   dateLabel?: string;
   gpa?: number;
   relevantCoursework: string[];
+  categorizedCoursework?: {
+    [category: string]: string[];
+  };
   achievements: string[];
+  description?: string;
 }
 
 export interface Skills {

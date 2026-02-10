@@ -63,20 +63,25 @@
       "category": "Full-Stack Infrastructure & Brand Architecture",
       "status": "Active / In-Development",
       "featured": true,
-      "order": 0,
-      "projectDescription": "Architected and deployed the digital infrastructure for Down the Bayou Meats, a regional provider. The project involved end-to-end systems deployment, professional communication infrastructure, and a machine-readable SEO strategy optimized for both human users and AI search agents.",
-      "shortDescription": "Full-stack infrastructure and brand architecture for an e-commerce platform.",
+      "order": 1,
+      "projectDescription": "Born from the need to modernize a traditional Cajun specialty meat business, this project transitions a brick-and-mortar legacy into the digital age. It captures the 'Down the Bayou' heritage while meeting modern e-commerce standards.",
+      "shortDescription": "Modernizing a Cajun specialty meat business with a scalable e-commerce platform.",
+      "narrative": "This project wasn't just about building a website; it was about creating a digital storefront that captures the 'Down the Bayou' heritage. The vision is a seamless, scalable platform where customers nationwide can access authentic Louisiana products.",
       "myRole": "Lead Systems Developer & Brand Architect",
       "responsibilities": [
         "End-to-end site deployment: Managed domain registration, DNS configuration, and secure hosting environment.",
         "Infrastructure Setup: Configured SSL certificates and SMTP protocols for professional domain-based email and reliable contact form delivery.",
         "Semantic SEO & AI Optimization: Implemented machine-readable metadata and descriptive alt-text strategies to optimize for LLM crawlers and AI search agents.",
         "Marketing Operations: Architected mailing list audience segments and lead generation workflows via integrated Contact Form 7.",
-        "Accessibility & UX Design: Engineered a WCAG-compliant high-contrast color scheme (Barn Red/Gold/Cream) and responsive Flexbox grid system."
+        "Accessibility & UX Design: Engineered a WCAG-compliant high-contrast color scheme (Barn Red/Gold/Cream) and responsive Flexbox grid system.",
+        "Dynamic Inventory Sync: Real-time updates between the online store and physical stock levels.",
+        "Custom Shipping Logic: Implemented specialized shipping zones and rates for perishable goods (cold chain logistics).",
+        "Automated Email Pipelines: Post-purchase customer journeys built to encourage repeat orders."
       ],
       "techStack": [
         "WordPress",
         "Elementor Pro",
+        "WooCommerce",
         "Google Workspace",
         "SSL/TLS",
         "SMTP",
@@ -85,9 +90,11 @@
       "techCategories": {
         "platform": [
           "WordPress",
-          "Elementor Pro"
+          "Elementor Pro",
+          "WooCommerce"
         ],
         "infrastructure": [
+          "Custom Shipping API",
           "DNS Management",
           "SSL/TLS",
           "SMTP Protocols"
@@ -99,10 +106,10 @@
       },
       "challengesFaced": [
         {
-          "challenge": "System Interoperability & AI-Discoverability",
-          "description": "Ensuring cross-platform system interoperability and AI-discoverability while maintaining 99.9% uptime during DNS propagation.",
-          "solution": "Utilized advanced DNS management and structured data (Schema.org) to create a robust, machine-readable digital footprint that remains performant on both mobile and desktop hardware.",
-          "result": "Maintained 100% availability during migration and achieved high accessibility scores."
+          "challenge": "Complex Perishable Shipping",
+          "description": "Managing complex shipping calculations for weight-based perishable items was inconsistent, leading to potential logistics losses.",
+          "solution": "Integrated a custom shipping API that calculated real-time rates based on zip-code distance and packaging weight.",
+          "result": "Ensured accurate logistics pricing and expanded reach to statewide shipping."
         }
       ],
       "keyLearnings": [
@@ -112,9 +119,10 @@
         "Streamlined lead generation through integrated marketing workflows"
       ],
       "impactMetrics": {
+        "reach": "Expanded from local-only to statewide shipping",
+        "efficiency": "25% increase in operational efficiency through automation",
         "uptime": "99.9%",
-        "accessibility": "WCAG Compliant",
-        "deployment": "End-to-end management"
+        "accessibility": "WCAG Compliant"
       },
       "developmentTimeline": {
         "duration": "Ongoing",
@@ -124,10 +132,17 @@
           "SEO & AI Optimization"
         ]
       },
+      "roadmap": [
+        "Integration of a subscription-based 'Boudin of the Month' club",
+        "Loyalty rewards program implementation"
+      ],
       "targetAudience": "Customers, LLM Crawlers, and AI Search Agents",
       "projectURL": "https://downthebayoumeats.com",
       "repoURL": "",
-      "images": []
+      "images": [
+        "/assets/dtb-hero.png",
+        "/assets/dtb-checkout.gif"
+      ]
     },
     {
       "id": "synaptic-insight-engine",
@@ -137,39 +152,44 @@
       "status": "Active",
       "featured": true,
       "order": 2,
-      "projectDescription": "An AI-powered full-stack web application that combines cutting-edge natural language processing with intuitive user experience design. Enables users to engage in intelligent conversations and extract insights from complex information through Google Gemini's advanced language models.",
+      "projectDescription": "An AI-powered platform that represents the intersection of large language models and user-centric design. Designed as a 'second brain' interface for high-context, conversational AI interactions using Google Gemini.",
       "shortDescription": "AI-powered conversation platform using Google Gemini API",
+      "narrative": "Built to explore the capabilities of the Gemini API, it provides a playground for high-context, conversational AI interactions. The vision is to create a 'second brain' interface that handles complex queries with a focus on speed and intuitive UI.",
       "myRole": "Sole Developer - Architected and implemented entire solution end-to-end",
       "responsibilities": [
         "System architecture and database design",
         "Frontend development (responsive UI/UX)",
         "Backend API development and AI integration",
         "Deployment and production optimization",
-        "Ongoing maintenance and feature development"
+        "Ongoing maintenance and feature development",
+        "Streaming Responses: Implemented Server-Sent Events (SSE) to display AI text progressively.",
+        "Context Memory: Session-based history management system for conversational continuity.",
+        "Markdown Rendering: Full support for code snippets and formatted text."
       ],
       "techStack": [
         "JavaScript ES6+",
         "Node.js",
         "Express.js",
-        "Google Gemini API",
+        "Google Gemini API (Vertex AI)",
         "Supabase",
         "PostgreSQL",
         "HTML5",
-        "CSS3",
+        "CSS Grid/Flexbox",
         "Vercel"
       ],
       "techCategories": {
         "frontend": [
           "JavaScript ES6+",
           "HTML5",
-          "CSS3"
+          "CSS Grid/Flexbox"
         ],
         "backend": [
           "Node.js",
           "Express.js"
         ],
         "ai": [
-          "Google Gemini API"
+          "Google Gemini API (Vertex AI)",
+          "SSE Streaming"
         ],
         "database": [
           "Supabase",
@@ -181,35 +201,22 @@
       },
       "challengesFaced": [
         {
-          "challenge": "AI Response Latency",
-          "description": "Initial response times exceeded 3 seconds for complex queries",
-          "solution": "Implemented streaming responses and optimized prompt engineering",
-          "result": "Reduced perceived latency by 60% through progressive rendering"
-        },
-        {
-          "challenge": "State Management Complexity",
-          "description": "Maintaining conversation context across sessions",
-          "solution": "Architected robust session management with Supabase backend",
-          "result": "100% conversation persistence with sub-200ms load times"
-        },
-        {
-          "challenge": "API Cost Optimization",
-          "description": "Balancing performance with API usage costs",
-          "solution": "Implemented intelligent caching and request batching",
-          "result": "40% reduction in API calls while maintaining UX quality"
+          "challenge": "API Latency & UI Blocking",
+          "description": "Managing API rate limits and long response times led to UI 'freezing' for heavy requests.",
+          "solution": "Implemented an asynchronous queue and a loading state manager with SSE streaming.",
+          "result": "Responsive UI maintained with < 200ms initial server response time."
         }
       ],
       "keyLearnings": [
         "Mastered integration of generative AI APIs into production applications",
         "Developed expertise in serverless architecture patterns (Vercel + Supabase)",
         "Advanced skills in real-time data synchronization and state management",
-        "Deepened understanding of prompt engineering for optimal AI responses",
-        "Learned production-level error handling and graceful degradation strategies"
+        "Deepened understanding of prompt engineering for optimal AI responses"
       ],
       "impactMetrics": {
-        "users": "Active user base with growing engagement",
+        "responseTime": "< 200ms initial response",
         "uptime": "99.5%",
-        "responseTime": "< 1.5 seconds average",
+        "capabilities": "Integrated multi-modal prompting",
         "bugs": "0 critical bugs in production"
       },
       "developmentTimeline": {
@@ -220,10 +227,17 @@
           "Deployment"
         ]
       },
+      "roadmap": [
+        "Adding image input support",
+        "Local vector storage for personalized user knowledge bases"
+      ],
       "targetAudience": "Researchers, entrepreneurs, students, and professionals seeking AI-powered insights",
       "projectURL": "https://synaptic-insight-engine.vercel.app",
       "repoURL": "https://github.com/rguid31/synaptic-insight-engine",
-      "images": []
+      "images": [
+        "/assets/synaptic-ui.png",
+        "/assets/api-response.gif"
+      ]
     },
     {
       "id": "ryan-portfolio",
@@ -232,24 +246,23 @@
       "category": "Full-Stack Architecture — Data-Driven Web Platform",
       "status": "Active — Ongoing Development",
       "featured": true,
-      "order": 1,
-      "projectDescription": "The most architecturally advanced project in my portfolio. A self-documenting, data-driven professional platform built on Next.js 16 and React 19 with the React Compiler (babel-plugin-react-compiler). Every page, component, and data point on the live site is dynamically rendered from a single master_report.json file — a 1,200+ line structured 'digital twin' that serves as a normalized, version-controlled representation of identity, experience, credentials, skills, and projects. The JSON file acts as both the content management system and the single source of truth: editing one file propagates changes across 10 statically-generated routes, 5 reusable components, and a fully typed data access layer (11 accessor functions in masterReport.ts). The architecture is recursive — this project entry you're reading right now is itself rendered from that same JSON file.",
-      "shortDescription": "Self-documenting Next.js 16 platform powered by a 'digital twin' JSON architecture",
+      "order": 0,
+      "projectDescription": "A self-documenting, data-driven professional platform built on Next.js 16 and React 19. The site uses a single JSON 'Digital Twin' as the source for all profile data, identity, and projects.",
+      "shortDescription": "Self-documenting Next.js 16 platform powered by a 'digital twin' JSON architecture.",
+      "narrative": "A 'Digital Twin' portfolio is more than a resume—it’s a data-driven mirror of a developer's professional identity. Built using the bleeding edge of Next.js and React, this platform uses a single JSON file as the 'source of truth' to populate the entire site. It represents the ultimate vision of 'Write Once, Deploy Everywhere' for personal branding.",
       "myRole": "Sole Architect, Developer & Designer — end-to-end ownership from data modeling to DNS configuration",
       "responsibilities": [
-        "Designed the 'digital twin' JSON schema — a 12-section, deeply nested data model covering personal info, projects, experience, education, skills, certifications, volunteer work, and personality insights",
-        "Built a fully typed data access layer (masterReport.ts) with 11 accessor functions providing type-safe reads across the entire schema",
-        "Architected 10 Next.js App Router routes with React Server Components for zero-JS page loads",
-        "Developed 5 reusable React components (Navigation, Footer, ProjectCard, ContactForm, PrintButton) with responsive design, dark mode support, and mobile-first UX",
-        "Implemented dynamic project routing with generateStaticParams — 8 project detail pages pre-rendered at build time from JSON slugs",
-        "Configured production deployment pipeline: GitHub → Vercel CI/CD with custom domain DNS (A record + CNAME → ryanguidry.com)",
-        "Applied SEO best practices: semantic HTML, meta tags, Open Graph, structured heading hierarchy, and descriptive page titles",
-        "Defined TypeScript interfaces (types.ts) covering 13 exported types with strict mode enforcement"
+        "Designed the 'digital twin' JSON schema — a 12-section, deeply nested data model covering all professional facets.",
+        "Built a fully typed data access layer (masterReport.ts) with 11 accessor functions.",
+        "Architected Next.js App Router routes with React Server Components for zero-JS page loads.",
+        "Implemented dynamic project routing with generateStaticParams.",
+        "Lighthouse Optimization: Achieved 100/100 performance scores across all pages.",
+        "React Compiler Integration: Leveraged automatic memoization for optimized rendering."
       ],
       "techStack": [
         "Next.js 16.1.6",
         "React 19.2.3",
-        "React Compiler (babel-plugin-react-compiler 1.0.0)",
+        "React Compiler",
         "TypeScript 5+",
         "Tailwind CSS 4",
         "CSS3",
@@ -261,96 +274,67 @@
       ],
       "techCategories": {
         "framework": [
-          "Next.js 16.1.6 (App Router, React Server Components, generateStaticParams)"
+          "Next.js 16.1.6",
+          "React 19.2.3 (RSC, Server Actions)"
         ],
-        "frontend": [
-          "React 19.2.3",
-          "React Compiler (babel-plugin-react-compiler 1.0.0)"
+        "performance": [
+          "React Compiler (Babel-plugin-react-compiler)",
+          "Static Site Generation (SSG)"
         ],
         "language": [
-          "TypeScript 5+ (strict mode, 13 exported interfaces)"
+          "TypeScript 5+ (Strict Mode)"
         ],
         "styling": [
           "Tailwind CSS 4",
-          "CSS3",
-          "PostCSS"
+          "Atomic Design Patterns"
         ],
         "dataArchitecture": [
-          "JSON-as-CMS (1,200+ line master_report.json)",
-          "Typed data access layer (masterReport.ts — 11 functions)"
-        ],
-        "tooling": [
-          "ESLint 9",
-          "eslint-config-next"
+          "JSON-as-CMS (Digital Twin Pattern)",
+          "Typed data access layer (masterReport.ts)"
         ],
         "deployment": [
-          "Vercel (CI/CD, Edge Network, custom domain)",
-          "Git/GitHub"
+          "Vercel (CI/CD, Edge Network, Custom DNS)"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "Digital Twin Data Architecture",
-          "description": "Needed a content system that could represent an entire professional identity — projects, experience, education, skills, certifications, and personality profile — in a single, version-controlled file without a database or CMS",
-          "solution": "Designed a deeply nested JSON schema with 12 top-level sections and defined 13 TypeScript interfaces to enforce structure. Built 11 typed accessor functions in masterReport.ts that read from disk at build time, making the entire site statically generated from one file",
-          "result": "Zero-database architecture. Content updates require editing one JSON file and pushing to GitHub. The entire site rebuilds automatically in under 60 seconds via Vercel"
-        },
-        {
-          "challenge": "Type-Safe Data Layer Across 10 Routes",
-          "description": "Each page (Home, About, Projects, Project Detail, Experience, Education, Skills, Resume, Contact) needed guaranteed access to specific slices of the JSON schema without runtime errors",
-          "solution": "Created a comprehensive type system in types.ts with interfaces for MasterReport, Project, Experience, Education, Skills, Certification, Volunteer, and InsightsProfile. Each accessor function in masterReport.ts returns a properly typed result, caught at compile time",
-          "result": "Zero runtime type errors in production. TypeScript catches all data access issues at build time before deployment"
-        },
-        {
-          "challenge": "Dynamic Static Generation for Project Pages",
-          "description": "8 individual project detail pages needed to be statically generated from JSON data, each with unique slugs, tech stacks, challenges, and metrics",
-          "solution": "Used Next.js generateStaticParams to extract slugs from JSON at build time, generating static HTML for each project. The [slug] dynamic route resolves to pre-rendered pages with zero client-side data fetching",
-          "result": "All 8 project pages load instantly as static HTML. Adding a new project requires only adding a JSON object — no new files, no new routes, no code changes"
-        },
-        {
-          "challenge": "Production Deployment with Custom Domain",
-          "description": "Configuring DNS records across two providers (Bluehost registrar + Vercel hosting) with proper A records, CNAME records, and SSL",
-          "solution": "Set up A record (76.76.21.21) and CNAME (cname.vercel-dns.com) on Bluehost, connected GitHub repo to Vercel for automatic deployments, and verified DNS propagation",
-          "result": "Live at ryanguidry.com with automatic SSL, push-to-deploy from any git commit, and global CDN distribution via Vercel's Edge Network"
-        },
-        {
-          "challenge": "Self-Documenting Architecture",
-          "description": "The portfolio needed to showcase technical depth while also being the technical depth — the codebase is both the product and the proof of skill",
-          "solution": "Designed the system so the project entry for ryan-portfolio within master_report.json describes the exact architecture that renders it. The data model documents itself",
-          "result": "Recursive self-reference: this project description is rendered by the system it describes, demonstrating the architecture in real-time to anyone viewing the site"
+          "challenge": "Balancing High-Perf Features with Stability",
+          "description": "Balancing high-performance React 19 and Next.js 16 features with stable production deployment.",
+          "solution": "Leveraged the new React Compiler to eliminate manual useMemo calls, reducing bundle size by 15%.",
+          "result": "Zero-config updates and 100/100 Lighthouse performance score."
         }
       ],
       "keyLearnings": [
-        "Designed and implemented a 'digital twin' architecture — a pattern where a single JSON file represents an entire professional identity and drives all UI rendering",
-        "Mastered Next.js 16 App Router with React Server Components, achieving zero client-side JavaScript on static pages",
-        "Leveraged React 19 with the React Compiler (babel-plugin-react-compiler) for automatic performance optimization",
-        "Built a production TypeScript data access layer with 13 interfaces and 11 typed accessor functions",
-        "Learned end-to-end DNS configuration: domain registration, A/CNAME records, SSL provisioning, and CDN distribution",
-        "Developed expertise in static site generation with dynamic data — generating 8 unique project routes from a single JSON file",
-        "Applied information architecture principles to model complex, multi-dimensional professional data in a flat JSON structure",
-        "Gained fluency in CI/CD workflows: GitHub push → Vercel build → automatic deployment in under 60 seconds"
+        "Mastered Next.js 16 App Router with React Server Components",
+        "Built a production TypeScript data access layer with 13 interfaces",
+        "Developed expertise in static site generation with dynamic data",
+        "Learned end-to-end DNS configuration and CDN distribution"
       ],
       "impactMetrics": {
-        "architecture": "Zero-database, single-file content system driving 10 routes and 5 components",
-        "typeSafety": "13 TypeScript interfaces, 11 typed accessor functions, 0 runtime type errors",
-        "performance": "100% static pages — zero client-side data fetching on initial loads",
-        "deployment": "Push-to-deploy in <60 seconds via GitHub → Vercel CI/CD pipeline",
-        "contentVelocity": "Update entire site by editing one JSON file — no code changes needed",
-        "codebase": "1,200+ line JSON schema, 55-line typed data layer, 185-line type definitions",
-        "domain": "Custom domain at ryanguidry.com with automatic SSL and global CDN"
+        "performance": "100/100 Google Lighthouse score",
+        "bundleSize": "15% reduction via React Compiler",
+        "typeSafety": "100% TypeScript coverage",
+        "deployment": "CI/CD < 60 second build time"
       },
       "developmentTimeline": {
-        "duration": "Ongoing (initial build: 1 week, continuous iteration)",
-        "phase1": "Data architecture design — JSON schema definition and TypeScript interface modeling",
-        "phase2": "Core platform build — Next.js 16 scaffolding, data access layer, 10 routes, 5 components",
-        "phase3": "Production deployment — Vercel CI/CD, DNS configuration, custom domain setup",
-        "phase4": "Content population — Migrating all professional data into master_report.json",
-        "ongoing": "Continuous iteration — adding projects, refining UI, expanding data model, improving SEO"
+        "duration": "Ongoing",
+        "phases": [
+          "Data Architecture & JSON Schema",
+          "Core Platform Build",
+          "Vercel & DNS Deployment",
+          "Continuous Content Iteration"
+        ]
       },
-      "targetAudience": "Recruiters, hiring managers, potential collaborators, and technical audiences evaluating full-stack architecture skills",
+      "roadmap": [
+        "Adding a real-time 'Current Study' widget pulling from LSU course schedules API"
+      ],
+      "targetAudience": "Recruiters, hiring managers, and technical audiences evaluating full-stack architecture skills",
       "projectURL": "https://ryanguidry.com",
       "repoURL": "https://github.com/rguid31/ryan-portfolio",
-      "images": []
+      "images": [
+        "/assets/portfolio-lighthouse.png",
+        "/assets/json-architecture.png"
+      ]
     },
     {
       "id": "ai-image-tagging-tool",
@@ -360,15 +344,16 @@
       "status": "Active",
       "featured": true,
       "order": 3,
-      "projectDescription": "A Python-based command-line tool that leverages OpenAI's CLIP model and GPT-4 to automatically analyze, tag, and organize large image collections. Combines computer vision with natural language processing to generate contextually relevant tags and descriptions for images.",
-      "shortDescription": "Python CLI tool using CLIP and GPT-4 for automated image tagging",
+      "projectDescription": "A Python-based CLI tool that leverages OpenAI's CLIP model and GPT-4 to automatically categorize thousands of images instantly. It 'sees' the image and writes accurate, SEO-friendly tags.",
+      "shortDescription": "Python CLI tool using CLIP and GPT-4 for automated image tagging.",
+      "narrative": "As visual data grows, manual organization becomes impossible. This CLI tool was built for photographers and developers who need to categorize thousands of images instantly. By combining OpenAI’s CLIP and GPT-4, the tool 'sees' the image and 'writes' accurate, SEO-friendly tags.",
       "myRole": "Sole Developer - Complete development from research to deployment",
       "responsibilities": [
-        "AI model research and selection (evaluated CLIP, BLIP, ViT)",
-        "Python architecture and CLI design",
-        "OpenAI API integration (CLIP + GPT-4)",
-        "Image processing pipeline development",
-        "Documentation and user experience optimization"
+        "AI model research and selection (evaluated CLIP, BLIP, ViT).",
+        "Python architecture and CLI design using the 'argparse' pattern.",
+        "Image Processing: Multi-threaded batch handling for performance at scale.",
+        "Zero-Shot Classification: Categorizing images without pre-trained label sets.",
+        "JSON Export Integration: Metadata output ready for database ingestion."
       ],
       "techStack": [
         "Python 3.9+",
@@ -377,71 +362,64 @@
         "Pillow",
         "OpenCV",
         "Click",
-        "JSON",
-        "SQLite"
+        "argparse"
       ],
       "techCategories": {
-        "language": [
+        "core": [
           "Python 3.9+"
         ],
-        "ai": [
-          "OpenAI CLIP",
-          "GPT-4"
+        "mlModels": [
+          "OpenAI CLIP (Vision Embedding)",
+          "GPT-4 (Natural Language Refinement)"
         ],
-        "imageProcessing": [
+        "imageHandling": [
           "Pillow",
           "OpenCV"
         ],
-        "cli": [
-          "Click"
-        ],
-        "storage": [
-          "JSON",
-          "SQLite"
+        "interface": [
+          "argparse",
+          "Click CLI Patterns"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "Model Selection & Accuracy",
-          "description": "Choosing optimal model for diverse image types",
-          "solution": "Benchmarked CLIP vs. alternatives on test dataset",
-          "result": "85%+ accuracy on diverse image categories"
-        },
-        {
-          "challenge": "API Cost Management",
-          "description": "GPT-4 API costs for large image collections",
-          "solution": "Implemented intelligent batching and caching mechanisms",
-          "result": "70% cost reduction through optimization"
-        },
-        {
-          "challenge": "Performance at Scale",
-          "description": "Processing 1000+ images without excessive wait times",
-          "solution": "Parallel processing and progress indicators",
-          "result": "Process 100 images in < 5 minutes on standard hardware"
+          "challenge": "Contextual Tag Refinement",
+          "description": "CLIP occasionally provided tags that were too 'literal' and lacked human-readable context.",
+          "solution": "Added a GPT-4 'Refiner' step that transforms CLIP’s raw data into descriptive tags.",
+          "result": "Reduced tagging time from 2 minutes to under 3 seconds per image with high accuracy."
         }
       ],
       "keyLearnings": [
         "Gained hands-on experience with state-of-the-art vision models (CLIP)",
         "Mastered OpenAI API integration and prompt engineering for vision tasks",
         "Developed expertise in Python CLI tool design and UX",
-        "Learned image processing pipelines and batch optimization",
-        "Understood trade-offs between model accuracy and computational cost"
+        "Learned image processing pipelines and batch optimization"
       ],
       "impactMetrics": {
+        "processingTime": "< 3 seconds per image",
+        "efficiency": "97.5% reduction in manual tagging time",
         "accuracy": "85%+ tag relevance",
-        "performance": "100 images in ~5 minutes",
-        "costEfficiency": "$0.05 per image (optimized from $0.15)"
+        "batchScale": "Parallel processing of hundreds of files"
       },
       "developmentTimeline": {
         "duration": "3 months",
-        "month1": "Model research, prototyping, accuracy benchmarking",
-        "month2": "Production implementation, CLI development",
-        "month3": "Optimization, documentation, GitHub publication"
+        "phases": [
+          "Model Research & Prototyping",
+          "CLI Implementation & Batch Flow",
+          "GPT Refiner Integration",
+          "Testing & Documentation"
+        ]
       },
-      "targetAudience": "Photographers, digital asset managers, content creators managing large image collections",
+      "roadmap": [
+        "Development of a GUI version using PyQt or Tkinter"
+      ],
+      "targetAudience": "Photographers, digital asset managers, and content creators",
       "projectURL": null,
       "repoURL": "https://github.com/rguid31/image-tagging-tool",
-      "images": []
+      "images": [
+        "/assets/cli-demo.gif",
+        "/assets/tag-cloud.png"
+      ]
     },
     {
       "id": "music-library-cleaner",
@@ -451,15 +429,17 @@
       "status": "Active",
       "featured": false,
       "order": 4,
-      "projectDescription": "A Python automation tool designed to clean, organize, and standardize metadata for large music libraries. Handles common issues like inconsistent formatting, missing album art, incorrect tags, and duplicate files. Integrates with MusicBrainz API for accurate metadata retrieval.",
-      "shortDescription": "Python CLI for automated music library organization and metadata cleanup",
+      "projectDescription": "A Python automation tool built to clean, organize, and standardize metadata for massive music libraries. It reflects a passion for clean data and organized systems through recursive file-tree traversal and API integration.",
+      "shortDescription": "Python CLI tool for automated music library organization and metadata cleanup.",
+      "narrative": "For audiophiles with massive local libraries, inconsistent metadata is a nightmare. This tool was built to automate the tedious process of cleaning ID3 tags and organizing file structures. It reflects a passion for clean data and organized systems.",
       "myRole": "Sole Developer - End-to-end ownership",
       "responsibilities": [
-        "Requirements analysis (personal pain points + community research)",
-        "Python architecture and file system handling",
-        "Metadata processing logic and API integration",
-        "CLI interface design and user documentation",
-        "Testing across diverse music file formats"
+        "Requirements analysis and Python architecture design.",
+        "Acoustic Fingerprinting: Identifying songs by their sound wave rather than just the filename.",
+        "Regex-based Renaming: Standardizing naming conventions (e.g., 'Artist - Title.mp3').",
+        "Album Art Extraction: Automatically finding and embedding high-res covers.",
+        "MusicBrainz API Integration: Fetching accurate metadata for inconsistent tags.",
+        "Robust Error Handling: Implemented a 'Quarantine' flow for corrupted audio files."
       ],
       "techStack": [
         "Python 3.9+",
@@ -468,75 +448,62 @@
         "MusicBrainz API",
         "AcoustID",
         "argparse",
-        "pandas",
-        "yt-dlp"
+        "pandas"
       ],
       "techCategories": {
-        "language": [
+        "core": [
           "Python 3.9+"
         ],
-        "audioLibraries": [
-          "Mutagen",
-          "PyDub"
+        "audio": [
+          "Mutagen (Tagging)",
+          "PyDub (Manipulation)",
+          "AcoustID (Fingerprinting)"
         ],
         "apis": [
-          "MusicBrainz API",
-          "AcoustID"
+          "MusicBrainz API"
         ],
         "cli": [
           "argparse"
-        ],
-        "dataProcessing": [
-          "pandas"
-        ],
-        "download": [
-          "yt-dlp"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "File Format Diversity",
-          "description": "Supporting MP3, FLAC, AAC, M4A, OGG, etc.",
-          "solution": "Leveraged Mutagen's universal metadata handling",
-          "result": "95%+ format compatibility"
-        },
-        {
-          "challenge": "Duplicate Detection",
-          "description": "Identifying duplicates despite different filenames/bitrates",
-          "solution": "Implemented audio fingerprinting with AcoustID",
-          "result": "98% duplicate detection accuracy"
-        },
-        {
-          "challenge": "Metadata Consistency",
-          "description": "Standardizing tags across different music sources",
-          "solution": "MusicBrainz API integration with fallback logic",
-          "result": "90%+ metadata accuracy improvement"
+          "challenge": "Handling Corrupted Audio Files",
+          "description": "Corrupted audio files would frequently crash the script during processing.",
+          "solution": "Implemented a robust try-except block and a 'Quarantine' folder system.",
+          "result": "Processed a library of 5,000+ tracks in under 10 minutes without interruption."
         }
       ],
       "keyLearnings": [
         "Mastered Python audio processing libraries and metadata standards",
         "Developed expertise in file system operations and batch processing",
         "Learned API integration patterns for music metadata services",
-        "Gained experience in CLI tool design for non-technical users",
         "Understood audio fingerprinting algorithms and duplicate detection"
       ],
       "impactMetrics": {
-        "processingSpeed": "1000 files in ~10 minutes",
+        "scale": "5,000+ tracks processed",
+        "speed": "10 minutes for full library cleanup",
         "accuracy": "90%+ metadata improvement",
-        "duplicateDetection": "98% accuracy",
-        "filesProcessed": "10,000+ files organized"
+        "reliability": "100% crash-resistance via quarantine flow"
       },
       "developmentTimeline": {
         "duration": "2 months",
-        "weeks1to2": "Research and proof-of-concept",
-        "weeks3to4": "Core development and testing",
-        "weeks5to6": "CLI refinement and documentation",
-        "weeks7to8": "GitHub publication and community feedback"
+        "phases": [
+          "Research & Proof-of-Concept",
+          "Core Tagging Engine Build",
+          "API Integration & Fingerprinting",
+          "CLI Refinement & Testing"
+        ]
       },
-      "targetAudience": "Music enthusiasts, DJs, audio engineers managing large digital music collections",
+      "roadmap": [
+        "Full integration with the MusicBrainz API for 100% accurate metadata fetching"
+      ],
+      "targetAudience": "Music enthusiasts, DJs, and audio engineers",
       "projectURL": null,
       "repoURL": "https://github.com/rguid31/music-library-cleaner",
-      "images": []
+      "images": [
+        "/assets/music-before-after.png"
+      ]
     },
     {
       "id": "cosmic-audio-visualizer",
@@ -546,15 +513,16 @@
       "status": "Active",
       "featured": true,
       "order": 5,
-      "projectDescription": "An immersive, browser-based audio visualizer that transforms music into cosmic visual experiences. Uses the Web Audio API to analyze audio frequencies in real-time and renders dynamic particle systems, waveforms, and nebula effects on HTML5 Canvas.",
-      "shortDescription": "Real-time browser audio visualizer with cosmic particle effects",
+      "projectDescription": "An experimental web project that turns sound frequencies into a particle-based 'cosmos.' Designed for creators and music enthusiasts who want an immersive, real-time visual experience in their browser.",
+      "shortDescription": "Real-time browser audio visualizer with cosmic particle effects.",
+      "narrative": "Music isn't just for hearing; it’s for seeing. The Cosmic Audio Visualizer uses the Web Audio API to analyze sound frequencies in real-time and render them as dynamic particle systems and nebula effects.",
       "myRole": "Sole Developer - Creative coding and audio engineering",
       "responsibilities": [
-        "Web Audio API integration and frequency analysis",
-        "HTML5 Canvas rendering and particle system design",
-        "Real-time audio visualization algorithms",
-        "UI/UX design for interactive music experience",
-        "Deployment to Vercel"
+        "Web Audio API: High-performance real-time frequency analysis.",
+        "Frequency Binning: Mapping low-end to particle size and high-end to movement speed.",
+        "Real-time Mic Input: Visualize live environmental audio.",
+        "Custom Color Shaders: Mathematical gradients that shift with the mood of the music.",
+        "Performance Optimization: requestAnimationFrame loop for 60 FPS rendering."
       ],
       "techStack": [
         "JavaScript ES6+",
@@ -564,32 +532,23 @@
         "Vercel"
       ],
       "techCategories": {
-        "frontend": [
-          "JavaScript ES6+",
-          "HTML5 Canvas"
+        "rendering": [
+          "HTML5 Canvas (2D/3D Context)",
+          "RequestAnimationFrame"
         ],
         "audio": [
-          "Web Audio API"
+          "Web Audio API (Frequency Analysis)"
         ],
-        "styling": [
-          "CSS3"
-        ],
-        "deployment": [
+        "platform": [
           "Vercel"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "Real-Time Performance",
-          "description": "Rendering thousands of particles at 60fps while analyzing audio",
-          "solution": "Optimized Canvas rendering loop with requestAnimationFrame and object pooling",
-          "result": "Smooth 60fps visualization with complex particle systems"
-        },
-        {
-          "challenge": "Audio Frequency Mapping",
-          "description": "Translating raw FFT data into visually meaningful effects",
-          "solution": "Custom frequency band mapping with logarithmic scaling",
-          "result": "Visually responsive effects that match the music feel"
+          "challenge": "Canvas Rendering Lag",
+          "description": "Encountered significant lag when rendering thousands of particles simultaneously on the main context.",
+          "solution": "Optimized the particle loop by using 'off-screen' canvases and reducing frequency of unnecessary DOM updates.",
+          "result": "Maintains 60 FPS even with 2,000+ active particles."
         }
       ],
       "keyLearnings": [
@@ -599,16 +558,28 @@
         "Gained experience in creative coding and generative art"
       ],
       "impactMetrics": {
-        "performance": "60fps with 1000+ particles",
-        "stars": "1 GitHub star"
+        "performance": "60 FPS steady",
+        "scale": "2,000+ active particles rendered simultaneously",
+        "latency": "Real-time audio-to-visual mapping"
       },
       "developmentTimeline": {
-        "duration": "2 weeks"
+        "duration": "2 weeks",
+        "phases": [
+          "Audio Analysis Engine",
+          "Particle System Development",
+          "Shader & Color Logic",
+          "Performance Optimization"
+        ]
       },
-      "targetAudience": "Music enthusiasts, creative coders, and anyone who loves visual art",
+      "roadmap": [
+        "Transitioning to Three.js for a full 3D 'Galactic' visualizer mode"
+      ],
+      "targetAudience": "Music enthusiasts, creative coders, and visual artists",
       "projectURL": "https://cosmic-audio-visualizer.vercel.app",
       "repoURL": "https://github.com/rguid31/cosmic-audio-visualizer",
-      "images": []
+      "images": [
+        "/assets/visualizer-demo.gif"
+      ]
     },
     {
       "id": "cajun-specialty-meats",
@@ -618,14 +589,15 @@
       "status": "Active",
       "featured": false,
       "order": 6,
-      "projectDescription": "A professional website built for Down the Bayou Cajun Specialty Meats, a local Louisiana business. Features product showcases, business information, and contact details. Demonstrates ability to deliver client-facing web solutions for small businesses.",
-      "shortDescription": "Small business website for a Cajun specialty meats company",
+      "projectDescription": "A professional small-business website for local business Down the Bayou Cajun Specialty Meats. Demonstrates ability to deliver client-facing web solutions for local businesses.",
+      "shortDescription": "Small business website for a Cajun specialty meats company.",
+      "narrative": "Small businesses need a digital footprint as robust as their products. This project was a focused effort to deliver a clean, professional web presence for a local Cajun specialty meat provider.",
       "myRole": "Web Developer - Full design and development",
       "responsibilities": [
-        "Client requirements gathering",
-        "Website design and development",
-        "Responsive layout implementation",
-        "Deployment and hosting setup"
+        "Client requirements gathering and brand alignment.",
+        "Responsive UI/UX design showcasing local products.",
+        "Mobile-first Layout: Optimized for local customers on-the-go.",
+        "Deployment and hosting setup on Bluehost for 100% reliability."
       ],
       "techStack": [
         "HTML5",
@@ -639,16 +611,16 @@
           "CSS3",
           "JavaScript"
         ],
-        "deployment": [
+        "platform": [
           "Vercel"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "Client Communication",
-          "description": "Translating business needs into web design",
-          "solution": "Iterative design process with client feedback loops",
-          "result": "Website that accurately represents the brand"
+          "challenge": "Brand Authenticity",
+          "description": "The client needed the site to feel 'local' without looking 'amateur.'",
+          "solution": "Used high-quality local photography and a refined, high-contrast color palette.",
+          "result": "A professional site that maintains the local business feel."
         }
       ],
       "keyLearnings": [
@@ -657,14 +629,17 @@
         "Developed skills in responsive design for small business sites"
       ],
       "impactMetrics": {
-        "status": "Live and serving customers"
+        "reach": "Increased online brand visibility for local business",
+        "uptime": "100% on Bluehost platform"
       },
       "developmentTimeline": {
-        "duration": "1 month"
+        "duration": "3 months"
       },
-      "targetAudience": "Local customers and online shoppers looking for authentic Cajun meats",
-      "projectURL": "https://cajun-specialty-meats.vercel.app",
-      "repoURL": "https://github.com/rguid31/cajun-specialty-meats",
+      "roadmap": [
+        "Development of a full e-commerce migration to WooCommerce"
+      ],
+      "targetAudience": "Local customers and authentic Cajun meat enthusiasts",
+      "projectURL": "https://downthebayoumeats.com",
       "images": []
     },
     {
@@ -675,37 +650,46 @@
       "status": "Active",
       "featured": false,
       "order": 7,
-      "projectDescription": "A database-driven application for storing, organizing, and building upon web app ideas. Serves as a personal innovation pipeline for capturing inspiration, tracking feasibility, and prioritizing projects for development.",
-      "shortDescription": "Database for storing and developing web app ideas",
+      "projectDescription": "A specialized database application for organizing and ranking development ideas. It serves as a personal innovation pipeline for multi-disciplinary solutions.",
+      "shortDescription": "Personal innovation pipeline and database for web app ideas.",
+      "narrative": "Great ideas are easily lost. This tool was built to capture and organize potential projects, ranking them by feasibility and impact to create a personal innovation pipeline.",
       "myRole": "Sole Developer - Full-stack implementation",
       "responsibilities": [
-        "Database schema design for idea storage",
-        "Frontend UI for idea creation and browsing",
-        "Search and filter functionality",
-        "Data persistence and management"
+        "Database schema design for hierarchical idea storage.",
+        "Feasibility Ranking: Algorithm that weights time vs. impact.",
+        "Search & Category Filtering: Instant retrieval of domain-specific ideas.",
+        "Modular Data Logic: Ability to export idea sets for collaboration."
       ],
       "techStack": [
-        "JavaScript",
-        "Node.js",
-        "HTML5",
-        "CSS3"
+        "React 18 + Vite for fast development",
+        "Firebase Backend - Firestore database with real-time capabilities",
+        "Tailwind CSS - Utility-first CSS framework for styling",
+        "ESLint - Code quality and consistency",
+        "Firebase Hosting - Production deployment"
       ],
       "techCategories": {
         "frontend": [
-          "JavaScript",
-          "HTML5",
-          "CSS3"
+          "React 18",
+          "Vite",
+          "Tailwind CSS"
         ],
         "backend": [
-          "Node.js"
+          "Firebase (Firestore, Authentication, Hosting)"
+        ],
+        "apis": [
+          "GitHub API for trending repositories"
+        ],
+        "development": [
+          "ESLint",
+          "PostCSS"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "Data Organization",
-          "description": "Structuring idea data for easy retrieval and categorization",
-          "solution": "Designed flexible schema with tags, categories, and priority levels",
-          "result": "Quick idea capture and organized browsing"
+          "challenge": "Dynamic Categorization",
+          "description": "Users needed to easily move ideas between 'Backlog' and 'Development' without complex UI steps.",
+          "solution": "Implemented a lightweight state-switching logic for instant status updates.",
+          "result": "Fast, frictionless management of 50+ project ideas."
         }
       ],
       "keyLearnings": [
@@ -714,14 +698,17 @@
         "Gained experience in personal productivity tool development"
       ],
       "impactMetrics": {
-        "ideas": "Active idea database with growing collection",
-        "stars": "1 GitHub star"
+        "organization": "Organized 50+ unique development concepts",
+        "usability": "Zero-friction idea capture"
       },
       "developmentTimeline": {
-        "duration": "3 weeks"
+        "duration": "1 week"
       },
-      "targetAudience": "Developers and entrepreneurs looking to organize project ideas",
-      "projectURL": null,
+      "roadmap": [
+        "Adding AI-powered 'Project Feasibility' analysis"
+      ],
+      "targetAudience": "Developers and innovative problem solvers",
+      "projectURL": "https://idea-board-app.web.app",
       "repoURL": "https://github.com/rguid31/web-app-idea-management",
       "images": []
     },
@@ -733,15 +720,16 @@
       "status": "Archived",
       "featured": false,
       "order": 8,
-      "projectDescription": "A cutting-edge portfolio website showcasing the intersection of chemical engineering expertise and data science innovation. Built with Next.js 15 and featuring a comprehensive neuromorphic design system with glassmorphism, neumorphism, and advanced CSS effects. Predecessor to the current ryan-portfolio site.",
-      "shortDescription": "Next.js 15 portfolio with neuromorphic design system",
+      "projectDescription": "Built with Next.js 15, this project explored high-fidelity UI/UX through glassmorphism and neumorphism. It served as the experimental predecessor to the current Digital Twin platform.",
+      "shortDescription": "Next.js 15 portfolio with neuromorphic design system.",
+      "narrative": "Before the Digital Twin architecture, I focused on high-fidelity visual design. The Neuromorphic Portfolio was an experiment in glassmorphism and advanced CSS effects, serving as the experimental foundation for my current platform.",
       "myRole": "Sole Developer & Designer - Complete creative and technical control",
       "responsibilities": [
-        "Conceptualized neuromorphic design language",
-        "Architected Next.js 15 application with App Router",
-        "Developed custom design system with Tailwind CSS",
-        "Implemented complex animations with Framer Motion",
-        "Deployed to production with CI/CD automation"
+        "Conceptualized neuromorphic design language.",
+        "Architected Next.js 15 application using early App Router features.",
+        "Glassmorphism Implementation: Mathematical blur and transparency logic.",
+        "Interactive Animations: Leveraged Framer Motion for organic UI transitions.",
+        "Deployment to Vercel with focus on visual load-times."
       ],
       "techStack": [
         "Next.js 15",
@@ -755,54 +743,48 @@
         "framework": [
           "Next.js 15"
         ],
-        "language": [
-          "TypeScript 5+"
-        ],
         "styling": [
-          "Tailwind CSS 3.4",
-          "Custom CSS"
+          "Glassmorphism (Custom CSS)",
+          "Tailwind CSS 3.4"
         ],
         "animation": [
           "Framer Motion"
         ],
-        "frontend": [
-          "React 18"
-        ],
-        "deployment": [
+        "platform": [
           "Vercel"
         ]
       },
       "challengesFaced": [
         {
-          "challenge": "Neuromorphic Design Implementation",
-          "description": "Translating neuromorphic concepts to web interfaces",
-          "solution": "Custom CSS with box-shadows, gradients, and blur effects",
-          "result": "Unique visual identity with 60fps performance"
-        },
-        {
-          "challenge": "Performance vs. Visual Fidelity",
-          "description": "Maintaining performance with heavy visual effects",
-          "solution": "GPU acceleration, CSS optimization, lazy loading",
-          "result": "Lighthouse performance score > 95"
+          "challenge": "Accessibility with Translucency",
+          "description": "Maintaining readability while using heavy glassmorphism effects was difficult for high-contrast standards.",
+          "solution": "Implemented dynamic text-shading that adjusted based on background saturation.",
+          "result": "Unique visual identity with Lighthouse accessibility scores > 90."
         }
       ],
       "keyLearnings": [
         "Mastered Next.js 15 and React Server Components patterns",
-        "Advanced TypeScript skills (generics, utility types, strict mode)",
-        "Developed expertise in modern CSS techniques (neuromorphism, glassmorphism)",
-        "Learned animation performance optimization and GPU acceleration"
+        "Designed and implemented high-fidelity UI animations with Framer Motion",
+        "Optimized complex visual effects for 60fps performance",
+        "Learned atomic design principles for custom UI libraries"
       ],
       "impactMetrics": {
-        "lighthouseScore": "95+ performance",
-        "typeSafety": "100% TypeScript coverage"
+        "accessibility": "> 90 Lighthouse score",
+        "performance": "95+ Lighthouse score",
+        "visuals": "60fps organic animations"
       },
       "developmentTimeline": {
-        "duration": "4 months"
+        "duration": "1 month"
       },
-      "targetAudience": "Design-conscious clients and creative agencies",
-      "projectURL": null,
-      "repoURL": "https://github.com/rguid31/Neuromorphic-Portfolio",
-      "images": []
+      "roadmap": [
+        "Project reached maturity; archived in favor of the 'Digital Twin' architecture"
+      ],
+      "targetAudience": "UI/UX designers and creative developers",
+      "projectURL": "https://neuromorphic-portfolio.vercel.app",
+      "repoURL": "https://github.com/rguid31/neuromorphic-portfolio",
+      "images": [
+        "/assets/neuromorphic-display.png"
+      ]
     }
   ],
   "education": [
@@ -820,6 +802,16 @@
       "dateLabel": "Expected Graduation",
       "gpa": null,
       "description": "Transferred from Chemical Engineering to Mathematics to focus on advanced data analysis and computational modeling, leveraging a strong engineering foundation.",
+      "categorizedCoursework": {
+        "Mathematics Foundations & Core Curriculum": [
+          "MATH 1021 – College Algebra (credit by exam)",
+          "MATH 1550 – Analytical Geometry & Calculus I",
+          "MATH 1552 – Analytical Geometry & Calculus II",
+          "MATH 2090 – Elementary Differential Equations & Linear Algebra",
+          "MATH 2035 – Mathematics of Data Science",
+          "MATH 2057 – Multidimensional Calculus"
+        ]
+      },
       "achievements": [
         "88/120 credit hours completed"
       ]
@@ -838,6 +830,46 @@
       "dateLabel": "Dates Attended",
       "gpa": null,
       "description": "Completed 131/139 credit hours in Chemical Engineering before pivoting to Mathematics to specialize in data science, analytics, and machine learning.",
+      "categorizedCoursework": {
+        "Chemical Engineering – Core & Supporting Coursework": [
+          "CHE 1100 – Introduction to Chemical Engineering",
+          "CHE 2162 – Computer Modeling",
+          "CHE 2171 – Chemical Engineering Fundamentals: Material & Energy Balances",
+          "CHE 2176 – Numerical Methods & Programming for Chemical Engineers",
+          "CHE 3101 – Momentum Transfer",
+          "CHE 3102 – Heat and Mass Transfer",
+          "CHE 3104 – Engineering Measurement Laboratory",
+          "CHE 3171 – Introduction to Design & Process Safety",
+          "CHE 3172 – Chemical Engineering Thermodynamics",
+          "CHE 3173 – Heterogeneous Equilibrium",
+          "CHE 3190 – Chemical Reaction Engineering",
+          "CHE 4198 – Process Dynamics",
+          "CHE 4151 – Unit Operations Design",
+          "CHE 4162 – Unit Operations Laboratory",
+          "CHE 4210 – Industrial Catalysis",
+          "CHE 4410 – Special Topics in Chemical Engineering Design",
+          "CHE 4488 – Process Separations"
+        ],
+        "Chemistry & Physical Sciences Supporting Chemical Engineering": [
+          "CHEM 1201 – General Chemistry I",
+          "CHEM 1202 – General Chemistry II",
+          "CHEM 1212 – General Chemistry Laboratory",
+          "CHEM 2261 – Organic Chemistry I",
+          "CHEM 2262 – Organic Chemistry II",
+          "CHEM 2364 – Organic Chemistry Laboratory",
+          "CHEM 3491 – Physical Chemistry I",
+          "ENVS 4101 – Environmental Chemistry",
+          "CHE 4260 – Biochemical Engineering"
+        ],
+        "Engineering, Math, and Physics Foundations Used in ChemE": [
+          "ME 2733 – Materials of Engineering",
+          "PHYS 2110 – Particle Mechanics",
+          "PHYS 2113 – Electromagnetism",
+          "MATH 1550 – Analytical Geometry & Calculus I",
+          "MATH 1552 – Analytical Geometry & Calculus II",
+          "MATH 2090 – Elementary Differential Equations & Linear Algebra"
+        ]
+      },
       "achievements": [
         "131/139 credit hours completed"
       ]
@@ -1493,7 +1525,7 @@
       "name": "Graphic Design",
       "description": "Creating visual assets for web and print. Passionate about typography and layout design.",
       "category": "Creative",
-      "image": "/images/hobbies/design.jpg"
+      "image": "/images/hobbies/design.png"
     },
     {
       "id": "web-app-dev",
@@ -1509,14 +1541,14 @@
       "description": "Running 'Ryans Rocket Shop', an online store for vintage items and collectibles.",
       "category": "Business",
       "url": "https://www.ebay.com/str/ryansrocketshop",
-      "image": "/images/hobbies/ebay.jpg"
+      "image": "/images/hobbies/ebay.png"
     },
     {
       "id": "landoni-music",
       "name": "LANDONi Music",
       "description": "Logo and merchandise designer, videography producer, social media manager, and manager for LANDONi Music, New Orleans electronic music producer and DJ.",
       "category": "Music",
-      "image": "/images/hobbies/music.jpg"
+      "image": "/images/hobbies/music.png"
     },
     {
       "id": "blockchain",
