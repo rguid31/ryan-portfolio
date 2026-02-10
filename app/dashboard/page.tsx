@@ -514,10 +514,10 @@ function WelcomeModal({ onClose }: { onClose: () => void }) {
                         <span className="text-4xl">👋</span>
                     </div>
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                        Welcome to Your Dashboard!
+                        Build Your Own Digital Twin
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400">
-                        Let's build your professional profile together
+                        Create a privacy-first professional profile and deploy your own portfolio site in minutes.
                     </p>
                 </div>
 
@@ -528,7 +528,7 @@ function WelcomeModal({ onClose }: { onClose: () => void }) {
                         </div>
                         <div>
                             <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                                Fill Out Your Profile
+                                Create Your Profile
                             </h3>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
                                 Start with basic info, then add your experience, skills, and projects. Watch your completion percentage grow!
@@ -559,7 +559,7 @@ function WelcomeModal({ onClose }: { onClose: () => void }) {
                                 Publish & Share
                             </h3>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
-                                When you're ready, publish your profile and share it with the world!
+                                When you're ready, publish your profile and deploy your own personal website!
                             </p>
                         </div>
                     </div>
@@ -569,7 +569,7 @@ function WelcomeModal({ onClose }: { onClose: () => void }) {
                     onClick={onClose}
                     className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
                 >
-                    Get Started
+                    Start Building Free
                 </button>
             </div>
         </div>

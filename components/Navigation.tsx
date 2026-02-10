@@ -18,7 +18,7 @@ export default function Navigation() {
         { href: '/skills', label: 'Skills' },
         { href: '/resume', label: 'Resume' },
         { href: '/contact', label: 'Contact' },
-        { href: '/dashboard', label: 'Dashboard' },
+        { href: '/dashboard', label: 'Profile Builder' },
     ];
 
     return (
@@ -39,7 +39,7 @@ export default function Navigation() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={link.label === 'Dashboard'
+                                className={link.label === 'Profile Builder'
                                     ? "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-bold text-sm"
                                     : `transition-colors text-sm ${pathname === link.href
                                         ? 'text-blue-600 dark:text-blue-400 font-semibold'
