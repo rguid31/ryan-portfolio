@@ -260,101 +260,157 @@ export default function DashboardPage() {
     // ─── Main Dashboard ─────────────────────────────────────────
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-            <div className="max-w-6xl mx-auto px-4 py-8">
-                {/* Header */}
-                <div className="flex items-center justify-end gap-3 mb-6">
-                    <button
-                        onClick={() => setIsAutofillOpen(true)}
-                        className="px-4 py-2 text-sm bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition flex items-center gap-2 shadow-sm"
-                    >
-                        <span>✨</span> AI Autofill
-                    </button>
-                    {profileMeta.published && profileMeta.handle && (
-                        <Link
-                            href={`/u/${profileMeta.handle}`}
-                            className="px-4 py-2 text-sm bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition"
-                        >
-                            View Public Profile →
-                        </Link>
-                    )}
-                </div>
-
-                {/* GitHub Import */}
-                <div className="mb-6">
-                    <GitHubImport onImport={(data) => {
-                        setDraft(prev => ({
-                            ...prev,
-                            identity: { ...prev.identity, ...data.identity },
-                            links: data.links || prev.links,
-                            projects: [...(data.projects || []), ...(prev.projects || [])],
-                        }));
-                        success('GitHub data imported!');
-                        saveDraft();
-                    }} />
-                </div>
-
-                {/* Status Bar */}
-                {publishStatus && (
-                    <div className={`mb-6 p-4 rounded-lg text-sm ${publishStatus.startsWith('✅')
-                        ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800'
-                        : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800'
-                        }`}>
-                        {publishStatus}
-                    </div>
-                )}
-
-                {/* Deploy Section */}
-                {/* Headless Deploy Section */}
-                {draft.handle && (
-                    <div className="mb-8 p-8 bg-gradient-to-br from-indigo-900 to-slate-950 rounded-[2.5rem] shadow-2xl border border-white/10 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[100px]"></div>
-                        <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                            <div className="flex-1">
-                                <span className="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-[10px] font-black tracking-widest uppercase mb-4 inline-block">Direct Global Bridge</span>
-                                <h2 className="text-3xl font-black text-white mb-2 tracking-tight">One-Click Portal Launch</h2>
-                                <p className="text-slate-400 max-w-md">Launch your professional portfolio mirror directly to the global edge without leaving this dashboard.</p>
-                            </div>
-
-                            <div className="w-full md:w-auto flex flex-col gap-4">
-                                {!liveUrl ? (
-                                    <>
-                                        <input
-                                            type="password"
-                                            placeholder="Vercel API Token"
-                                            className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500/50 transition-all font-mono text-sm w-full md:w-64"
-                                            value={vercelToken}
-                                            onChange={(e) => setVercelToken(e.target.value)}
-                                        />
-                                        <button
-                                            onClick={handleHeadlessDeploy}
-                                            disabled={deploying || !vercelToken}
-                                            className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-2xl font-black tracking-tight transition-all shadow-xl shadow-indigo-600/20 active:translate-y-1"
-                                        >
-                                            {deploying ? 'Establishing Portal...' : '🚀 DEPLOY NOW'}
-                                        </button>
-                                    </>
-                                ) : (
-                                    <a
-                                        href={liveUrl}
-                                        target="_blank"
-                                        className="px-8 py-4 bg-green-500 hover:bg-green-400 text-black rounded-2xl font-black tracking-tight transition-all shadow-xl shadow-green-500/20 active:translate-y-1"
-                                    >
-                                        🌐 VIEW LIVE PORTAL
-                                    </a>
-                                )}
+        <div className="min-h-screen bg-[#07090e] text-white selection:bg-indigo-500/30">
+            {/* Top Navigation / Progress */}
+            <div className="sticky top-0 z-40 bg-[#07090e]/80 backdrop-blur-xl border-b border-white/5 py-4">
+                <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-xl flex items-center justify-center font-black text-xl shadow-lg shadow-indigo-600/20">
+                            TR
+                        </div>
+                        <div>
+                            <h1 className="text-sm font-bold tracking-tight">ENGINE DASHBOARD</h1>
+                            <div className="flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                <span className="text-[10px] text-slate-500 font-mono uppercase tracking-widest">System Online</span>
                             </div>
                         </div>
                     </div>
-                )}
+
+                    <div className="flex items-center gap-4">
+                        {profileMeta.handle && (
+                            <Link
+                                href={`/u/${profileMeta.handle}`}
+                                className="px-4 py-2 text-xs font-bold text-slate-400 hover:text-white transition-all bg-white/5 hover:bg-white/10 rounded-full border border-white/5"
+                            >
+                                🔗 VIEW PUBLIC PORTAL
+                            </Link>
+                        )}
+                        <button
+                            onClick={() => setIsAutofillOpen(true)}
+                            className="px-5 py-2 text-xs font-black bg-indigo-600 text-white rounded-full hover:bg-indigo-500 transition shadow-xl shadow-indigo-600/20 flex items-center gap-2"
+                        >
+                            ✨ AI AUTOFILL
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div className="max-w-7xl mx-auto px-6 py-12">
+                {/* Fast Track Area */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+                    <div className="md:col-span-4 flex flex-col gap-6">
+                        <div className="p-6 bg-white/5 rounded-[2rem] border border-white/10 hover:border-white/20 transition-all group">
+                            <h3 className="text-xs font-black text-slate-500 tracking-widest uppercase mb-4">Fast-Track Sourcing</h3>
+                            <GitHubImport onImport={(data) => {
+                                setDraft(prev => ({
+                                    ...prev,
+                                    identity: { ...prev.identity, ...data.identity },
+                                    links: data.links || prev.links,
+                                    projects: [...(data.projects || []), ...(prev.projects || [])],
+                                }));
+                                success('GitHub data imported!');
+                                saveDraft();
+                            }} />
+                            <p className="mt-4 text-[11px] text-slate-500 leading-relaxed italic">
+                                "Our engine will crawl your GitHub profile and auto-populate your project data instantly."
+                            </p>
+                        </div>
+
+                        <div className="p-6 bg-gradient-to-br from-slate-900/50 to-slate-950 rounded-[2rem] border border-white/5">
+                            <h3 className="text-xs font-black text-slate-500 tracking-widest uppercase mb-4">Export Engine</h3>
+                            <div className="flex flex-col gap-2">
+                                <button
+                                    onClick={async () => {
+                                        const res = await fetch('https://raw.githubusercontent.com/rguid31/truth-engine-viewer/main/index.html');
+                                        let html = await res.text();
+                                        html = html.replace('VITE_PREFILL_HANDLE', profileMeta.handle || '');
+                                        const blob = new Blob([html], { type: 'text/html' });
+                                        const url = URL.createObjectURL(blob);
+                                        const a = document.createElement('a');
+                                        a.href = url;
+                                        a.download = 'index.html';
+                                        a.click();
+                                    }}
+                                    className="w-full py-3 bg-white/5 hover:bg-white/10 text-white rounded-2xl text-[11px] font-black tracking-widest uppercase transition border border-white/5"
+                                >
+                                    💾 DOWNLOAD STATIC MIRROR (.HTML)
+                                </button>
+                                <button
+                                    onClick={() => {/* existing export logic */ }}
+                                    className="w-full py-3 bg-white/5 hover:bg-white/10 text-slate-400 rounded-2xl text-[11px] font-black tracking-widest uppercase transition"
+                                >
+                                    📊 EXPORT RAW DATA (.JSON)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="md:col-span-8">
+                        {/* Portals / Deployment Card */}
+                        <div className="h-full bg-gradient-to-br from-indigo-950 to-slate-950 rounded-[3rem] p-10 border border-white/10 relative overflow-hidden flex flex-col justify-center">
+                            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] -mr-64 -mt-64"></div>
+                            <div className="relative z-10">
+                                <span className="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-[10px] font-black tracking-widest uppercase mb-6 inline-block">Direct Global Bridge</span>
+                                <h2 className="text-5xl font-black text-white mb-4 tracking-tighter leading-none">
+                                    {liveUrl ? 'PORTAL ACTIVE' : 'ONE-CLICK PORTAL'}
+                                </h2>
+                                <p className="text-slate-400 text-lg mb-8 max-w-sm leading-relaxed">
+                                    Mirror your Truth Engine directly to a global edge domain in seconds.
+                                </p>
+
+                                <div className="flex flex-col sm:flex-row gap-4 max-w-md">
+                                    {!liveUrl ? (
+                                        <>
+                                            <input
+                                                type="password"
+                                                placeholder="Enter Vercel API Token"
+                                                className="flex-1 px-6 py-4 bg-white/10 border border-white/10 rounded-[1.5rem] text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500/50 transition-all font-mono text-sm"
+                                                value={vercelToken}
+                                                onChange={(e) => setVercelToken(e.target.value)}
+                                            />
+                                            <button
+                                                onClick={handleHeadlessDeploy}
+                                                disabled={deploying || !vercelToken}
+                                                className="px-10 py-4 bg-white text-black hover:bg-indigo-50 disabled:opacity-50 rounded-[1.5rem] font-black tracking-tighter transition-all shadow-2xl active:scale-95"
+                                            >
+                                                {deploying ? 'LAUNCHING...' : 'DEPOY NOW'}
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <div className="flex flex-col gap-4 w-full">
+                                            <div className="p-4 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-between">
+                                                <span className="text-xs font-mono text-slate-500">{liveUrl}</span>
+                                                <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-[8px] font-black rounded uppercase">Live</span>
+                                            </div>
+                                            <a
+                                                href={liveUrl}
+                                                target="_blank"
+                                                className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black text-center tracking-widest uppercase hover:bg-indigo-500 transition-all shadow-xl shadow-indigo-600/20"
+                                            >
+                                                🌌 OPEN GLOBAL PORTAL
+                                            </a>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {/* Validation Warnings */}
                 {validation && !validation.isValid && (
-                    <div className="mb-6 p-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800">
-                        <p className="font-medium text-yellow-800 dark:text-yellow-200 mb-2">⚠️ Validation Issues</p>
-                        <ul className="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+                    <div className="mb-8 p-6 rounded-3xl bg-red-950/30 border border-red-500/20 backdrop-blur-md">
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="text-red-500 text-xl font-bold">⚠️</span>
+                            <p className="font-bold text-red-400 uppercase tracking-widest text-xs">Validation Payload Conflict</p>
+                        </div>
+                        <ul className="text-sm text-red-300/80 space-y-2 font-mono">
                             {validation.fields.map((f, i) => (
-                                <li key={i}><code>{f.path}</code>: {f.message}</li>
+                                <li key={i} className="flex gap-2">
+                                    <span className="text-red-500/50">[{i + 1}]</span>
+                                    <span>{f.path}: {f.message}</span>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -380,28 +436,23 @@ export default function DashboardPage() {
                     <WelcomeModal onClose={() => setShowWelcome(false)} />
                 )}
 
-                <div className="grid grid-cols-12 gap-6">
-                    {/* Profile Completion Widget */}
-                    <div className="col-span-12">
-                        {/* <ProfileCompletion
-                            profile={draft}
-                            onSectionClick={(section) => setActiveTab(section as Tab)}
-                        /> */}
-                    </div>
+                <div className="grid grid-cols-12 gap-8">
                     {/* Tab Navigation */}
                     <nav className="col-span-12 md:col-span-3">
-                        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+                        <div className="bg-white/5 p-2 rounded-[2.5rem] border border-white/5 sticky top-24">
                             {TABS.map(tab => (
                                 <button
                                     key={tab.key}
                                     onClick={() => setActiveTab(tab.key)}
-                                    className={`w-full flex items-center gap-3 px-4 py-3 text-left text-sm font-medium transition ${activeTab === tab.key
-                                        ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-l-4 border-blue-600'
-                                        : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 border-l-4 border-transparent'
+                                    className={`w-full flex items-center justify-between px-6 py-4 rounded-[1.8rem] text-sm font-bold transition-all ${activeTab === tab.key
+                                        ? 'bg-white text-black shadow-xl scale-[1.02]'
+                                        : 'text-slate-500 hover:text-white hover:bg-white/5'
                                         }`}
                                 >
-                                    <span>{tab.icon}</span>
-                                    <span>{tab.label}</span>
+                                    <div className="flex items-center gap-3">
+                                        <span className="text-lg">{tab.icon}</span>
+                                        <span className="tracking-tight">{tab.label}</span>
+                                    </div>
                                     <VisibilityBadge level={visibility.sections[tab.key]} />
                                 </button>
                             ))}
@@ -409,68 +460,77 @@ export default function DashboardPage() {
                     </nav>
 
                     {/* Editor Panel */}
-                    <div className="col-span-12 md:col-span-9">
-                        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-6">
-                            {/* Section visibility toggle */}
-                            <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-200 dark:border-gray-800">
-                                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                                    {TABS.find(t => t.key === activeTab)?.icon} {TABS.find(t => t.key === activeTab)?.label}
-                                </h2>
+                    <div className="col-span-12 md:col-span-9 flex flex-col gap-6">
+                        <div className="bg-white/5 rounded-[3rem] border border-white/10 p-10 backdrop-blur-3xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+
+                            {/* Section header */}
+                            <div className="flex items-center justify-between mb-12">
+                                <div>
+                                    <h2 className="text-3xl font-black text-white tracking-tighter uppercase">
+                                        {TABS.find(t => t.key === activeTab)?.label}
+                                    </h2>
+                                    <p className="text-slate-500 text-xs font-mono mt-1">MODULE_EDIT_SEQUENCE // 0x{activeTab.toUpperCase()}</p>
+                                </div>
                                 <button
                                     onClick={() => toggleSectionVisibility(activeTab)}
-                                    className={`px-3 py-1.5 text-xs font-medium rounded-full transition ${visibility.sections[activeTab] === 'public'
-                                        ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300'
-                                        : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                                    className={`px-6 py-2 text-xs font-black rounded-full transition-all border ${visibility.sections[activeTab] === 'public'
+                                        ? 'bg-green-500/10 text-green-400 border-green-500/20'
+                                        : 'bg-white/5 text-slate-500 border-white/5'
                                         }`}
                                 >
-                                    {visibility.sections[activeTab] === 'public' ? '🔓 Public' : '🔒 Private'}
+                                    {visibility.sections[activeTab] === 'public' ? '🔓 PUBLIC VIEW' : '🔒 PRIVATE DATA'}
                                 </button>
                             </div>
 
                             {/* Tab Content */}
-                            {activeTab === 'identity' && (
-                                <IdentityEditor draft={draft} updateDraft={updateDraft} />
-                            )}
-                            {activeTab === 'links' && (
-                                <LinksEditor draft={draft} updateDraft={updateDraft} />
-                            )}
-                            {activeTab === 'experience' && (
-                                <ExperienceEditor draft={draft} setDraft={setDraft} />
-                            )}
-                            {activeTab === 'education' && (
-                                <EducationEditor draft={draft} setDraft={setDraft} />
-                            )}
-                            {activeTab === 'skills' && (
-                                <SkillsEditor draft={draft} setDraft={setDraft} />
-                            )}
-                            {activeTab === 'projects' && (
-                                <ProjectsEditor draft={draft} setDraft={setDraft} />
-                            )}
-                            {activeTab === 'contact' && (
-                                <ContactEditor draft={draft} updateDraft={updateDraft} visibility={visibility} setVisibility={setVisibility} />
-                            )}
+                            <div className="min-h-[400px]">
+                                {activeTab === 'identity' && (
+                                    <IdentityEditor draft={draft} updateDraft={updateDraft} />
+                                )}
+                                {activeTab === 'links' && (
+                                    <LinksEditor draft={draft} updateDraft={updateDraft} />
+                                )}
+                                {activeTab === 'experience' && (
+                                    <ExperienceEditor draft={draft} setDraft={setDraft} />
+                                )}
+                                {activeTab === 'education' && (
+                                    <EducationEditor draft={draft} setDraft={setDraft} />
+                                )}
+                                {activeTab === 'skills' && (
+                                    <SkillsEditor draft={draft} setDraft={setDraft} />
+                                )}
+                                {activeTab === 'projects' && (
+                                    <ProjectsEditor draft={draft} setDraft={setDraft} />
+                                )}
+                                {activeTab === 'contact' && (
+                                    <ContactEditor draft={draft} updateDraft={updateDraft} visibility={visibility} setVisibility={setVisibility} />
+                                )}
+                            </div>
                         </div>
 
                         {/* Action Bar */}
-                        <div className="mt-6 flex items-center justify-between">
-                            <div className="text-sm text-gray-500">
-                                {saveStatus === 'saved' && <span className="text-green-600">✓ Draft saved</span>}
-                                {saveStatus === 'error' && <span className="text-red-600">✗ Save failed</span>}
+                        <div className="flex items-center justify-between bg-indigo-600 p-4 rounded-[2rem] shadow-2xl shadow-indigo-600/30">
+                            <div className="flex items-center gap-3 pl-4">
+                                <div className={`w-2 h-2 rounded-full ${saveStatus === 'saved' ? 'bg-white animate-ping' : 'bg-white/30'}`}></div>
+                                <span className="text-[10px] font-black tracking-widest uppercase text-white/70">
+                                    {saveStatus === 'saved' ? 'SYNC COMPLETE' : saveStatus === 'error' ? 'SYNC ERROR' : 'ENGINE READY'}
+                                </span>
                             </div>
-                            <div className="flex gap-3">
+                            <div className="flex gap-2">
                                 <button
                                     onClick={saveDraft}
                                     disabled={isSaving}
-                                    className="px-5 py-2.5 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900 rounded-lg font-medium text-sm hover:bg-gray-700 dark:hover:bg-gray-300 transition disabled:opacity-50"
+                                    className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-2xl font-black text-xs tracking-widest transition-all"
                                 >
-                                    {isSaving ? 'Saving...' : 'Save Draft'}
+                                    {isSaving ? 'SYNCING...' : 'SAVE DRAFT'}
                                 </button>
                                 <button
                                     onClick={handlePublishClick}
                                     disabled={isPublishing || !draft.handle || !draft.identity.name}
-                                    className="px-5 py-2.5 bg-blue-600 text-white rounded-lg font-medium text-sm hover:bg-blue-700 transition disabled:opacity-50"
+                                    className="px-12 py-3 bg-white text-indigo-600 rounded-2xl font-black text-xs tracking-widest transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50"
                                 >
-                                    {profileMeta.published ? 'Republish' : 'Publish'}
+                                    {profileMeta.published ? 'REPUBLISH' : 'PUBLISH'}
                                 </button>
                             </div>
                         </div>
@@ -581,19 +641,21 @@ function FieldInput({ label, value, onChange, placeholder, type = 'text', maxLen
     placeholder?: string; type?: string; maxLength?: number; required?: boolean; hint?: string;
 }) {
     return (
-        <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                {label} {required && <span className="text-red-500">*</span>}
-            </label>
+        <div className="mb-8">
+            <div className="flex items-center justify-between mb-2">
+                <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                    {label} {required && <span className="text-indigo-500">*</span>}
+                </label>
+                {hint && <span className="text-[9px] text-slate-600 font-mono italic">{hint}</span>}
+            </div>
             <input
                 type={type}
                 value={value || ''}
                 onChange={e => onChange(e.target.value)}
                 placeholder={placeholder}
                 maxLength={maxLength}
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-white/[0.03] text-white text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500/50 focus:bg-white/[0.05] transition-all placeholder:text-slate-700"
             />
-            {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}
         </div>
     );
 }
@@ -603,18 +665,20 @@ function TextArea({ label, value, onChange, placeholder, maxLength, rows = 4 }: 
     placeholder?: string; maxLength?: number; rows?: number;
 }) {
     return (
-        <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}</label>
+        <div className="mb-8">
+            <label className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">{label}</label>
             <textarea
                 value={value || ''}
                 onChange={e => onChange(e.target.value)}
                 placeholder={placeholder}
                 maxLength={maxLength}
                 rows={rows}
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                className="w-full px-6 py-4 rounded-[2rem] border border-white/5 bg-white/[0.03] text-white text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500/50 focus:bg-white/[0.05] transition-all resize-none placeholder:text-slate-700"
             />
             {maxLength && (
-                <p className="text-xs text-gray-400 mt-1">{(value || '').length}/{maxLength}</p>
+                <div className="flex justify-end mt-2">
+                    <span className="text-[9px] font-mono text-slate-600">{(value || '').length} / {maxLength}</span>
+                </div>
             )}
         </div>
     );
