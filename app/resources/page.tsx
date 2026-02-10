@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ExternalLink, BookOpen, Code, Brain, Users, Wrench } from 'lucide-react';
+import { ExternalLink, BookOpen, Code, Brain, Users, Wrench, Download } from 'lucide-react';
 
 export const metadata = {
     title: 'Resources | Ryan Guidry',
@@ -122,6 +122,38 @@ const resources = {
             description: 'Deconstructing world-class performers',
         },
     ],
+    software: [
+        {
+            title: 'Mutaz.net',
+            url: 'https://mutaz.net/free-programs/',
+            description: 'Curated collection of free Windows software and utilities',
+        },
+        {
+            title: 'AlternativeTo',
+            url: 'https://alternativeto.net',
+            description: 'Find free and open-source alternatives to popular software',
+        },
+        {
+            title: 'Ninite',
+            url: 'https://ninite.com',
+            description: 'Install and update multiple free programs at once',
+        },
+        {
+            title: 'SourceForge',
+            url: 'https://sourceforge.net',
+            description: 'Open-source software repository and distribution platform',
+        },
+        {
+            title: 'F-Droid',
+            url: 'https://f-droid.org',
+            description: 'Free and open-source Android app repository',
+        },
+        {
+            title: 'Open Source Alternative',
+            url: 'https://www.opensourcealternative.to',
+            description: 'Directory of open-source alternatives to proprietary software',
+        },
+    ],
     tools: [
         {
             title: 'VS Code',
@@ -209,6 +241,7 @@ export default function ResourcesPage() {
                 <ResourceSection title="Engineering & Development" icon={Code} resources={resources.engineering} />
                 <ResourceSection title="Mathematics" icon={BookOpen} resources={resources.mathematics} />
                 <ResourceSection title="Influential Voices" icon={Users} resources={resources.personalities} />
+                <ResourceSection title="Free & Open-Source Software" icon={Download} resources={resources.software} />
                 <ResourceSection title="Tools & Utilities" icon={Wrench} resources={resources.tools} />
 
                 {/* Back to Home */}
