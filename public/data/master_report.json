@@ -867,30 +867,29 @@
       "title": "Lead Systems Developer & Brand Architect",
       "company": "Down the Bayou Meats",
       "employmentType": "Freelance",
-      "location": "Remote / New Orleans",
+      "location": "Baton Rouge, LA",
       "startDate": "2025-12",
       "endDate": null,
       "current": true,
-      "description": "Architecting the technical foundation and brand identity for a growing regional business, with a focus on cross-platform interoperability and AI-discoverability.",
+      "description": "Architected and deployed a comprehensive digital presence for an award-winning Cajun specialty meat brand, bridging traditional heritage with modern retail technology.",
       "responsibilities": [
-        "Managed domain registration, DNS configuration, and secure hosting environments",
-        "Configured SSL certificates and SMTP protocols for reliable professional communication",
-        "Implemented semantic SEO and structured data to optimize for AI crawlers and LLM search agents",
-        "Architected lead generation workflows and audience segmentation strategies",
-        "Designed WCAG-compliant high-contrast UI and brand color schemes"
+        "Managed end-to-end infrastructure deployment including domain registration, DNS configuration, and SSL implementation for secure data transmission.",
+        "Developed a semantic SEO strategy utilizing machine-readable metadata and descriptive alt-text to enhance AI recognizability and search discoverability.",
+        "Engineered professional communication channels by configuring SMTP protocols and domain-based email through Google Workspace.",
+        "Designed and implemented a responsive 3-column 'Brand Showcase' utilizing Flexbox math and relative viewport units (VH/VW) for device-agnostic performance.",
+        "Constructed lead-generation workflows and mailing list segments via integrated Contact Form 7 to drive regional customer engagement.",
+        "Established a WCAG-compliant high-contrast color palette (Barn Red, Gold, Cream) to ensure web accessibility and brand consistency."
       ],
       "skills": [
-        "Systems Infrastructure",
-        "DNS Management",
-        "SMTP/Email Security",
-        "Semantic SEO",
-        "WordPress/Elementor",
-        "UX Design"
+        "WordPress",
+        "Elementor Pro",
+        "Google Workspace",
+        "DNS/SSL/SMTP",
+        "Yoast SEO",
+        "Schema.org"
       ],
       "achievements": [
-        "Established robust, machine-readable digital footprint",
-        "Achieved 99.9% uptime during complex DNS propagation",
-        "Delivered fully responsive, accessibility-first web design"
+        "Successfully migrated the brand from concept to a live, secure infrastructure with 99.9% uptime while maintaining mobile-responsive UX standards across diverse hardware."
       ]
     },
     {
