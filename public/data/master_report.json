@@ -1572,8 +1572,8 @@
       "name": "Blockchain & Decentralization",
       "description": "Fascinated by the technical and social implications of blockchain technology, with a strong focus on decentralization, distributed ledgers, and the future of web3.",
       "category": "Technology",
-      "url": "https://ethereum.org/",
-      "linkText": "Explore Ethereum",
+      "url": "https://bitcoin.org/bitcoin.pdf",
+      "linkText": "Read the whitepaper that started it all",
       "image": "/images/hobbies/blockchain.png"
     }
   ],
