@@ -259,7 +259,7 @@ export default function DashboardPage() {
                         setDraft(prev => ({
                             ...prev,
                             identity: { ...prev.identity, ...data.identity },
-                            links: data.links ? { ...prev.links, social: [...(prev.links?.social || []), ...(data.links.social || [])] } : prev.links,
+                            links: data.links || prev.links,
                             projects: [...(data.projects || []), ...(prev.projects || [])],
                         }));
                         success('GitHub data imported!');
