@@ -53,4 +53,4 @@ The dashboard is split into three primary views, managed via `app/dashboard/layo
 - [ ] Create a database named `truth-engine`.
 - [ ] Get the `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN`.
 - [ ] Add these to your Vercel Environment Variables.
-- [ ] Update `lib/truth-engine/db.ts` to use `@libsql/client` instead of `better-sqlite3`.
+- [x] Update `lib/truth-engine/db.ts` to use `@libsql/client` instead of `better-sqlite3`.

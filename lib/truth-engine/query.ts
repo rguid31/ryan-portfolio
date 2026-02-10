@@ -1,6 +1,5 @@
 // Truth Engine — Query engine for /api/query endpoint
 import { getDb } from './db';
-import type { SearchIndexRow } from './types';
 
 export interface QueryParams {
     skill?: string;
@@ -29,40 +28,40 @@ export interface QueryResponse {
  * Search published profiles using substring/contains matching (MVP).
  * Returns only public data from the search index.
  */
-export function queryProfiles(params: QueryParams): QueryResponse {
+export async function queryProfiles(params: QueryParams): Promise<QueryResponse> {
     const db = getDb();
     const conditions: string[] = [];
-    const values: unknown[] = [];
+    const args: any[] = [];
     const limit = Math.min(params.limit || 20, 100);
 
     if (params.skill) {
         conditions.push('skills LIKE ?');
-        values.push(`%${params.skill}%`);
+        args.push(`%${params.skill}%`);
     }
 
     if (params.org) {
         conditions.push('organizations LIKE ?');
-        values.push(`%${params.org}%`);
+        args.push(`%${params.org}%`);
     }
 
     if (params.title) {
         conditions.push('titles LIKE ?');
-        values.push(`%${params.title}%`);
+        args.push(`%${params.title}%`);
     }
 
     if (params.location) {
         conditions.push('location LIKE ?');
-        values.push(`%${params.location}%`);
+        args.push(`%${params.location}%`);
     }
 
     if (params.updatedAfter) {
         conditions.push('updated_at > ?');
-        values.push(params.updatedAfter);
+        args.push(params.updatedAfter);
     }
 
     if (params.cursor) {
         conditions.push('handle > ?');
-        values.push(params.cursor);
+        args.push(params.cursor);
     }
 
     const where = conditions.length > 0
@@ -76,9 +75,14 @@ export function queryProfiles(params: QueryParams): QueryResponse {
     ORDER BY handle ASC
     LIMIT ?
   `;
-    values.push(limit + 1); // Fetch one extra to determine if there's a next page
+    args.push(limit + 1); // Fetch one extra to determine if there's a next page
 
-    const rows = db.prepare(sql).all(...values) as (QueryResult & { lastUpdated: string })[];
+    const result = await db.execute({
+        sql,
+        args
+    });
+
+    const rows = result.rows as unknown as (QueryResult & { lastUpdated: string })[];
 
     const hasMore = rows.length > limit;
     const results = hasMore ? rows.slice(0, limit) : rows;

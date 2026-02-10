@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = request.nextUrl;
 
-    const results = queryProfiles({
+    const results = await queryProfiles({
         skill: searchParams.get('skill') || undefined,
         org: searchParams.get('org') || undefined,
         title: searchParams.get('title') || undefined,

@@ -66,7 +66,7 @@ async function handleRegister(email: string, password: string) {
         );
     }
 
-    const existing = getUserByEmail(email);
+    const existing = await getUserByEmail(email);
     if (existing) {
         return NextResponse.json(
             { code: 'CONFLICT', message: 'An account with this email already exists.' } satisfies ApiError,
@@ -74,8 +74,8 @@ async function handleRegister(email: string, password: string) {
         );
     }
 
-    const user = createUser(email, password);
-    const sessionId = createSession(user.id);
+    const user = await createUser(email, password);
+    const sessionId = await createSession(user.id);
 
     const response = NextResponse.json({ registered: true, userId: user.id });
     response.cookies.set(SESSION_COOKIE, sessionId, {
@@ -97,7 +97,7 @@ async function handleLogin(email: string, password: string) {
         );
     }
 
-    const user = getUserByEmail(email);
+    const user = await getUserByEmail(email);
     if (!user || !verifyPassword(user, password)) {
         return NextResponse.json(
             { code: 'UNAUTHORIZED', message: 'Invalid email or password.' } satisfies ApiError,
@@ -105,7 +105,7 @@ async function handleLogin(email: string, password: string) {
         );
     }
 
-    const sessionId = createSession(user.id);
+    const sessionId = await createSession(user.id);
 
     const response = NextResponse.json({ loggedIn: true, userId: user.id });
     response.cookies.set(SESSION_COOKIE, sessionId, {
@@ -122,7 +122,7 @@ async function handleLogin(email: string, password: string) {
 async function handleLogout(request: NextRequest) {
     const sessionId = request.cookies.get(SESSION_COOKIE)?.value;
     if (sessionId) {
-        deleteSession(sessionId);
+        await deleteSession(sessionId);
     }
 
     const response = NextResponse.json({ loggedOut: true });

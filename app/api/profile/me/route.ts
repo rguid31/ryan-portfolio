@@ -19,11 +19,11 @@ export async function GET(request: NextRequest) {
     try {
         const user = await requireAuth();
 
-        const handle = getHandleByUserId(user.id);
-        const draftRow = getDraft(user.id);
+        const handle = await getHandleByUserId(user.id);
+        const draftRow = await getDraft(user.id);
 
         const latestSnapshot = handle
-            ? getLatestSnapshot(handle.handle)
+            ? await getLatestSnapshot(handle.handle)
             : null;
 
         return NextResponse.json({

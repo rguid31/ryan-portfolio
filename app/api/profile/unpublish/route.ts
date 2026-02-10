@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const handle = getHandleByUserId(user.id);
+        const handle = await getHandleByUserId(user.id);
         if (!handle) {
             return NextResponse.json(
                 { code: 'NOT_FOUND', message: 'No handle found for this user.' } satisfies ApiError,
@@ -36,8 +36,8 @@ export async function POST(request: NextRequest) {
         }
 
         // Mark all snapshots as unpublished (retains data, public endpoints return 404)
-        unpublishSnapshots(handle.handle);
-        deleteSearchIndex(handle.handle);
+        await unpublishSnapshots(handle.handle);
+        await deleteSearchIndex(handle.handle);
 
         return NextResponse.json({ published: false });
     } catch (err) {

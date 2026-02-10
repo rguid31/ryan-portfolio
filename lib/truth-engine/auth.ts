@@ -14,10 +14,10 @@ export async function getAuthUser(): Promise<UserRow | null> {
     const sessionId = cookieStore.get(SESSION_COOKIE)?.value;
     if (!sessionId) return null;
 
-    const session = getSession(sessionId);
+    const session = await getSession(sessionId);
     if (!session) return null;
 
-    const user = getUserById(session.userId);
+    const user = await getUserById(session.userId);
     return user || null;
 }
 

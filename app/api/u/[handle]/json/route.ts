@@ -11,7 +11,7 @@ export async function GET(
     if (rateLimitResponse) return rateLimitResponse;
 
     const { handle } = await params;
-    const snapshot = getLatestSnapshot(handle);
+    const snapshot = await getLatestSnapshot(handle);
 
     if (!snapshot) {
         return NextResponse.json(

@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Load draft
-        const draftRow = getDraft(user.id);
+        const draftRow = await getDraft(user.id);
         if (!draftRow) {
             return NextResponse.json(
                 { code: 'CONFLICT', message: 'No draft exists. Save a draft first.' } satisfies ApiError,
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const handle = getHandleByUserId(user.id);
+        const handle = await getHandleByUserId(user.id);
         if (!handle) {
             return NextResponse.json(
                 { code: 'CONFLICT', message: 'No handle claimed. Save a draft with a handle first.' } satisfies ApiError,
@@ -94,10 +94,10 @@ export async function POST(request: NextRequest) {
         const jsonLd = generateJsonLd(publicProfile);
 
         // Step 6: Save snapshot
-        saveSnapshot(handle.handle, versionId, publicProfile, jsonLd, contentHash);
+        await saveSnapshot(handle.handle, versionId, publicProfile, jsonLd, contentHash);
 
         // Step 7: Update search index
-        updateSearchIndex(handle.handle, publicProfile);
+        await updateSearchIndex(handle.handle, publicProfile);
 
         const result: PublishResult = {
             published: true,

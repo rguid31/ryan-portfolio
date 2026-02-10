@@ -9,31 +9,44 @@ import type {
     ProfileDraftRow,
     ProfileSnapshotRow,
     SearchIndexRow,
-    DEFAULT_VISIBILITY,
 } from './types';
 import { hashSync, compareSync } from 'bcryptjs';
-import { randomUUID } from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 
 // ─── Users ───────────────────────────────────────────────────────
 
-export function createUser(email: string, password: string): UserRow {
+export async function createUser(email: string, password: string): Promise<UserRow> {
     const db = getDb();
     const passwordHash = hashSync(password, 10);
-    const stmt = db.prepare(
-        'INSERT INTO users (email, password_hash) VALUES (?, ?)'
-    );
-    const result = stmt.run(email, passwordHash);
-    return db.prepare('SELECT * FROM users WHERE id = ?').get(result.lastInsertRowid) as UserRow;
+    const result = await db.execute({
+        sql: 'INSERT INTO users (email, password_hash) VALUES (?, ?)',
+        args: [email, passwordHash]
+    });
+
+    const id = Number(result.lastInsertRowid);
+    const userResult = await db.execute({
+        sql: 'SELECT * FROM users WHERE id = ?',
+        args: [id]
+    });
+    return userResult.rows[0] as unknown as UserRow;
 }
 
-export function getUserByEmail(email: string): UserRow | undefined {
+export async function getUserByEmail(email: string): Promise<UserRow | undefined> {
     const db = getDb();
-    return db.prepare('SELECT * FROM users WHERE email = ?').get(email) as UserRow | undefined;
+    const result = await db.execute({
+        sql: 'SELECT * FROM users WHERE email = ?',
+        args: [email]
+    });
+    return result.rows[0] as unknown as UserRow | undefined;
 }
 
-export function getUserById(id: number): UserRow | undefined {
+export async function getUserById(id: number | string): Promise<UserRow | undefined> {
     const db = getDb();
-    return db.prepare('SELECT * FROM users WHERE id = ?').get(id) as UserRow | undefined;
+    const result = await db.execute({
+        sql: 'SELECT * FROM users WHERE id = ?',
+        args: [id]
+    });
+    return result.rows[0] as unknown as UserRow | undefined;
 }
 
 export function verifyPassword(user: UserRow, password: string): boolean {
@@ -42,118 +55,156 @@ export function verifyPassword(user: UserRow, password: string): boolean {
 
 // ─── Handles ─────────────────────────────────────────────────────
 
-export function claimHandle(userId: number, handle: string): HandleRow {
+export async function claimHandle(userId: number, handle: string): Promise<HandleRow> {
     const db = getDb();
-    const stmt = db.prepare(
-        'INSERT INTO handles (user_id, handle) VALUES (?, ?)'
-    );
-    const result = stmt.run(userId, handle);
-    return db.prepare('SELECT * FROM handles WHERE id = ?').get(result.lastInsertRowid) as HandleRow;
+    const result = await db.execute({
+        sql: 'INSERT INTO handles (user_id, handle) VALUES (?, ?)',
+        args: [userId, handle]
+    });
+    const id = Number(result.lastInsertRowid);
+    const handleResult = await db.execute({
+        sql: 'SELECT * FROM handles WHERE id = ?',
+        args: [id]
+    });
+    return handleResult.rows[0] as unknown as HandleRow;
 }
 
-export function getHandleByUserId(userId: number): HandleRow | undefined {
+export async function getHandleByUserId(userId: number): Promise<HandleRow | undefined> {
     const db = getDb();
-    return db.prepare(
-        "SELECT * FROM handles WHERE user_id = ? AND status = 'active'"
-    ).get(userId) as HandleRow | undefined;
+    const result = await db.execute({
+        sql: "SELECT * FROM handles WHERE user_id = ? AND status = 'active'",
+        args: [userId]
+    });
+    return result.rows[0] as unknown as HandleRow | undefined;
 }
 
-export function getHandleByName(handle: string): HandleRow | undefined {
+export async function getHandleByName(handle: string): Promise<HandleRow | undefined> {
     const db = getDb();
-    return db.prepare(
-        "SELECT * FROM handles WHERE handle = ? AND status = 'active'"
-    ).get(handle) as HandleRow | undefined;
+    const result = await db.execute({
+        sql: "SELECT * FROM handles WHERE handle = ? AND status = 'active'",
+        args: [handle]
+    });
+    return result.rows[0] as unknown as HandleRow | undefined;
 }
 
 // ─── Profile Drafts ──────────────────────────────────────────────
 
-export function saveDraft(
+export async function saveDraft(
     userId: number,
     canonical: CanonicalProfile,
     visibility: VisibilitySettings,
-): ProfileDraftRow {
+): Promise<ProfileDraftRow> {
     const db = getDb();
     const canonicalJson = JSON.stringify(canonical);
     const visibilityJson = JSON.stringify(visibility);
     const now = new Date().toISOString();
 
-    const existing = db.prepare('SELECT id FROM profile_drafts WHERE user_id = ?').get(userId);
+    const existing = await db.execute({
+        sql: 'SELECT id FROM profile_drafts WHERE user_id = ?',
+        args: [userId]
+    });
 
-    if (existing) {
-        db.prepare(
-            'UPDATE profile_drafts SET canonical_json = ?, visibility_json = ?, updated_at = ? WHERE user_id = ?'
-        ).run(canonicalJson, visibilityJson, now, userId);
+    if (existing.rows.length > 0) {
+        await db.execute({
+            sql: 'UPDATE profile_drafts SET canonical_json = ?, visibility_json = ?, updated_at = ? WHERE user_id = ?',
+            args: [canonicalJson, visibilityJson, now, userId]
+        });
     } else {
-        db.prepare(
-            'INSERT INTO profile_drafts (user_id, canonical_json, visibility_json, updated_at) VALUES (?, ?, ?, ?)'
-        ).run(userId, canonicalJson, visibilityJson, now);
+        await db.execute({
+            sql: 'INSERT INTO profile_drafts (user_id, canonical_json, visibility_json, updated_at) VALUES (?, ?, ?, ?)',
+            args: [userId, canonicalJson, visibilityJson, now]
+        });
     }
 
-    return db.prepare('SELECT * FROM profile_drafts WHERE user_id = ?').get(userId) as ProfileDraftRow;
+    const finalDraft = await db.execute({
+        sql: 'SELECT * FROM profile_drafts WHERE user_id = ?',
+        args: [userId]
+    });
+    return finalDraft.rows[0] as unknown as ProfileDraftRow;
 }
 
-export function getDraft(userId: number): ProfileDraftRow | undefined {
+export async function getDraft(userId: number): Promise<ProfileDraftRow | undefined> {
     const db = getDb();
-    return db.prepare('SELECT * FROM profile_drafts WHERE user_id = ?').get(userId) as ProfileDraftRow | undefined;
+    const result = await db.execute({
+        sql: 'SELECT * FROM profile_drafts WHERE user_id = ?',
+        args: [userId]
+    });
+    return result.rows[0] as unknown as ProfileDraftRow | undefined;
 }
 
-export function deleteDraft(userId: number): void {
+export async function deleteDraft(userId: number): Promise<void> {
     const db = getDb();
-    db.prepare('DELETE FROM profile_drafts WHERE user_id = ?').run(userId);
+    await db.execute({
+        sql: 'DELETE FROM profile_drafts WHERE user_id = ?',
+        args: [userId]
+    });
 }
 
 // ─── Profile Snapshots ───────────────────────────────────────────
 
-export function saveSnapshot(
+export async function saveSnapshot(
     handle: string,
     versionId: string,
     publicProfile: PublicProfile,
     jsonLd: object,
     contentHash: string,
-): ProfileSnapshotRow {
+): Promise<ProfileSnapshotRow> {
     const db = getDb();
     const publicJson = JSON.stringify(publicProfile);
     const jsonldJson = JSON.stringify(jsonLd);
 
-    db.prepare(
-        `INSERT INTO profile_snapshots (handle, version_id, public_json, jsonld_json, content_hash, schema_version)
-     VALUES (?, ?, ?, ?, ?, ?)`
-    ).run(handle, versionId, publicJson, jsonldJson, contentHash, publicProfile.schemaVersion);
+    await db.execute({
+        sql: `INSERT INTO profile_snapshots (handle, version_id, public_json, jsonld_json, content_hash, schema_version)
+     VALUES (?, ?, ?, ?, ?, ?)`,
+        args: [handle, versionId, publicJson, jsonldJson, contentHash, publicProfile.schemaVersion]
+    });
 
-    return db.prepare(
-        'SELECT * FROM profile_snapshots WHERE version_id = ?'
-    ).get(versionId) as ProfileSnapshotRow;
+    const result = await db.execute({
+        sql: 'SELECT * FROM profile_snapshots WHERE version_id = ?',
+        args: [versionId]
+    });
+    return result.rows[0] as unknown as ProfileSnapshotRow;
 }
 
-export function getLatestSnapshot(handle: string): ProfileSnapshotRow | undefined {
+export async function getLatestSnapshot(handle: string): Promise<ProfileSnapshotRow | undefined> {
     const db = getDb();
-    return db.prepare(
-        `SELECT * FROM profile_snapshots
+    const result = await db.execute({
+        sql: `SELECT * FROM profile_snapshots
      WHERE handle = ? AND is_published = 1
-     ORDER BY created_at DESC LIMIT 1`
-    ).get(handle) as ProfileSnapshotRow | undefined;
+     ORDER BY created_at DESC LIMIT 1`,
+        args: [handle]
+    });
+    return result.rows[0] as unknown as ProfileSnapshotRow | undefined;
 }
 
-export function getAllSnapshots(handle: string): ProfileSnapshotRow[] {
+export async function getAllSnapshots(handle: string): Promise<ProfileSnapshotRow[]> {
     const db = getDb();
-    return db.prepare(
-        'SELECT * FROM profile_snapshots WHERE handle = ? ORDER BY created_at DESC'
-    ).all(handle) as ProfileSnapshotRow[];
+    const result = await db.execute({
+        sql: 'SELECT * FROM profile_snapshots WHERE handle = ? ORDER BY created_at DESC',
+        args: [handle]
+    });
+    return result.rows as unknown as ProfileSnapshotRow[];
 }
 
-export function unpublishSnapshots(handle: string): void {
+export async function unpublishSnapshots(handle: string): Promise<void> {
     const db = getDb();
-    db.prepare('UPDATE profile_snapshots SET is_published = 0 WHERE handle = ?').run(handle);
+    await db.execute({
+        sql: 'UPDATE profile_snapshots SET is_published = 0 WHERE handle = ?',
+        args: [handle]
+    });
 }
 
-export function deleteAllSnapshots(handle: string): void {
+export async function deleteAllSnapshots(handle: string): Promise<void> {
     const db = getDb();
-    db.prepare('DELETE FROM profile_snapshots WHERE handle = ?').run(handle);
+    await db.execute({
+        sql: 'DELETE FROM profile_snapshots WHERE handle = ?',
+        args: [handle]
+    });
 }
 
 // ─── Search Index ────────────────────────────────────────────────
 
-export function updateSearchIndex(handle: string, publicProfile: PublicProfile): void {
+export async function updateSearchIndex(handle: string, publicProfile: PublicProfile): Promise<void> {
     const db = getDb();
     const now = new Date().toISOString();
 
@@ -175,84 +226,103 @@ export function updateSearchIndex(handle: string, publicProfile: PublicProfile):
         ?.map(exp => exp.title)
         .join(',') || null;
 
-    const existing = db.prepare('SELECT handle FROM search_index WHERE handle = ?').get(handle);
+    const existing = await db.execute({
+        sql: 'SELECT handle FROM search_index WHERE handle = ?',
+        args: [handle]
+    });
 
-    if (existing) {
-        db.prepare(
-            `UPDATE search_index
+    if (existing.rows.length > 0) {
+        await db.execute({
+            sql: `UPDATE search_index
        SET name = ?, headline = ?, skills = ?, location = ?, organizations = ?, titles = ?, updated_at = ?
-       WHERE handle = ?`
-        ).run(
-            publicProfile.identity.name,
-            publicProfile.identity.headline || null,
-            skills, location, organizations, titles, now, handle,
-        );
+       WHERE handle = ?`,
+            args: [
+                publicProfile.identity.name,
+                publicProfile.identity.headline || null,
+                skills, location, organizations, titles, now, handle,
+            ]
+        });
     } else {
-        db.prepare(
-            `INSERT INTO search_index (handle, name, headline, skills, location, organizations, titles, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
-        ).run(
-            handle,
-            publicProfile.identity.name,
-            publicProfile.identity.headline || null,
-            skills, location, organizations, titles, now,
-        );
+        await db.execute({
+            sql: `INSERT INTO search_index (handle, name, headline, skills, location, organizations, titles, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            args: [
+                handle,
+                publicProfile.identity.name,
+                publicProfile.identity.headline || null,
+                skills, location, organizations, titles, now,
+            ]
+        });
     }
 }
 
-export function deleteSearchIndex(handle: string): void {
+export async function deleteSearchIndex(handle: string): Promise<void> {
     const db = getDb();
-    db.prepare('DELETE FROM search_index WHERE handle = ?').run(handle);
+    await db.execute({
+        sql: 'DELETE FROM search_index WHERE handle = ?',
+        args: [handle]
+    });
 }
 
 // ─── Sessions ────────────────────────────────────────────────────
 
 const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
-export function createSession(userId: number): string {
+export async function createSession(userId: number): Promise<string> {
     const db = getDb();
-    const sessionId = randomUUID();
+    const sessionId = uuidv4();
     const expiresAt = new Date(Date.now() + SESSION_DURATION_MS).toISOString();
-    db.prepare(
-        'INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)'
-    ).run(sessionId, userId, expiresAt);
+    await db.execute({
+        sql: 'INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)',
+        args: [sessionId, userId, expiresAt]
+    });
     return sessionId;
 }
 
-export function getSession(sessionId: string): { userId: number } | null {
+export async function getSession(sessionId: string): Promise<{ userId: number } | null> {
     const db = getDb();
-    const row = db.prepare(
-        "SELECT user_id FROM sessions WHERE id = ? AND expires_at > datetime('now')"
-    ).get(sessionId) as { user_id: number } | undefined;
-    return row ? { userId: row.user_id } : null;
+    const result = await db.execute({
+        sql: "SELECT user_id FROM sessions WHERE id = ? AND expires_at > datetime('now')",
+        args: [sessionId]
+    });
+    const row = result.rows[0];
+    return row ? { userId: row.user_id as number } : null;
 }
 
-export function deleteSession(sessionId: string): void {
+export async function deleteSession(sessionId: string): Promise<void> {
     const db = getDb();
-    db.prepare('DELETE FROM sessions WHERE id = ?').run(sessionId);
+    await db.execute({
+        sql: 'DELETE FROM sessions WHERE id = ?',
+        args: [sessionId]
+    });
 }
 
-export function deleteUserSessions(userId: number): void {
+export async function deleteUserSessions(userId: number): Promise<void> {
     const db = getDb();
-    db.prepare('DELETE FROM sessions WHERE user_id = ?').run(userId);
+    await db.execute({
+        sql: 'DELETE FROM sessions WHERE user_id = ?',
+        args: [userId]
+    });
 }
 
 // ─── Full Profile Delete ─────────────────────────────────────────
 
-export function deleteProfile(userId: number): void {
+export async function deleteProfile(userId: number): Promise<void> {
     const db = getDb();
-    const handle = getHandleByUserId(userId);
+    const handle = await getHandleByUserId(userId);
 
-    const deleteAll = db.transaction(() => {
-        if (handle) {
-            deleteSearchIndex(handle.handle);
-            deleteAllSnapshots(handle.handle);
-            db.prepare("UPDATE handles SET status = 'deleted' WHERE user_id = ?").run(userId);
-        }
-        deleteDraft(userId);
-        deleteUserSessions(userId);
-        db.prepare('DELETE FROM users WHERE id = ?').run(userId);
+    if (handle) {
+        await deleteSearchIndex(handle.handle);
+        await deleteAllSnapshots(handle.handle);
+        await db.execute({
+            sql: "UPDATE handles SET status = 'deleted' WHERE user_id = ?",
+            args: [userId]
+        });
+    }
+    await deleteDraft(userId);
+    await deleteUserSessions(userId);
+    await db.execute({
+        sql: 'DELETE FROM users WHERE id = ?',
+        args: [userId]
     });
-
-    deleteAll();
 }

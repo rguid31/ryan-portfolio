@@ -1,42 +1,47 @@
-// Truth Engine — SQLite database connection + migrations
-import Database from 'better-sqlite3';
+// Truth Engine — Database connection: Supports local SQLite and Cloud-native Turso (LibSQL)
+import { createClient, Client } from '@libsql/client';
 import path from 'path';
 import fs from 'fs';
 
-let db: Database.Database | null = null;
+let client: Client | null = null;
 
 const DB_DIR = path.join(process.cwd(), 'data');
-const DB_PATH = path.join(DB_DIR, 'truth-engine.db');
+const DB_PATH = `file:${path.join(DB_DIR, 'truth-engine.db')}`;
 
 /**
- * Get or create the SQLite database connection.
- * Creates the data directory and runs migrations on first connection.
+ * Get or create the database connection.
+ * Detects if Turso credentials are available, otherwise falls back to local SQLite.
  */
-export function getDb(): Database.Database {
-    if (db) return db;
+export function getDb(): Client {
+  if (client) return client;
 
-    // Ensure data directory exists
+  const url = process.env.LIBSQL_URL || DB_PATH;
+  const authToken = process.env.LIBSQL_AUTH_TOKEN;
+
+  // For local files, ensure directory exists
+  if (url.startsWith('file:')) {
     if (!fs.existsSync(DB_DIR)) {
-        fs.mkdirSync(DB_DIR, { recursive: true });
+      fs.mkdirSync(DB_DIR, { recursive: true });
     }
+  }
 
-    db = new Database(DB_PATH);
+  client = createClient({
+    url,
+    authToken,
+  });
 
-    // Enable WAL mode for better concurrent read performance
-    db.pragma('journal_mode = WAL');
-    db.pragma('foreign_keys = ON');
-
-    // Run migrations
-    migrate(db);
-
-    return db;
+  return client;
 }
 
 /**
  * Run database migrations (idempotent).
+ * Uses raw SQL execution.
  */
-function migrate(db: Database.Database): void {
-    db.exec(`
+export async function migrate(): Promise<void> {
+  const db = getDb();
+
+  // LibSQL batch execution for migrations
+  await db.executeMultiple(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       email TEXT UNIQUE NOT NULL,
@@ -102,11 +107,11 @@ function migrate(db: Database.Database): void {
 }
 
 /**
- * Close the database connection (for cleanup/testing).
+ * Close the database connection.
  */
 export function closeDb(): void {
-    if (db) {
-        db.close();
-        db = null;
-    }
+  if (client) {
+    client.close();
+    client = null;
+  }
 }

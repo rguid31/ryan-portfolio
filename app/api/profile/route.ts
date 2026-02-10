@@ -26,7 +26,7 @@ export async function DELETE(request: NextRequest) {
         }
 
         // Hard delete: user, handle, draft, snapshots, search index, sessions
-        deleteProfile(user.id);
+        await deleteProfile(user.id);
 
         // Clear session cookie
         const response = NextResponse.json({ deleted: true });

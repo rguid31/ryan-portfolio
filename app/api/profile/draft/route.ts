@@ -37,10 +37,10 @@ export async function POST(request: NextRequest) {
         const validation = validateCanonicalProfile(draft);
 
         // Ensure user has a handle matching the draft handle
-        let handle = getHandleByUserId(user.id);
+        let handle = await getHandleByUserId(user.id);
         if (!handle && draft.handle) {
             try {
-                handle = claimHandle(user.id, draft.handle);
+                handle = await claimHandle(user.id, draft.handle);
             } catch {
                 return NextResponse.json(
                     { code: 'CONFLICT', message: `Handle "${draft.handle}" is already taken.` } satisfies ApiError,
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Save draft (even if validation fails — let user fix iteratively)
-        const saved = saveDraft(user.id, draft, visibility);
+        const saved = await saveDraft(user.id, draft, visibility);
 
         return NextResponse.json({
             saved: true,
