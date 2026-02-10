@@ -179,19 +179,37 @@ export default function DashboardSettingsPage() {
                         </div>
                     </div>
 
-                    {/* Export */}
                     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-6">
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Export Data</h2>
+                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Instant Portfolio Engine</h2>
                         <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                            Download your published public dataset as a JSON file.
+                            Download a single-file premium mirror of your profile that you can host on any platform (Github Pages, Netlify, GoDaddy).
                         </p>
-                        <button
-                            onClick={exportData}
-                            disabled={!profileMeta.published}
-                            className="px-4 py-2 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900 rounded-lg text-sm font-medium hover:bg-gray-700 dark:hover:bg-gray-300 transition disabled:opacity-50"
-                        >
-                            📥 Export Public JSON
-                        </button>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={exportData}
+                                disabled={!profileMeta.published}
+                                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition disabled:opacity-50"
+                            >
+                                📊 JSON Dataset
+                            </button>
+                            <button
+                                onClick={async () => {
+                                    const res = await fetch('https://raw.githubusercontent.com/rguid31/truth-engine-viewer/main/index.html');
+                                    let html = await res.text();
+                                    html = html.replace('VITE_PREFILL_HANDLE', profileMeta.handle || '');
+                                    const blob = new Blob([html], { type: 'text/html' });
+                                    const url = URL.createObjectURL(blob);
+                                    const a = document.createElement('a');
+                                    a.href = url;
+                                    a.download = 'index.html';
+                                    a.click();
+                                }}
+                                disabled={!profileMeta.handle}
+                                className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition disabled:opacity-50"
+                            >
+                                🚀 Download HTML Website
+                            </button>
+                        </div>
                     </div>
 
                     {/* Unpublish */}

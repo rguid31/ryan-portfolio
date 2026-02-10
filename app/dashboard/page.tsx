@@ -57,6 +57,33 @@ export default function DashboardPage() {
     const [isPublishing, setIsPublishing] = useState(false);
     const [saveStatus, setSaveStatus] = useState<'idle' | 'saved' | 'error'>('idle');
     const [publishStatus, setPublishStatus] = useState<string | null>(null);
+    const [vercelToken, setVercelToken] = useState('');
+    const [deploying, setDeploying] = useState(false);
+    const [liveUrl, setLiveUrl] = useState<string | null>(null);
+
+    const handleHeadlessDeploy = async () => {
+        if (!vercelToken) return;
+        setDeploying(true);
+        setPublishStatus('🚀 Mirroring to global edge...');
+        try {
+            const res = await fetch('/api/profile/deploy', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ handle: draft.handle, vercelToken })
+            });
+            const data = await res.json();
+            if (data.success) {
+                setLiveUrl(data.url);
+                setPublishStatus(`✅ Portal established! Your mirror is live at ${data.url}`);
+            } else {
+                setPublishStatus(`❌ Setup error: ${data.error}`);
+            }
+        } catch {
+            setPublishStatus('❌ Deployment bridge failed.');
+        } finally {
+            setDeploying(false);
+        }
+    };
     const [validation, setValidation] = useState<ValidationResult | null>(null);
     const [profileMeta, setProfileMeta] = useState<{
         handle: string | null;
@@ -278,8 +305,47 @@ export default function DashboardPage() {
                 )}
 
                 {/* Deploy Section */}
-                {profileMeta.published && profileMeta.handle && (
-                    <DeployCard handle={profileMeta.handle} />
+                {/* Headless Deploy Section */}
+                {draft.handle && (
+                    <div className="mb-8 p-8 bg-gradient-to-br from-indigo-900 to-slate-950 rounded-[2.5rem] shadow-2xl border border-white/10 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[100px]"></div>
+                        <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                            <div className="flex-1">
+                                <span className="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-[10px] font-black tracking-widest uppercase mb-4 inline-block">Direct Global Bridge</span>
+                                <h2 className="text-3xl font-black text-white mb-2 tracking-tight">One-Click Portal Launch</h2>
+                                <p className="text-slate-400 max-w-md">Launch your professional portfolio mirror directly to the global edge without leaving this dashboard.</p>
+                            </div>
+
+                            <div className="w-full md:w-auto flex flex-col gap-4">
+                                {!liveUrl ? (
+                                    <>
+                                        <input
+                                            type="password"
+                                            placeholder="Vercel API Token"
+                                            className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500/50 transition-all font-mono text-sm w-full md:w-64"
+                                            value={vercelToken}
+                                            onChange={(e) => setVercelToken(e.target.value)}
+                                        />
+                                        <button
+                                            onClick={handleHeadlessDeploy}
+                                            disabled={deploying || !vercelToken}
+                                            className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-2xl font-black tracking-tight transition-all shadow-xl shadow-indigo-600/20 active:translate-y-1"
+                                        >
+                                            {deploying ? 'Establishing Portal...' : '🚀 DEPLOY NOW'}
+                                        </button>
+                                    </>
+                                ) : (
+                                    <a
+                                        href={liveUrl}
+                                        target="_blank"
+                                        className="px-8 py-4 bg-green-500 hover:bg-green-400 text-black rounded-2xl font-black tracking-tight transition-all shadow-xl shadow-green-500/20 active:translate-y-1"
+                                    >
+                                        🌐 VIEW LIVE PORTAL
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 )}
 
                 {/* Validation Warnings */}
