@@ -16,6 +16,14 @@ export async function GET(request: NextRequest) {
     const rateLimitResponse = checkRateLimit(request, DEFAULT_RATE_LIMIT);
     if (rateLimitResponse) return rateLimitResponse;
 
+    // Auto-migrate (Ensure Turso tables exist)
+    try {
+        const { migrate } = await import('@/lib/truth-engine/db');
+        await migrate();
+    } catch (migErr) {
+        safeLogError('Migration', migErr);
+    }
+
     try {
         const user = await requireAuth();
 

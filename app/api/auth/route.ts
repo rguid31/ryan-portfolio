@@ -15,22 +15,27 @@ import {
 } from '@/lib/truth-engine';
 import type { ApiError } from '@/lib/truth-engine';
 
-// ─── Register ────────────────────────────────────────────────────
+// ─── POST Handler ───────────────────────────────────────────────
 export async function POST(request: NextRequest) {
-    // Rate limiting: 10 requests per minute for auth endpoints
+    // 1. Rate limiting
     const rateLimitResponse = checkRateLimit(request, AUTH_RATE_LIMIT);
     if (rateLimitResponse) return rateLimitResponse;
 
     try {
+        // 2. Auto-migrate (Ensure Turso tables exist)
+        const { migrate } = await import('@/lib/truth-engine/db');
+        await migrate();
+
+        // 3. Parse Body
         const body = await request.json();
         const { action, email, password } = body;
 
         if (action === 'register') {
-            return handleRegister(email, password);
+            return await handleRegister(email, password);
         } else if (action === 'login') {
-            return handleLogin(email, password);
+            return await handleLogin(email, password);
         } else if (action === 'logout') {
-            return handleLogout(request);
+            return await handleLogout(request);
         }
 
         return NextResponse.json(
