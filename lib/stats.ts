@@ -111,6 +111,49 @@ export function getActiveCertifications(): number {
 }
 
 /**
+ * Calculate exploration metrics for the dashboard
+ */
+export function getExplorationMetrics() {
+    const data = getMasterReport();
+
+    // Calculate project categories
+    const projectCategories: Record<string, number> = {};
+    data.projects.forEach(p => {
+        projectCategories[p.category] = (projectCategories[p.category] || 0) + 1;
+    });
+
+    // Calculate skill categories
+    const skillCategories: Record<string, number> = {};
+    if (data.skills) {
+        Object.keys(data.skills).forEach(cat => {
+            skillCategories[cat] = data.skills[cat].items.length;
+        });
+    }
+
+    return {
+        projects: {
+            total: data.projects.length,
+            byCategory: projectCategories,
+            featured: data.projects.filter(p => p.featured).length
+        },
+        skills: {
+            total: getTotalSkills(),
+            byCategory: skillCategories
+        },
+        experience: {
+            totalYears: getYearsOfExperience(),
+            companies: new Set(data.experience.map(e => e.company)).size,
+            roles: data.experience.length
+        },
+        knowledge: {
+            certifications: data.certifications?.length || 0,
+            activeCertifications: getActiveCertifications(),
+            educationCredits: getEducationProgress()
+        }
+    };
+}
+
+/**
  * Get all portfolio stats in one call
  */
 export function getPortfolioStats() {
@@ -121,5 +164,6 @@ export function getPortfolioStats() {
         totalSkills: getTotalSkills(),
         educationProgress: getEducationProgress(),
         activeCertifications: getActiveCertifications(),
+        exploration: getExplorationMetrics()
     };
 }

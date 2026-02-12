@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/experience',
         '/education',
         '/skills',
+        '/explore',
         '/hobbies',
         '/resume',
         '/contact',

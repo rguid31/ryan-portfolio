@@ -15,6 +15,7 @@ export default function Navigation() {
         { href: '/experience', label: 'Experience' },
         { href: '/education', label: 'Education' },
         { href: '/skills', label: 'Skills' },
+        { href: '/explore', label: 'Explore' },
         { href: '/hobbies', label: 'Hobbies' },
         { href: '/resources', label: 'Resources' },
         { href: '/blog', label: 'Blog' },
