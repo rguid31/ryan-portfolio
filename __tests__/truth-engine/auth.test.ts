@@ -1,7 +1,8 @@
 // Tests: Auth module — session-based authentication
 // Note: These tests mock Next.js cookies() since auth.ts uses next/headers
+// Note: These tests mock Next.js cookies() since auth.ts uses next/headers
 
-import { getDb, closeDb } from '../../lib/truth-engine/db';
+import { getDb, closeDb, migrate } from '../../lib/truth-engine/db';
 import { createUser, createSession, deleteSession } from '../../lib/truth-engine/storage';
 
 // Mock next/headers
@@ -22,11 +23,12 @@ describe('Auth Module', () => {
         closeDb();
     });
 
-    beforeEach(() => {
+    beforeEach(async () => {
         // Reset database
         closeDb();
         const db = getDb();
-        db.exec(`
+        await migrate();
+        await db.executeMultiple(`
             DELETE FROM sessions;
             DELETE FROM search_index;
             DELETE FROM profile_snapshots;
@@ -36,15 +38,16 @@ describe('Auth Module', () => {
         `);
 
         // Create test user and sessions
-        const user = createUser('test@example.com', 'password123');
+        const user = await createUser('test@example.com', 'password123');
         userId = user.id;
-        validSessionId = createSession(userId);
+        validSessionId = await createSession(userId);
 
         // Create expired session manually
         expiredSessionId = 'expired-session-id';
-        db.prepare(
-            'INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)'
-        ).run(expiredSessionId, userId, '2020-01-01T00:00:00.000Z');
+        await db.execute({
+            sql: 'INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)',
+            args: [expiredSessionId, userId, '2020-01-01T00:00:00.000Z']
+        });
 
         // Reset mock before each test
         jest.clearAllMocks();
@@ -106,7 +109,10 @@ describe('Auth Module', () => {
         it('should return null when session points to deleted user', async () => {
             // Delete session but keep it in DB
             const db = getDb();
-            db.prepare('DELETE FROM users WHERE id = ?').run(userId);
+            await db.execute({
+                sql: 'DELETE FROM users WHERE id = ?',
+                args: [userId]
+            });
 
             (cookies as jest.Mock).mockResolvedValue({
                 get: jest.fn((name: string) =>

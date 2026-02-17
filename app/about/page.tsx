@@ -1,8 +1,10 @@
 import { getPersonalInfo, getSummary } from '@/lib/masterReport';
 
-export default function AboutPage() {
-    const personal = getPersonalInfo();
-    const summary = getSummary();
+export default async function AboutPage() {
+    const [personal, summary] = await Promise.all([
+        getPersonalInfo(),
+        getSummary()
+    ]);
 
     return (
         <div className="container mx-auto px-4 py-12">

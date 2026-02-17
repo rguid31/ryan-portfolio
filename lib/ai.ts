@@ -1,7 +1,9 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import * as cheerio from 'cheerio';
+import { env } from './env';
+import 'server-only';
 
-const API_KEY = process.env.GOOGLE_API_KEY;
+const API_KEY = env.GOOGLE_API_KEY;
 
 export async function parseTextWithAI(text: string): Promise<Record<string, any>> {
     if (!API_KEY) {
@@ -9,7 +11,8 @@ export async function parseTextWithAI(text: string): Promise<Record<string, any>
     }
 
     const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
+    // Use the latest stable model
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     const prompt = `
     You are a helpful assistant that extracts structured professional profile data from unstructured text.
@@ -83,18 +86,17 @@ export async function parseTextWithAI(text: string): Promise<Record<string, any>
     """
     `;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const textResponse = response.text();
-
-    // Clean up markdown blocks if present
-    const jsonString = textResponse.replace(/^```json\n|\n```$/g, '').trim();
-
     try {
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const textResponse = response.text();
+
+        // Clean up markdown blocks if present
+        const jsonString = textResponse.replace(/^```json\n|\n```$/g, '').trim();
         const rawData = JSON.parse(jsonString);
         return cleanProfileData(rawData);
     } catch (e) {
-        console.error('Failed to parse AI response:', textResponse);
+        console.error('Failed to parse AI response:', e);
         throw new Error('Failed to parse AI response as JSON.');
     }
 }

@@ -1,7 +1,7 @@
 // Tests: Storage layer — CRUD operations for users, handles, drafts, snapshots, search index
 // Uses in-memory SQLite for isolated testing
 
-import { getDb, closeDb } from '../../lib/truth-engine/db';
+import { getDb, closeDb, migrate } from '../../lib/truth-engine/db';
 import {
     createUser,
     getUserByEmail,
@@ -26,7 +26,7 @@ import {
     deleteUserSessions,
     deleteProfile,
 } from '../../lib/truth-engine/storage';
-import type { CanonicalProfile, PublicProfile, VisibilitySettings } from '../../lib/truth-engine/types';
+import type { CanonicalProfile, PublicProfile } from '../../lib/truth-engine/types';
 import { DEFAULT_VISIBILITY } from '../../lib/truth-engine/types';
 
 describe('Storage Layer', () => {
@@ -35,12 +35,13 @@ describe('Storage Layer', () => {
         closeDb();
     });
 
-    beforeEach(() => {
+    beforeEach(async () => {
         // Reset database before each test
         closeDb();
         const db = getDb();
-        // Clear all tables in correct order (respecting foreign keys)
-        db.exec(`
+        await migrate();
+
+        await db.executeMultiple(`
             DELETE FROM sessions;
             DELETE FROM search_index;
             DELETE FROM profile_snapshots;
@@ -55,8 +56,8 @@ describe('Storage Layer', () => {
     });
 
     describe('User Operations', () => {
-        it('should create a new user with hashed password', () => {
-            const user = createUser('test@example.com', 'password123');
+        it('should create a new user with hashed password', async () => {
+            const user = await createUser('test@example.com', 'password123');
             expect(user.id).toBeGreaterThan(0);
             expect(user.email).toBe('test@example.com');
             expect(user.password_hash).not.toBe('password123');
@@ -64,58 +65,58 @@ describe('Storage Layer', () => {
             expect(user.created_at).toBeTruthy();
         });
 
-        it('should get user by email', () => {
-            const created = createUser('test@example.com', 'password123');
-            const found = getUserByEmail('test@example.com');
+        it('should get user by email', async () => {
+            const created = await createUser('test@example.com', 'password123');
+            const found = await getUserByEmail('test@example.com');
             expect(found).toBeDefined();
             expect(found!.id).toBe(created.id);
             expect(found!.email).toBe('test@example.com');
         });
 
-        it('should return undefined for non-existent email', () => {
-            const found = getUserByEmail('nonexistent@example.com');
+        it('should return undefined for non-existent email', async () => {
+            const found = await getUserByEmail('nonexistent@example.com');
             expect(found).toBeUndefined();
         });
 
-        it('should get user by id', () => {
-            const created = createUser('test@example.com', 'password123');
-            const found = getUserById(created.id);
+        it('should get user by id', async () => {
+            const created = await createUser('test@example.com', 'password123');
+            const found = await getUserById(created.id);
             expect(found).toBeDefined();
             expect(found!.id).toBe(created.id);
             expect(found!.email).toBe('test@example.com');
         });
 
-        it('should return undefined for non-existent id', () => {
-            const found = getUserById(99999);
+        it('should return undefined for non-existent id', async () => {
+            const found = await getUserById(99999);
             expect(found).toBeUndefined();
         });
 
-        it('should verify correct password', () => {
-            const user = createUser('test@example.com', 'password123');
+        it('should verify correct password', async () => {
+            const user = await createUser('test@example.com', 'password123');
             expect(verifyPassword(user, 'password123')).toBe(true);
         });
 
-        it('should reject incorrect password', () => {
-            const user = createUser('test@example.com', 'password123');
+        it('should reject incorrect password', async () => {
+            const user = await createUser('test@example.com', 'password123');
             expect(verifyPassword(user, 'wrongpassword')).toBe(false);
         });
 
-        it('should enforce unique email constraint', () => {
-            createUser('test@example.com', 'password123');
-            expect(() => createUser('test@example.com', 'password456')).toThrow();
+        it('should enforce unique email constraint', async () => {
+            await createUser('test@example.com', 'password123');
+            await expect(createUser('test@example.com', 'password456')).rejects.toThrow();
         });
     });
 
     describe('Handle Operations', () => {
         let userId: number;
 
-        beforeEach(() => {
-            const user = createUser('test@example.com', 'password123');
+        beforeEach(async () => {
+            const user = await createUser('test@example.com', 'password123');
             userId = user.id;
         });
 
-        it('should claim a handle for a user', () => {
-            const handle = claimHandle(userId, 'test-handle');
+        it('should claim a handle for a user', async () => {
+            const handle = await claimHandle(userId, 'test-handle');
             expect(handle.id).toBeGreaterThan(0);
             expect(handle.user_id).toBe(userId);
             expect(handle.handle).toBe('test-handle');
@@ -123,40 +124,43 @@ describe('Storage Layer', () => {
             expect(handle.created_at).toBeTruthy();
         });
 
-        it('should get handle by user id', () => {
-            claimHandle(userId, 'test-handle');
-            const found = getHandleByUserId(userId);
+        it('should get handle by user id', async () => {
+            await claimHandle(userId, 'test-handle');
+            const found = await getHandleByUserId(userId);
             expect(found).toBeDefined();
             expect(found!.handle).toBe('test-handle');
             expect(found!.user_id).toBe(userId);
         });
 
-        it('should get handle by name', () => {
-            claimHandle(userId, 'test-handle');
-            const found = getHandleByName('test-handle');
+        it('should get handle by name', async () => {
+            await claimHandle(userId, 'test-handle');
+            const found = await getHandleByName('test-handle');
             expect(found).toBeDefined();
             expect(found!.handle).toBe('test-handle');
             expect(found!.user_id).toBe(userId);
         });
 
-        it('should return undefined for non-existent handle', () => {
-            const found = getHandleByName('nonexistent');
+        it('should return undefined for non-existent handle', async () => {
+            const found = await getHandleByName('nonexistent');
             expect(found).toBeUndefined();
         });
 
-        it('should enforce unique handle constraint', () => {
-            claimHandle(userId, 'test-handle');
-            const user2 = createUser('test2@example.com', 'password123');
-            expect(() => claimHandle(user2.id, 'test-handle')).toThrow();
+        it('should enforce unique handle constraint', async () => {
+            await claimHandle(userId, 'test-handle');
+            const user2 = await createUser('test2@example.com', 'password123');
+            await expect(claimHandle(user2.id, 'test-handle')).rejects.toThrow();
         });
 
-        it('should not return deleted handles', () => {
-            claimHandle(userId, 'test-handle');
+        it('should not return deleted handles', async () => {
+            await claimHandle(userId, 'test-handle');
             const db = getDb();
-            db.prepare("UPDATE handles SET status = 'deleted' WHERE user_id = ?").run(userId);
+            await db.execute({
+                sql: "UPDATE handles SET status = 'deleted' WHERE user_id = ?",
+                args: [userId]
+            });
 
-            const byUserId = getHandleByUserId(userId);
-            const byName = getHandleByName('test-handle');
+            const byUserId = await getHandleByUserId(userId);
+            const byName = await getHandleByName('test-handle');
             expect(byUserId).toBeUndefined();
             expect(byName).toBeUndefined();
         });
@@ -170,13 +174,13 @@ describe('Storage Layer', () => {
             identity: { name: 'Test User' },
         };
 
-        beforeEach(() => {
-            const user = createUser('test@example.com', 'password123');
+        beforeEach(async () => {
+            const user = await createUser('test@example.com', 'password123');
             userId = user.id;
         });
 
-        it('should save a new draft', () => {
-            const draft = saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
+        it('should save a new draft', async () => {
+            const draft = await saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
             expect(draft.id).toBeGreaterThan(0);
             expect(draft.user_id).toBe(userId);
             expect(draft.canonical_json).toBe(JSON.stringify(sampleCanonical));
@@ -185,11 +189,11 @@ describe('Storage Layer', () => {
         });
 
         it('should update existing draft on subsequent save', async () => {
-            const draft1 = saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
+            const draft1 = await saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
             // Wait a tiny bit to ensure timestamp changes
             await new Promise(resolve => setTimeout(resolve, 10));
             const modified = { ...sampleCanonical, identity: { name: 'Modified User' } };
-            const draft2 = saveDraft(userId, modified, DEFAULT_VISIBILITY);
+            const draft2 = await saveDraft(userId, modified, DEFAULT_VISIBILITY);
 
             expect(draft2.id).toBe(draft1.id); // Same row
             expect(draft2.canonical_json).toBe(JSON.stringify(modified));
@@ -197,31 +201,31 @@ describe('Storage Layer', () => {
             expect(new Date(draft2.updated_at).getTime()).toBeGreaterThanOrEqual(new Date(draft1.updated_at).getTime());
         });
 
-        it('should get draft by user id', () => {
-            saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
-            const found = getDraft(userId);
+        it('should get draft by user id', async () => {
+            await saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
+            const found = await getDraft(userId);
             expect(found).toBeDefined();
             expect(found!.user_id).toBe(userId);
             expect(JSON.parse(found!.canonical_json)).toEqual(sampleCanonical);
         });
 
-        it('should return undefined for non-existent draft', () => {
-            const found = getDraft(userId);
+        it('should return undefined for non-existent draft', async () => {
+            const found = await getDraft(userId);
             expect(found).toBeUndefined();
         });
 
-        it('should delete draft', () => {
-            saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
-            deleteDraft(userId);
-            const found = getDraft(userId);
+        it('should delete draft', async () => {
+            await saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
+            await deleteDraft(userId);
+            const found = await getDraft(userId);
             expect(found).toBeUndefined();
         });
 
-        it('should enforce one draft per user (UNIQUE constraint)', () => {
-            saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
+        it('should enforce one draft per user (UNIQUE constraint)', async () => {
+            await saveDraft(userId, sampleCanonical, DEFAULT_VISIBILITY);
             // Second save should UPDATE, not fail
             const modified = { ...sampleCanonical, identity: { name: 'Modified' } };
-            expect(() => saveDraft(userId, modified, DEFAULT_VISIBILITY)).not.toThrow();
+            await expect(saveDraft(userId, modified, DEFAULT_VISIBILITY)).resolves.not.toThrow();
         });
     });
 
@@ -237,14 +241,14 @@ describe('Storage Layer', () => {
         };
         const sampleJsonLd = { '@context': 'https://schema.org', '@type': 'Person', name: 'Test User' };
 
-        beforeEach(() => {
-            const user = createUser('test@example.com', 'password123');
-            const h = claimHandle(user.id, 'test-user');
+        beforeEach(async () => {
+            const user = await createUser('test@example.com', 'password123');
+            const h = await claimHandle(user.id, 'test-user');
             handle = h.handle;
         });
 
-        it('should save a snapshot', () => {
-            const snapshot = saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash123');
+        it('should save a snapshot', async () => {
+            const snapshot = await saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash123');
             expect(snapshot.id).toBeGreaterThan(0);
             expect(snapshot.handle).toBe(handle);
             expect(snapshot.version_id).toBe('version-1');
@@ -256,7 +260,7 @@ describe('Storage Layer', () => {
         });
 
         it('should get latest published snapshot', async () => {
-            saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
+            await saveSnapshot(handle, 'version-1', samplePublic, sampleJsonLd, 'hash1');
             // Wait to ensure version-2 has a later timestamp
             await new Promise(resolve => setTimeout(resolve, 50));
             const pub2 = { ...samplePublic, versionId: 'version-2' };
@@ -345,17 +349,21 @@ describe('Storage Layer', () => {
             ],
         };
 
-        beforeEach(() => {
-            const user = createUser('test@example.com', 'password123');
-            const h = claimHandle(user.id, 'test-user');
+        beforeEach(async () => {
+            const user = await createUser('test@example.com', 'password123');
+            const h = await claimHandle(user.id, 'test-user');
             handle = h.handle;
         });
 
-        it('should create search index entry', () => {
-            updateSearchIndex(handle, samplePublic);
+        it('should create search index entry', async () => {
+            await updateSearchIndex(handle, samplePublic);
 
             const db = getDb();
-            const row = db.prepare('SELECT * FROM search_index WHERE handle = ?').get(handle) as any;
+            const result = await db.execute({
+                sql: 'SELECT * FROM search_index WHERE handle = ?',
+                args: [handle]
+            });
+            const row = result.rows[0] as any;
             expect(row).toBeDefined();
             expect(row.name).toBe('Jane Doe');
             expect(row.headline).toBe('Software Engineer');
@@ -365,27 +373,34 @@ describe('Storage Layer', () => {
             expect(row.titles).toBe('Senior Engineer,Engineer');
         });
 
-        it('should update existing search index entry', () => {
-            updateSearchIndex(handle, samplePublic);
+        it('should update existing search index entry', async () => {
+            await updateSearchIndex(handle, samplePublic);
             const modified = { ...samplePublic, identity: { ...samplePublic.identity, name: 'Jane Smith' } };
-            updateSearchIndex(handle, modified);
+            await updateSearchIndex(handle, modified);
 
             const db = getDb();
-            const rows = db.prepare('SELECT * FROM search_index WHERE handle = ?').all(handle);
+            const result = await db.execute({
+                sql: 'SELECT * FROM search_index WHERE handle = ?',
+                args: [handle]
+            });
+            const rows = result.rows;
             expect(rows).toHaveLength(1); // Only one row
             expect((rows[0] as any).name).toBe('Jane Smith');
         });
 
-        it('should delete search index entry', () => {
-            updateSearchIndex(handle, samplePublic);
-            deleteSearchIndex(handle);
+        it('should delete search index entry', async () => {
+            await updateSearchIndex(handle, samplePublic);
+            await deleteSearchIndex(handle);
 
             const db = getDb();
-            const row = db.prepare('SELECT * FROM search_index WHERE handle = ?').get(handle);
-            expect(row).toBeUndefined();
+            const result = await db.execute({
+                sql: 'SELECT * FROM search_index WHERE handle = ?',
+                args: [handle]
+            });
+            expect(result.rows[0]).toBeUndefined();
         });
 
-        it('should handle profile with no optional fields', () => {
+        it('should handle profile with no optional fields', async () => {
             const minimal: PublicProfile = {
                 schemaVersion: '1.0.0',
                 handle: 'test-user',
@@ -394,10 +409,14 @@ describe('Storage Layer', () => {
                 contentHash: 'hash',
                 identity: { name: 'Test' },
             };
-            updateSearchIndex(handle, minimal);
+            await updateSearchIndex(handle, minimal);
 
             const db = getDb();
-            const row = db.prepare('SELECT * FROM search_index WHERE handle = ?').get(handle) as any;
+            const result = await db.execute({
+                sql: 'SELECT * FROM search_index WHERE handle = ?',
+                args: [handle]
+            });
+            const row = result.rows[0] as any;
             expect(row).toBeDefined();
             expect(row.name).toBe('Test');
             expect(row.headline).toBeNull();
@@ -409,55 +428,56 @@ describe('Storage Layer', () => {
     describe('Session Operations', () => {
         let userId: number;
 
-        beforeEach(() => {
-            const user = createUser('test@example.com', 'password123');
+        beforeEach(async () => {
+            const user = await createUser('test@example.com', 'password123');
             userId = user.id;
         });
 
-        it('should create a session', () => {
-            const sessionId = createSession(userId);
+        it('should create a session', async () => {
+            const sessionId = await createSession(userId);
             expect(sessionId).toBeTruthy();
             expect(sessionId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
         });
 
-        it('should get active session', () => {
-            const sessionId = createSession(userId);
-            const session = getSession(sessionId);
+        it('should get active session', async () => {
+            const sessionId = await createSession(userId);
+            const session = await getSession(sessionId);
             expect(session).toBeDefined();
             expect(session!.userId).toBe(userId);
         });
 
-        it('should return null for non-existent session', () => {
-            const session = getSession('non-existent-id');
+        it('should return null for non-existent session', async () => {
+            const session = await getSession('non-existent-id');
             expect(session).toBeNull();
         });
 
-        it('should return null for expired session', () => {
+        it('should return null for expired session', async () => {
             const db = getDb();
             const sessionId = 'expired-session';
-            db.prepare(
-                'INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)'
-            ).run(sessionId, userId, '2020-01-01T00:00:00.000Z'); // Past date
+            await db.execute({
+                sql: 'INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)',
+                args: [sessionId, userId, '2020-01-01T00:00:00.000Z']
+            }); // Past date
 
-            const session = getSession(sessionId);
+            const session = await getSession(sessionId);
             expect(session).toBeNull();
         });
 
-        it('should delete session', () => {
-            const sessionId = createSession(userId);
-            deleteSession(sessionId);
-            const session = getSession(sessionId);
+        it('should delete session', async () => {
+            const sessionId = await createSession(userId);
+            await deleteSession(sessionId);
+            const session = await getSession(sessionId);
             expect(session).toBeNull();
         });
 
-        it('should delete all user sessions', () => {
-            const session1 = createSession(userId);
-            const session2 = createSession(userId);
+        it('should delete all user sessions', async () => {
+            const session1 = await createSession(userId);
+            const session2 = await createSession(userId);
 
-            deleteUserSessions(userId);
+            await deleteUserSessions(userId);
 
-            expect(getSession(session1)).toBeNull();
-            expect(getSession(session2)).toBeNull();
+            expect(await getSession(session1)).toBeNull();
+            expect(await getSession(session2)).toBeNull();
         });
     });
 
@@ -465,10 +485,10 @@ describe('Storage Layer', () => {
         let userId: number;
         let handle: string;
 
-        beforeEach(() => {
-            const user = createUser('test@example.com', 'password123');
+        beforeEach(async () => {
+            const user = await createUser('test@example.com', 'password123');
             userId = user.id;
-            const h = claimHandle(userId, 'test-user');
+            const h = await claimHandle(userId, 'test-user');
             handle = h.handle;
 
             // Create full profile
@@ -477,7 +497,7 @@ describe('Storage Layer', () => {
                 handle,
                 identity: { name: 'Test User' },
             };
-            saveDraft(userId, canonical, DEFAULT_VISIBILITY);
+            await saveDraft(userId, canonical, DEFAULT_VISIBILITY);
 
             const pub: PublicProfile = {
                 schemaVersion: '1.0.0',
@@ -487,42 +507,51 @@ describe('Storage Layer', () => {
                 contentHash: 'hash',
                 identity: { name: 'Test User' },
             };
-            saveSnapshot(handle, 'v1', pub, {}, 'hash');
-            updateSearchIndex(handle, pub);
-            createSession(userId);
+            await saveSnapshot(handle, 'v1', pub, {}, 'hash');
+            await updateSearchIndex(handle, pub);
+            await createSession(userId);
         });
 
-        it('should delete user and all associated data', () => {
-            deleteProfile(userId);
+        it('should delete user and all associated data', async () => {
+            await deleteProfile(userId);
 
             // Verify everything is deleted
-            expect(getUserById(userId)).toBeUndefined();
-            expect(getHandleByUserId(userId)).toBeUndefined();
-            expect(getDraft(userId)).toBeUndefined();
-            expect(getAllSnapshots(handle)).toHaveLength(0);
+            expect(await getUserById(userId)).toBeUndefined();
+            expect(await getHandleByUserId(userId)).toBeUndefined();
+            expect(await getDraft(userId)).toBeUndefined();
+            expect(await getAllSnapshots(handle)).toHaveLength(0);
 
             const db = getDb();
-            const searchRow = db.prepare('SELECT * FROM search_index WHERE handle = ?').get(handle);
-            expect(searchRow).toBeUndefined();
+            const searchRow = await db.execute({
+                sql: 'SELECT * FROM search_index WHERE handle = ?',
+                args: [handle]
+            });
+            expect(searchRow.rows[0]).toBeUndefined();
 
-            const sessionRows = db.prepare('SELECT * FROM sessions WHERE user_id = ?').all(userId);
-            expect(sessionRows).toHaveLength(0);
+            const sessionRows = await db.execute({
+                sql: 'SELECT * FROM sessions WHERE user_id = ?',
+                args: [userId]
+            });
+            expect(sessionRows.rows).toHaveLength(0);
         });
 
-        it('should cascade delete handle when user is deleted', () => {
-            deleteProfile(userId);
+        it('should cascade delete handle when user is deleted', async () => {
+            await deleteProfile(userId);
 
             const db = getDb();
             // Handle is cascade deleted due to ON DELETE CASCADE on user_id foreign key
             // Despite storage.ts attempting to mark it as deleted first,
             // the final DELETE FROM users triggers cascade deletion
-            const handleRow = db.prepare('SELECT * FROM handles WHERE handle = ?').get(handle) as any;
-            expect(handleRow).toBeUndefined();
+            const handleRow = await db.execute({
+                sql: 'SELECT * FROM handles WHERE handle = ?',
+                args: [handle]
+            });
+            expect(handleRow.rows[0]).toBeUndefined();
         });
 
-        it('should handle delete when no handle exists', () => {
-            const user2 = createUser('test2@example.com', 'password123');
-            expect(() => deleteProfile(user2.id)).not.toThrow();
+        it('should handle delete when no handle exists', async () => {
+            const user2 = await createUser('test2@example.com', 'password123');
+            await expect(deleteProfile(user2.id)).resolves.not.toThrow();
         });
     });
 });

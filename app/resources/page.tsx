@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { ExternalLink, BookOpen, Code, Brain, Users, Wrench, Download } from 'lucide-react';
+import NeuromorphicCard from '@/components/neuromorphic/NeuromorphicCard';
+import NeuromorphicButton from '@/components/neuromorphic/NeuromorphicButton';
 
 export const metadata = {
     title: 'Resources | Ryan Guidry',
@@ -185,23 +187,20 @@ const resources = {
 
 function ResourceCard({ resource }: { resource: Resource }) {
     return (
-        <a
-            href={resource.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-all hover:shadow-lg"
-        >
-            <div className="flex items-start justify-between">
+        <a href={resource.url} target="_blank" rel="noopener noreferrer" className="block h-full group">
+            <NeuromorphicCard className="h-full flex items-start justify-between hover:scale-[1.02] transition-transform duration-300">
                 <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {resource.title}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                         {resource.description}
                     </p>
                 </div>
-                <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors ml-4 flex-shrink-0" />
-            </div>
+                <div className="p-2 ml-4 rounded-full bg-[#e0e5ec] dark:bg-[#1a1c23] shadow-[inset_3px_3px_6px_#b8b9be,inset_-3px_-3px_6px_#ffffff] dark:shadow-[inset_3px_3px_6px_#121318,inset_-3px_-3px_6px_#22252e]">
+                    <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                </div>
+            </NeuromorphicCard>
         </a>
     );
 }
@@ -209,11 +208,13 @@ function ResourceCard({ resource }: { resource: Resource }) {
 function ResourceSection({ title, icon: Icon, resources }: { title: string; icon: any; resources: Resource[] }) {
     return (
         <section className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-                <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{title}</h2>
+            <div className="flex items-center gap-4 mb-8 pl-2">
+                <div className="p-3 rounded-full bg-[#e0e5ec] dark:bg-[#1a1c23] shadow-[inset_4px_4px_8px_#b8b9be,inset_-4px_-4px_8px_#ffffff] dark:shadow-[inset_4px_4px_8px_#121318,inset_-4px_-4px_8px_#22252e]">
+                    <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-800 dark:text-white">{title}</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {resources.map((resource) => (
                     <ResourceCard key={resource.url} resource={resource} />
                 ))}
@@ -224,11 +225,11 @@ function ResourceSection({ title, icon: Icon, resources }: { title: string; icon
 
 export default function ResourcesPage() {
     return (
-        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#e0e5ec] dark:bg-[#1a1c23] text-gray-700 dark:text-gray-300 transition-colors duration-300">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    <h1 className="text-5xl font-extrabold text-gray-800 dark:text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
                         Resources
                     </h1>
                     <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -246,12 +247,9 @@ export default function ResourcesPage() {
 
                 {/* Back to Home */}
                 <div className="text-center mt-16">
-                    <Link
-                        href="/"
-                        className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-lg font-medium"
-                    >
+                    <NeuromorphicButton href="/">
                         ← Back to Home
-                    </Link>
+                    </NeuromorphicButton>
                 </div>
             </div>
         </div>

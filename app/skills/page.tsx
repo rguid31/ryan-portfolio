@@ -1,7 +1,7 @@
 import { getSkills } from '@/lib/masterReport';
 
-export default function SkillsPage() {
-    const skills = getSkills();
+export default async function SkillsPage() {
+    const skills = await getSkills();
 
     return (
         <div className="container mx-auto px-4 py-12">

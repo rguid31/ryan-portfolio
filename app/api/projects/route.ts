@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getProjects } from '@/lib/masterReport';
 
 export async function GET() {
-    const projects = getProjects();
+    const projects = await getProjects();
 
     // Return clean project data for AI consumption
     const projectsData = projects.map((project) => ({

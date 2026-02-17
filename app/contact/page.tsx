@@ -1,8 +1,8 @@
 import { getPersonalInfo } from '@/lib/masterReport';
 import ContactForm from '@/components/ContactForm';
 
-export default function ContactPage() {
-    const personal = getPersonalInfo();
+export default async function ContactPage() {
+    const personal = await getPersonalInfo();
 
     return (
         <div className="container mx-auto px-4 py-12">

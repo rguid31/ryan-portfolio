@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
+import NeuromorphicCard from '@/components/neuromorphic/NeuromorphicCard';
+import NeuromorphicButton from '@/components/neuromorphic/NeuromorphicButton';
 
 interface BlogPostPageProps {
     params: {
@@ -209,12 +211,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     }
 
     return (
-        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#e0e5ec] dark:bg-[#1a1c23] transition-colors duration-300">
             <article className="max-w-3xl mx-auto">
                 {/* Back Button */}
                 <Link
                     href="/blog"
-                    className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline mb-8"
+                    className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors mb-8 font-medium"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Blog
@@ -223,7 +225,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {/* Header */}
                 <header className="mb-12">
                     <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                        <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-medium">
+                        <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-medium shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),inset_-2px_-2px_4px_rgba(255,255,255,0.7)] dark:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.5),inset_-2px_-2px_4px_rgba(255,255,255,0.05)]">
                             {post.category}
                         </span>
                         <div className="flex items-center gap-2">
@@ -242,25 +244,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         </div>
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 dark:text-white mb-4 leading-tight">
                         {post.title}
                     </h1>
                 </header>
 
                 {/* Content */}
-                <div className="prose prose-lg dark:prose-invert prose-slate max-w-none bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 border border-gray-200 dark:border-gray-700">
-                    <div className="whitespace-pre-wrap">{post.content}</div>
-                </div>
+                <NeuromorphicCard className="p-8 md:p-12 mb-12">
+                    <div className="prose prose-lg dark:prose-invert prose-slate max-w-none">
+                        <div className="whitespace-pre-wrap">{post.content}</div>
+                    </div>
+                </NeuromorphicCard>
 
                 {/* Footer */}
-                <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-                    <Link
-                        href="/blog"
-                        className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
-                    >
-                        <ArrowLeft className="w-4 h-4" />
-                        Back to all posts
-                    </Link>
+                <footer className="border-t border-gray-300 dark:border-gray-700 pt-8 mt-12">
+                    <NeuromorphicButton href="/blog">
+                        ← Back to all posts
+                    </NeuromorphicButton>
                 </footer>
             </article>
         </div>

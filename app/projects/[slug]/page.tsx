@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { Project, Challenge } from '@/lib/types';
 
 interface ProjectPageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 export async function generateStaticParams() {
-    const projects = getProjects();
+    const projects = await getProjects();
     return projects.map((project: Project) => ({
         slug: project.slug,
     }));
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
     const { slug } = await params;
-    const project = getProjectBySlug(slug);
+    const project = await getProjectBySlug(slug);
 
     if (!project) {
         notFound();

@@ -9,8 +9,8 @@ export const metadata = {
     description: 'Exploring the personal side of Ryan Guidry - from vinyl collecting to creative coding.',
 };
 
-export default function HobbiesPage() {
-    const hobbies = getHobbies();
+export default async function HobbiesPage() {
+    const hobbies = await getHobbies();
 
     return (
         <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">

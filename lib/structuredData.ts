@@ -6,8 +6,11 @@ const SITE_URL = 'https://ryanguidry.com';
 /**
  * Generate Person schema for homepage
  */
-export function generatePersonSchema() {
-    const data = getMasterReport();
+/**
+ * Generate Person schema for homepage
+ */
+export async function generatePersonSchema() {
+    const data = await getMasterReport();
     const { personal, summary } = data;
 
     return {

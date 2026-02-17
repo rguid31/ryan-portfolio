@@ -1,6 +1,6 @@
 // Tests: Query engine — search and filter published profiles
 
-import { getDb, closeDb } from '../../lib/truth-engine/db';
+import { getDb, closeDb, migrate } from '../../lib/truth-engine/db';
 import { createUser, claimHandle, updateSearchIndex } from '../../lib/truth-engine/storage';
 import { queryProfiles } from '../../lib/truth-engine/query';
 import type { PublicProfile } from '../../lib/truth-engine/types';
@@ -11,11 +11,12 @@ describe('Query Engine', () => {
         closeDb();
     });
 
-    beforeEach(() => {
+    beforeEach(async () => {
         // Reset database
         closeDb();
         const db = getDb();
-        db.exec(`
+        await migrate();
+        await db.executeMultiple(`
             DELETE FROM sessions;
             DELETE FROM search_index;
             DELETE FROM profile_snapshots;
@@ -25,17 +26,17 @@ describe('Query Engine', () => {
         `);
 
         // Create test data
-        setupTestProfiles();
+        await setupTestProfiles();
     });
 
     afterAll(() => {
         closeDb();
     });
 
-    function setupTestProfiles() {
+    async function setupTestProfiles() {
         // Profile 1: TypeScript expert in Austin
-        const user1 = createUser('alice@example.com', 'password');
-        claimHandle(user1.id, 'alice');
+        const user1 = await createUser('alice@example.com', 'password');
+        await claimHandle(user1.id, 'alice');
         const profile1: PublicProfile = {
             schemaVersion: '1.0.0',
             handle: 'alice',
@@ -52,11 +53,11 @@ describe('Query Engine', () => {
                 { organization: 'Acme Corp', title: 'Senior Engineer' },
             ],
         };
-        updateSearchIndex('alice', profile1);
+        await updateSearchIndex('alice', profile1);
 
         // Profile 2: Python developer in San Francisco
-        const user2 = createUser('bob@example.com', 'password');
-        claimHandle(user2.id, 'bob');
+        const user2 = await createUser('bob@example.com', 'password');
+        await claimHandle(user2.id, 'bob');
         const profile2: PublicProfile = {
             schemaVersion: '1.0.0',
             handle: 'bob',
@@ -73,11 +74,11 @@ describe('Query Engine', () => {
                 { organization: 'Tech Co', title: 'Staff Engineer' },
             ],
         };
-        updateSearchIndex('bob', profile2);
+        await updateSearchIndex('bob', profile2);
 
         // Profile 3: Designer at Acme Corp in New York
-        const user3 = createUser('carol@example.com', 'password');
-        claimHandle(user3.id, 'carol');
+        const user3 = await createUser('carol@example.com', 'password');
+        await claimHandle(user3.id, 'carol');
         const profile3: PublicProfile = {
             schemaVersion: '1.0.0',
             handle: 'carol',
@@ -94,25 +95,25 @@ describe('Query Engine', () => {
                 { organization: 'Acme Corp', title: 'Lead Designer' },
             ],
         };
-        updateSearchIndex('carol', profile3);
+        await updateSearchIndex('carol', profile3);
     }
 
     describe('Basic Search', () => {
-        it('should return all profiles when no filters applied', () => {
-            const result = queryProfiles({});
+        it('should return all profiles when no filters applied', async () => {
+            const result = await queryProfiles({});
             expect(result.results).toHaveLength(3);
             expect(result.nextCursor).toBeNull();
         });
 
-        it('should return results ordered by handle ASC', () => {
-            const result = queryProfiles({});
+        it('should return results ordered by handle ASC', async () => {
+            const result = await queryProfiles({});
             expect(result.results[0].handle).toBe('alice');
             expect(result.results[1].handle).toBe('bob');
             expect(result.results[2].handle).toBe('carol');
         });
 
-        it('should include expected fields in results', () => {
-            const result = queryProfiles({});
+        it('should include expected fields in results', async () => {
+            const result = await queryProfiles({});
             const first = result.results[0];
             expect(first).toHaveProperty('handle');
             expect(first).toHaveProperty('name');
@@ -123,170 +124,170 @@ describe('Query Engine', () => {
     });
 
     describe('Filter by Skill', () => {
-        it('should find profiles with TypeScript skill', () => {
-            const result = queryProfiles({ skill: 'TypeScript' });
+        it('should find profiles with TypeScript skill', async () => {
+            const result = await queryProfiles({ skill: 'TypeScript' });
             expect(result.results).toHaveLength(1);
             expect(result.results[0].handle).toBe('alice');
         });
 
-        it('should find profiles with Python skill', () => {
-            const result = queryProfiles({ skill: 'Python' });
+        it('should find profiles with Python skill', async () => {
+            const result = await queryProfiles({ skill: 'Python' });
             expect(result.results).toHaveLength(2);
             expect(result.results[0].handle).toBe('alice');
             expect(result.results[1].handle).toBe('bob');
         });
 
-        it('should perform case-insensitive LIKE matching', () => {
+        it('should perform case-insensitive LIKE matching', async () => {
             // SQLite LIKE is case-insensitive by default
-            const result = queryProfiles({ skill: 'typescript' });
+            const result = await queryProfiles({ skill: 'typescript' });
             expect(result.results).toHaveLength(1);
         });
 
-        it('should support partial skill matching', () => {
-            const result = queryProfiles({ skill: 'Script' });
+        it('should support partial skill matching', async () => {
+            const result = await queryProfiles({ skill: 'Script' });
             expect(result.results).toHaveLength(1);
             expect(result.results[0].handle).toBe('alice');
         });
 
-        it('should return empty when skill not found', () => {
-            const result = queryProfiles({ skill: 'Ruby' });
+        it('should return empty when skill not found', async () => {
+            const result = await queryProfiles({ skill: 'Ruby' });
             expect(result.results).toHaveLength(0);
         });
     });
 
     describe('Filter by Organization', () => {
-        it('should find profiles by organization', () => {
-            const result = queryProfiles({ org: 'Acme Corp' });
+        it('should find profiles by organization', async () => {
+            const result = await queryProfiles({ org: 'Acme Corp' });
             expect(result.results).toHaveLength(2);
             expect(result.results[0].handle).toBe('alice');
             expect(result.results[1].handle).toBe('carol');
         });
 
-        it('should support partial organization matching', () => {
-            const result = queryProfiles({ org: 'Acme' });
+        it('should support partial organization matching', async () => {
+            const result = await queryProfiles({ org: 'Acme' });
             expect(result.results).toHaveLength(2);
         });
 
-        it('should return empty when organization not found', () => {
-            const result = queryProfiles({ org: 'Google' });
+        it('should return empty when organization not found', async () => {
+            const result = await queryProfiles({ org: 'Google' });
             expect(result.results).toHaveLength(0);
         });
     });
 
     describe('Filter by Title', () => {
-        it('should find profiles by job title', () => {
-            const result = queryProfiles({ title: 'Engineer' });
+        it('should find profiles by job title', async () => {
+            const result = await queryProfiles({ title: 'Engineer' });
             expect(result.results).toHaveLength(2);
             expect(result.results[0].handle).toBe('alice');
             expect(result.results[1].handle).toBe('bob');
         });
 
-        it('should support partial title matching', () => {
+        it('should support partial title matching', async () => {
             // Search for "Engineer" which matches both "Senior Engineer" and "Staff Engineer"
-            const result = queryProfiles({ title: 'Engineer' });
+            const result = await queryProfiles({ title: 'Engineer' });
             expect(result.results.length).toBeGreaterThanOrEqual(1);
         });
 
-        it('should return empty when title not found', () => {
-            const result = queryProfiles({ title: 'Manager' });
+        it('should return empty when title not found', async () => {
+            const result = await queryProfiles({ title: 'Manager' });
             expect(result.results).toHaveLength(0);
         });
     });
 
     describe('Filter by Location', () => {
-        it('should find profiles by city', () => {
-            const result = queryProfiles({ location: 'Austin' });
+        it('should find profiles by city', async () => {
+            const result = await queryProfiles({ location: 'Austin' });
             expect(result.results).toHaveLength(1);
             expect(result.results[0].handle).toBe('alice');
         });
 
-        it('should find profiles by state', () => {
-            const result = queryProfiles({ location: 'CA' });
+        it('should find profiles by state', async () => {
+            const result = await queryProfiles({ location: 'CA' });
             expect(result.results).toHaveLength(1);
             expect(result.results[0].handle).toBe('bob');
         });
 
-        it('should support partial location matching', () => {
-            const result = queryProfiles({ location: 'New' });
+        it('should support partial location matching', async () => {
+            const result = await queryProfiles({ location: 'New' });
             expect(result.results).toHaveLength(1);
             expect(result.results[0].handle).toBe('carol');
         });
 
-        it('should return empty when location not found', () => {
-            const result = queryProfiles({ location: 'London' });
+        it('should return empty when location not found', async () => {
+            const result = await queryProfiles({ location: 'London' });
             expect(result.results).toHaveLength(0);
         });
     });
 
     describe('Filter by Updated After', () => {
-        it('should find profiles updated after date', () => {
+        it('should find profiles updated after date', async () => {
             // updateSearchIndex uses current time, not profile.lastUpdated
-            const result = queryProfiles({ updatedAfter: '2020-01-01T00:00:00.000Z' });
+            const result = await queryProfiles({ updatedAfter: '2020-01-01T00:00:00.000Z' });
             expect(result.results).toHaveLength(3); // All profiles
         });
 
-        it('should return empty when no profiles updated after future date', () => {
-            const result = queryProfiles({ updatedAfter: '2030-12-31T00:00:00.000Z' });
+        it('should return empty when no profiles updated after future date', async () => {
+            const result = await queryProfiles({ updatedAfter: '2030-12-31T00:00:00.000Z' });
             expect(result.results).toHaveLength(0);
         });
     });
 
     describe('Combined Filters', () => {
-        it('should support multiple filters (AND logic)', () => {
-            const result = queryProfiles({ skill: 'Python', org: 'Tech Co' });
+        it('should support multiple filters (AND logic)', async () => {
+            const result = await queryProfiles({ skill: 'Python', org: 'Tech Co' });
             expect(result.results).toHaveLength(1);
             expect(result.results[0].handle).toBe('bob');
         });
 
-        it('should return empty when combined filters match nothing', () => {
-            const result = queryProfiles({ skill: 'TypeScript', org: 'Tech Co' });
+        it('should return empty when combined filters match nothing', async () => {
+            const result = await queryProfiles({ skill: 'TypeScript', org: 'Tech Co' });
             expect(result.results).toHaveLength(0);
         });
 
-        it('should support skill + location filters', () => {
-            const result = queryProfiles({ skill: 'Python', location: 'Austin' });
+        it('should support skill + location filters', async () => {
+            const result = await queryProfiles({ skill: 'Python', location: 'Austin' });
             expect(result.results).toHaveLength(1);
             expect(result.results[0].handle).toBe('alice');
         });
     });
 
     describe('Pagination', () => {
-        it('should respect limit parameter', () => {
-            const result = queryProfiles({ limit: 2 });
+        it('should respect limit parameter', async () => {
+            const result = await queryProfiles({ limit: 2 });
             expect(result.results).toHaveLength(2);
             expect(result.results[0].handle).toBe('alice');
             expect(result.results[1].handle).toBe('bob');
         });
 
-        it('should provide nextCursor when more results exist', () => {
-            const result = queryProfiles({ limit: 2 });
+        it('should provide nextCursor when more results exist', async () => {
+            const result = await queryProfiles({ limit: 2 });
             expect(result.nextCursor).toBe('bob');
         });
 
-        it('should support cursor-based pagination', () => {
-            const page1 = queryProfiles({ limit: 2 });
+        it('should support cursor-based pagination', async () => {
+            const page1 = await queryProfiles({ limit: 2 });
             expect(page1.results).toHaveLength(2);
             expect(page1.nextCursor).toBe('bob');
 
-            const page2 = queryProfiles({ limit: 2, cursor: page1.nextCursor! });
+            const page2 = await queryProfiles({ limit: 2, cursor: page1.nextCursor! });
             expect(page2.results).toHaveLength(1);
             expect(page2.results[0].handle).toBe('carol');
             expect(page2.nextCursor).toBeNull();
         });
 
-        it('should enforce max limit of 100', () => {
-            const result = queryProfiles({ limit: 150 });
+        it('should enforce max limit of 100', async () => {
+            const result = await queryProfiles({ limit: 150 });
             // Can't test actual limit enforcement without 100+ profiles,
             // but we verify the code exists by checking it doesn't throw
             expect(result.results).toHaveLength(3);
         });
 
-        it('should default to limit 20 when not specified', () => {
+        it('should default to limit 20 when not specified', async () => {
             // Add more profiles to test default limit
             for (let i = 0; i < 25; i++) {
-                const user = createUser(`user${i}@example.com`, 'password');
+                const user = await createUser(`user${i}@example.com`, 'password');
                 const handle = `user-${i}`;
-                claimHandle(user.id, handle);
+                await claimHandle(user.id, handle);
                 const profile: PublicProfile = {
                     schemaVersion: '1.0.0',
                     handle,
@@ -295,19 +296,19 @@ describe('Query Engine', () => {
                     contentHash: 'hash',
                     identity: { name: `User ${i}` },
                 };
-                updateSearchIndex(handle, profile);
+                await updateSearchIndex(handle, profile);
             }
 
-            const result = queryProfiles({});
+            const result = await queryProfiles({});
             expect(result.results.length).toBeLessThanOrEqual(20);
             expect(result.nextCursor).toBeTruthy();
         });
     });
 
     describe('Edge Cases', () => {
-        it('should handle profiles with no skills', () => {
-            const user = createUser('dave@example.com', 'password');
-            claimHandle(user.id, 'dave');
+        it('should handle profiles with no skills', async () => {
+            const user = await createUser('dave@example.com', 'password');
+            await claimHandle(user.id, 'dave');
             const profile: PublicProfile = {
                 schemaVersion: '1.0.0',
                 handle: 'dave',
@@ -316,15 +317,15 @@ describe('Query Engine', () => {
                 contentHash: 'hash',
                 identity: { name: 'Dave' },
             };
-            updateSearchIndex('dave', profile);
+            await updateSearchIndex('dave', profile);
 
-            const result = queryProfiles({ skill: 'TypeScript' });
+            const result = await queryProfiles({ skill: 'TypeScript' });
             expect(result.results.every(r => r.handle !== 'dave')).toBe(true);
         });
 
-        it('should handle profiles with no location', () => {
-            const user = createUser('eve@example.com', 'password');
-            claimHandle(user.id, 'eve');
+        it('should handle profiles with no location', async () => {
+            const user = await createUser('eve@example.com', 'password');
+            await claimHandle(user.id, 'eve');
             const profile: PublicProfile = {
                 schemaVersion: '1.0.0',
                 handle: 'eve',
@@ -333,23 +334,23 @@ describe('Query Engine', () => {
                 contentHash: 'hash',
                 identity: { name: 'Eve' },
             };
-            updateSearchIndex('eve', profile);
+            await updateSearchIndex('eve', profile);
 
-            const result = queryProfiles({ location: 'Austin' });
+            const result = await queryProfiles({ location: 'Austin' });
             expect(result.results.every(r => r.handle !== 'eve')).toBe(true);
         });
 
-        it('should handle empty search index', () => {
+        it('should handle empty search index', async () => {
             const db = getDb();
-            db.exec('DELETE FROM search_index');
+            await db.executeMultiple('DELETE FROM search_index');
 
-            const result = queryProfiles({});
+            const result = await queryProfiles({});
             expect(result.results).toHaveLength(0);
             expect(result.nextCursor).toBeNull();
         });
 
-        it('should handle special characters in search terms', () => {
-            const result = queryProfiles({ skill: "Type'Script" });
+        it('should handle special characters in search terms', async () => {
+            const result = await queryProfiles({ skill: "Type'Script" });
             expect(result.results).toHaveLength(0); // No SQL injection
         });
     });

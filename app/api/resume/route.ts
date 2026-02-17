@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getMasterReport } from '@/lib/masterReport';
 
 export async function GET() {
-    const data = getMasterReport();
+    const data = await getMasterReport();
 
     // Create a clean, AI-friendly resume format
     const resume = {

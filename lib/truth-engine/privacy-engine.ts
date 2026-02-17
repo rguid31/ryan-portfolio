@@ -1,5 +1,5 @@
 // Truth Engine — Privacy engine: canonical → public transformation
-// Implements spec/PRIVACY.md redaction rules
+// Implements docs/PRIVACY.md redaction rules
 
 import type { CanonicalProfile, PublicProfile, VisibilitySettings } from './types';
 

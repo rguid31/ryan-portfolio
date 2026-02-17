@@ -1,26 +1,27 @@
 import { getMasterReport } from './masterReport';
+import 'server-only';
 
 /**
  * Calculate total number of projects
  */
-export function getTotalProjects(): number {
-    const data = getMasterReport();
+export async function getTotalProjects(): Promise<number> {
+    const data = await getMasterReport();
     return data.projects.length;
 }
 
 /**
  * Calculate total number of featured projects
  */
-export function getFeaturedProjectsCount(): number {
-    const data = getMasterReport();
+export async function getFeaturedProjectsCount(): Promise<number> {
+    const data = await getMasterReport();
     return data.projects.filter((p) => p.featured).length;
 }
 
 /**
  * Calculate years of professional experience
  */
-export function getYearsOfExperience(): number {
-    const data = getMasterReport();
+export async function getYearsOfExperience(): Promise<number> {
+    const data = await getMasterReport();
 
     if (!data.experience || data.experience.length === 0) {
         return 0;
@@ -48,8 +49,8 @@ export function getYearsOfExperience(): number {
 /**
  * Calculate total number of skills across all categories
  */
-export function getTotalSkills(): number {
-    const data = getMasterReport();
+export async function getTotalSkills(): Promise<number> {
+    const data = await getMasterReport();
 
     if (!data.skills) {
         return 0;
@@ -68,8 +69,8 @@ export function getTotalSkills(): number {
 /**
  * Calculate education progress (credits completed / total credits)
  */
-export function getEducationProgress(): { completed: number; total: number; percentage: number } {
-    const data = getMasterReport();
+export async function getEducationProgress(): Promise<{ completed: number; total: number; percentage: number }> {
+    const data = await getMasterReport();
 
     // Find the in-progress mathematics degree
     const mathDegree = data.education.find((edu) =>
@@ -98,8 +99,8 @@ export function getEducationProgress(): { completed: number; total: number; perc
 /**
  * Count active certifications
  */
-export function getActiveCertifications(): number {
-    const data = getMasterReport();
+export async function getActiveCertifications(): Promise<number> {
+    const data = await getMasterReport();
 
     if (!data.certifications) {
         return 0;
@@ -113,8 +114,8 @@ export function getActiveCertifications(): number {
 /**
  * Calculate exploration metrics for the dashboard
  */
-export function getExplorationMetrics() {
-    const data = getMasterReport();
+export async function getExplorationMetrics() {
+    const data = await getMasterReport();
 
     // Calculate project categories
     const projectCategories: Record<string, number> = {};
@@ -130,6 +131,15 @@ export function getExplorationMetrics() {
         });
     }
 
+    // Need to await synchronous helpers if we were calling them, but we are calling getMasterReport directly
+    // which is async now.
+
+    const totalSkills = await getTotalSkills();
+    const yearsExperience = await getYearsOfExperience();
+    const activeCertifications = await getActiveCertifications();
+    const educationProgress = await getEducationProgress();
+
+
     return {
         projects: {
             total: data.projects.length,
@@ -137,18 +147,18 @@ export function getExplorationMetrics() {
             featured: data.projects.filter(p => p.featured).length
         },
         skills: {
-            total: getTotalSkills(),
+            total: totalSkills,
             byCategory: skillCategories
         },
         experience: {
-            totalYears: getYearsOfExperience(),
+            totalYears: yearsExperience,
             companies: new Set(data.experience.map(e => e.company)).size,
             roles: data.experience.length
         },
         knowledge: {
             certifications: data.certifications?.length || 0,
-            activeCertifications: getActiveCertifications(),
-            educationCredits: getEducationProgress()
+            activeCertifications: activeCertifications,
+            educationCredits: educationProgress
         }
     };
 }
@@ -156,14 +166,33 @@ export function getExplorationMetrics() {
 /**
  * Get all portfolio stats in one call
  */
-export function getPortfolioStats() {
+export async function getPortfolioStats() {
+    // Parallelize fetches where possible
+    const [
+        totalProjects,
+        featuredProjects,
+        yearsExperience,
+        totalSkills,
+        educationProgress,
+        activeCertifications,
+        exploration
+    ] = await Promise.all([
+        getTotalProjects(),
+        getFeaturedProjectsCount(),
+        getYearsOfExperience(),
+        getTotalSkills(),
+        getEducationProgress(),
+        getActiveCertifications(),
+        getExplorationMetrics()
+    ]);
+
     return {
-        totalProjects: getTotalProjects(),
-        featuredProjects: getFeaturedProjectsCount(),
-        yearsExperience: getYearsOfExperience(),
-        totalSkills: getTotalSkills(),
-        educationProgress: getEducationProgress(),
-        activeCertifications: getActiveCertifications(),
-        exploration: getExplorationMetrics()
+        totalProjects,
+        featuredProjects,
+        yearsExperience,
+        totalSkills,
+        educationProgress,
+        activeCertifications,
+        exploration
     };
 }

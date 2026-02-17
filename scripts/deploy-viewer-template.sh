@@ -4,8 +4,8 @@ set -e
 # Ensure Homebrew path is included (common on Apple Silicon Macs)
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Change into the template directory
-cd truth-engine-viewer
+# Change into the template directory (assuming script is run from project root or scripts/)
+cd "$(dirname "$0")/../truth-engine-viewer"
 
 # Check if gh is installed
 if ! command -v gh &> /dev/null; then

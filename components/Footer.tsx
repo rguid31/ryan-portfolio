@@ -1,7 +1,7 @@
 import { getPersonalInfo } from '@/lib/masterReport';
 
-export default function Footer() {
-    const personal = getPersonalInfo();
+export default async function Footer() {
+    const personal = await getPersonalInfo();
     const currentYear = new Date().getFullYear();
 
     return (

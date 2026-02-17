@@ -1,8 +1,8 @@
 // Truth Engine — JSON Schema validation using AJV
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
-import canonicalSchema from '../../spec/canonical.schema.json';
-import publicSchema from '../../spec/public.schema.json';
+import canonicalSchema from './schemas/canonical.schema.json';
+import publicSchema from './schemas/public.schema.json';
 import type { ValidationResult, CanonicalProfile, PublicProfile } from './types';
 
 const ajv = new Ajv({ allErrors: true, verbose: true });

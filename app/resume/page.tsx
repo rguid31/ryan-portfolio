@@ -1,12 +1,14 @@
 import { getPersonalInfo, getSummary, getExperience, getEducation, getSkills } from '@/lib/masterReport';
 import PrintButton from '@/components/PrintButton';
 
-export default function ResumePage() {
-    const personal = getPersonalInfo();
-    const summary = getSummary();
-    const experiences = getExperience();
-    const education = getEducation();
-    const skills = getSkills();
+export default async function ResumePage() {
+    const [personal, summary, experiences, education, skills] = await Promise.all([
+        getPersonalInfo(),
+        getSummary(),
+        getExperience(),
+        getEducation(),
+        getSkills()
+    ]);
 
     return (
         <div className="container mx-auto px-4 py-12 max-w-5xl">

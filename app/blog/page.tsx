@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import NeuromorphicCard from '@/components/neuromorphic/NeuromorphicCard';
+import NeuromorphicButton from '@/components/neuromorphic/NeuromorphicButton';
 
 export const metadata = {
     title: 'Blog | Ryan Guidry',
@@ -52,53 +54,52 @@ const blogPosts: BlogPost[] = [
 
 function BlogPostCard({ post }: { post: BlogPost }) {
     return (
-        <Link
-            href={`/blog/${post.slug}`}
-            className="group block p-8 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-all hover:shadow-xl"
-        >
-            <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-medium">
-                    {post.category}
-                </span>
-                <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <time dateTime={post.date}>
-                        {new Date(post.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                        })}
-                    </time>
+        <Link href={`/blog/${post.slug}`} className="block group">
+            <NeuromorphicCard className="hover:scale-[1.02] transition-transform duration-300">
+                <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-medium shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),inset_-2px_-2px_4px_rgba(255,255,255,0.7)] dark:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.5),inset_-2px_-2px_4px_rgba(255,255,255,0.05)]">
+                        {post.category}
+                    </span>
+                    <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4" />
+                        <time dateTime={post.date}>
+                            {new Date(post.date).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                            })}
+                        </time>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        <span>{post.readTime}</span>
+                    </div>
                 </div>
-                <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime}</span>
+
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {post.title}
+                </h2>
+
+                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                    {post.excerpt}
+                </p>
+
+                <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:gap-3 transition-all">
+                    Read more
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>
-            </div>
-
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                {post.title}
-            </h2>
-
-            <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                {post.excerpt}
-            </p>
-
-            <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:gap-3 transition-all">
-                Read more
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </div>
+            </NeuromorphicCard>
         </Link>
     );
 }
 
 export default function BlogPage() {
     return (
-        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#e0e5ec] dark:bg-[#1a1c23] transition-colors duration-300">
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+                    <h1 className="text-5xl font-extrabold text-gray-800 dark:text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
                         Blog
                     </h1>
                     <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -114,16 +115,15 @@ export default function BlogPage() {
                 </div>
 
                 {/* Empty State for Future */}
-                <div className="mt-16 text-center p-12 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700">
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                        More posts coming soon! Subscribe to stay updated.
-                    </p>
-                    <Link
-                        href="/"
-                        className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
-                    >
-                        ← Back to Home
-                    </Link>
+                <div className="mt-16 text-center">
+                    <NeuromorphicCard className="p-12 border-none">
+                        <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg">
+                            More posts coming soon! Subscribe to stay updated.
+                        </p>
+                        <NeuromorphicButton href="/">
+                            ← Back to Home
+                        </NeuromorphicButton>
+                    </NeuromorphicCard>
                 </div>
             </div>
         </div>

@@ -9,8 +9,8 @@ export const metadata = {
     description: 'Interactive neuromorphic dashboard visualizing portfolio analytics and exploration data.',
 };
 
-export default function ExplorePage() {
-    const stats = getPortfolioStats();
+export default async function ExplorePage() {
+    const stats = await getPortfolioStats();
     const metrics = stats.exploration;
 
     return (

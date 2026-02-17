@@ -5,6 +5,8 @@ module.exports = {
     roots: ['<rootDir>/__tests__'],
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/$1',
+        'server-only': '<rootDir>/__mocks__/server-only.js',
+        '^uuid$': '<rootDir>/__mocks__/uuid.js',
     },
     transform: {
         '^.+\\.tsx?$': ['ts-jest', {
@@ -22,4 +24,7 @@ module.exports = {
             },
         }],
     },
+    transformIgnorePatterns: [
+        'node_modules/(?!(uuid)/)'
+    ],
 };

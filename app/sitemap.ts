@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
 import { getProjects } from '@/lib/masterReport';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://ryanguidry.com';
-    const projects = getProjects();
+    const projects = await getProjects();
 
     // Static pages
     const staticPages = [
